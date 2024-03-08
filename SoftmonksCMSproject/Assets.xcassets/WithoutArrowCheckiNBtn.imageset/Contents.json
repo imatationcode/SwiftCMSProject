@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "WithoutArrowCheckiNBtn.svg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "WithoutArrowCheckiNBtn 1.svg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "WithoutArrowCheckiNBtn 2.svg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

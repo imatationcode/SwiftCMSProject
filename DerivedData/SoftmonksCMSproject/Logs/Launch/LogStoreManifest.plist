@@ -5,6 +5,97 @@
 	<key>logFormatVersion</key>
 	<integer>10</integer>
 	<key>logs</key>
-	<dict/>
+	<dict>
+		<key>75B55875-6139-4C0A-ADF4-700EE741D456</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>218DB2AE-1933-41FD-9C1D-6E7626F3A5AD</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-SoftmonksCMSproject-2024.03.08_10-56-24-+0530.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SoftmonksCMSproject project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SoftmonksCMSproject</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run SoftmonksCMSproject</string>
+			<key>timeStartedRecording</key>
+			<real>731568384.70855105</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run SoftmonksCMSproject</string>
+			<key>uniqueIdentifier</key>
+			<string>75B55875-6139-4C0A-ADF4-700EE741D456</string>
+		</dict>
+		<key>E6F1EFE0-5E75-4D9D-8056-A91C75865D78</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>D038D629-8795-4922-86D4-4A18913641F5</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-SoftmonksCMSproject-2024.03.07_18-13-37-+0530.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SoftmonksCMSproject project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SoftmonksCMSproject</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run SoftmonksCMSproject</string>
+			<key>timeStartedRecording</key>
+			<real>731508217.29779899</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run SoftmonksCMSproject</string>
+			<key>uniqueIdentifier</key>
+			<string>E6F1EFE0-5E75-4D9D-8056-A91C75865D78</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

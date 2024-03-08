@@ -1,0 +1,35 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f_167_73)">
+<circle cx="110" cy="110" r="90" fill="url(#paint0_linear_167_73)" fill-opacity="0.78"/>
+</g>
+<circle cx="110" cy="110" r="75" fill="url(#paint1_linear_167_73)"/>
+<g filter="url(#filter1_d_167_73)">
+<path d="M78.525 83.5532C76.575 85.5032 76.575 88.6532 78.525 90.6032L97.925 110.003L78.525 129.403C76.575 131.353 76.575 134.503 78.525 136.453C80.475 138.403 83.625 138.403 85.575 136.453L108.525 113.503C110.475 111.553 110.475 108.403 108.525 106.453L85.625 83.5532C83.675 81.6032 80.475 81.6032 78.525 83.5532Z" fill="white"/>
+<path d="M111.475 83.5532C109.525 85.5032 109.525 88.6532 111.475 90.6032L130.875 110.003L111.475 129.403C109.525 131.353 109.525 134.503 111.475 136.453C113.425 138.403 116.575 138.403 118.525 136.453L141.475 113.503C143.425 111.553 143.425 108.403 141.475 106.453L118.525 83.5032C116.625 81.6032 113.425 81.6032 111.475 83.5532Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_f_167_73" x="0" y="0" width="220" height="220" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="10" result="effect1_foregroundBlur_167_73"/>
+</filter>
+<filter id="filter1_d_167_73" x="67.0625" y="76.0844" width="85.875" height="75.8313" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_167_73"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_167_73" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_167_73" x1="20" y1="20" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#98CDFD" stop-opacity="0.7"/>
+<stop offset="1" stop-color="#00359A" stop-opacity="0.7"/>
+</linearGradient>
+<linearGradient id="paint1_linear_167_73" x1="35" y1="35" x2="185" y2="185" gradientUnits="userSpaceOnUse">
+<stop stop-color="#98CDFD"/>
+<stop offset="1" stop-color="#00359A"/>
+</linearGradient>
+</defs>
+</svg>

@@ -5,6 +5,75 @@
 	<key>logFormatVersion</key>
 	<integer>10</integer>
 	<key>logs</key>
-	<dict/>
+	<dict>
+		<key>218DB2AE-1933-41FD-9C1D-6E7626F3A5AD</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>218DB2AE-1933-41FD-9C1D-6E7626F3A5AD.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SoftmonksCMSproject project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SoftmonksCMSproject</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build SoftmonksCMSproject</string>
+			<key>timeStartedRecording</key>
+			<real>731568384.71026099</real>
+			<key>timeStoppedRecording</key>
+			<real>731568387.08850598</real>
+			<key>title</key>
+			<string>Build SoftmonksCMSproject</string>
+			<key>uniqueIdentifier</key>
+			<string>218DB2AE-1933-41FD-9C1D-6E7626F3A5AD</string>
+		</dict>
+		<key>D038D629-8795-4922-86D4-4A18913641F5</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D038D629-8795-4922-86D4-4A18913641F5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SoftmonksCMSproject project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SoftmonksCMSproject</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build SoftmonksCMSproject</string>
+			<key>timeStartedRecording</key>
+			<real>731508217.29800606</real>
+			<key>timeStoppedRecording</key>
+			<real>731508225.67417896</real>
+			<key>title</key>
+			<string>Build SoftmonksCMSproject</string>
+			<key>uniqueIdentifier</key>
+			<string>D038D629-8795-4922-86D4-4A18913641F5</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

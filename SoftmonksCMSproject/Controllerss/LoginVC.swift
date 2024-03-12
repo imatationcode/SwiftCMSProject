@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginVc: UIViewController, LogoDisplayable {
+class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate {
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -24,14 +24,15 @@ class LoginVc: UIViewController, LogoDisplayable {
         super.viewDidLoad()
         addLogoToFooter()
         updatePasswordVisibility()
-        
         // Check if the user is already logged in
 //        if isUserLoggedIn() {
 //            navigateToMainPage()
 //        }
         
  }
-    
+    @objc func doneButtonTapped() {
+        view.endEditing(true)
+        }
     @IBAction func tapEyeButton(_ sender: Any) {
         isPasswordVisible.toggle()
         updatePasswordVisibility()

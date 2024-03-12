@@ -26,6 +26,8 @@
 		0BAC6CF82B831788006FF50F /* FooterLogoDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAC6CF72B831788006FF50F /* FooterLogoDisplayable.swift */; };
 		0BC6190F2B871012005F0DCB /* CheckCounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC6190E2B871012005F0DCB /* CheckCounterVC.swift */; };
 		0BC9579B2B9098DE00F1664D /* LogInOutStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9579A2B9098DE00F1664D /* LogInOutStatus.swift */; };
+		0BCF62832B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCF62822B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift */; };
+		0BCF62862B9F2D7900A6490C /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 0BCF62852B9F2D7900A6490C /* Algorithms */; };
 		0BE087972B7F62500067102F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE087962B7F62500067102F /* AppDelegate.swift */; };
 		0BE087992B7F62500067102F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE087982B7F62500067102F /* SceneDelegate.swift */; };
 		0BE0879B2B7F62500067102F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0879A2B7F62500067102F /* LoginVC.swift */; };
@@ -59,6 +61,7 @@
 		0BAC6CF72B831788006FF50F /* FooterLogoDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterLogoDisplayable.swift; sourceTree = "<group>"; };
 		0BC6190E2B871012005F0DCB /* CheckCounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCounterVC.swift; sourceTree = "<group>"; };
 		0BC9579A2B9098DE00F1664D /* LogInOutStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInOutStatus.swift; sourceTree = "<group>"; };
+		0BCF62822B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationForInputFieldsInPopUp.swift; sourceTree = "<group>"; };
 		0BE087932B7F62500067102F /* SoftmonksCMSproject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoftmonksCMSproject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE087962B7F62500067102F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BE087982B7F62500067102F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BCF62862B9F2D7900A6490C /* Algorithms in Frameworks */,
 				6DA965CA25E8440ABC7DF37B /* Pods_SoftmonksCMSproject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +215,7 @@
 			children = (
 				0BE1F2442B999AA700725AC9 /* leaveApplicationPopUPViewController.swift */,
 				0BE1F2452B999AA700725AC9 /* leaveApplicationPopUPViewController.xib */,
+				0BCF62822B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift */,
 			);
 			path = PopUpLeaveApplication;
 			sourceTree = "<group>";
@@ -258,6 +263,9 @@
 			dependencies = (
 			);
 			name = SoftmonksCMSproject;
+			packageProductDependencies = (
+				0BCF62852B9F2D7900A6490C /* Algorithms */,
+			);
 			productName = SoftmonksCMSproject;
 			productReference = 0BE087932B7F62500067102F /* SoftmonksCMSproject.app */;
 			productType = "com.apple.product-type.application";
@@ -286,6 +294,9 @@
 				Base,
 			);
 			mainGroup = 0BE0878A2B7F62500067102F;
+			packageReferences = (
+				0BCF62842B9F2D7900A6490C /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = 0BE087942B7F62500067102F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -363,6 +374,7 @@
 			files = (
 				0B4FC3C82B95840C00F69EF1 /* TableViewCell.swift in Sources */,
 				0BE0879B2B7F62500067102F /* LoginVC.swift in Sources */,
+				0BCF62832B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift in Sources */,
 				0B4268E82B8729E600868118 /* TitleTopView.swift in Sources */,
 				0BC6190F2B871012005F0DCB /* CheckCounterVC.swift in Sources */,
 				0B7DBCE32B836BAD0072EF55 /* ProfileMenuVC.swift in Sources */,
@@ -598,6 +610,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0BCF62842B9F2D7900A6490C /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0BCF62852B9F2D7900A6490C /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0BCF62842B9F2D7900A6490C /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0BE0878B2B7F62500067102F /* Project object */;
 }

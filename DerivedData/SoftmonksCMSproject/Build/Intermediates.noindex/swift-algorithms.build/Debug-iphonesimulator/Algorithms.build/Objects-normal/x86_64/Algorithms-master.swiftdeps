@@ -1,0 +1,59 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "6cdd32db89a4ebe3a937993c41c35c38c2d7c7f6fe5e96b26f235359b1c948ae"
+build_start_time: [1710216033, 581503868]
+build_end_time: [1710216039, 227179050]
+inputs:
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/AdjacentPairs.swift"
+  : [1710159342, 479580402]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Chain.swift"
+  : [1710159342, 479952335]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Chunked.swift"
+  : [1710159342, 480565786]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Combinations.swift"
+  : [1710159342, 480957031]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Compacted.swift"
+  : [1710159342, 481854200]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Cycle.swift"
+  : [1710159342, 482269525]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/EitherSequence.swift"
+  : [1710159342, 491272449]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/FirstNonNil.swift"
+  : [1710159342, 491863489]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/FlattenCollection.swift"
+  : [1710159342, 492270469]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Grouped.swift"
+  : [1710159342, 492662668]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Indexed.swift"
+  : [1710159342, 492965698]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Intersperse.swift"
+  : [1710159342, 493725299]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Joined.swift"
+  : [1710159342, 494231224]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Keyed.swift"
+  : [1710159342, 494818210]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/MinMax.swift"
+  : [1710159342, 495362758]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Partition.swift"
+  : [1710159342, 495839118]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Permutations.swift"
+  : [1710159342, 496393680]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Product.swift"
+  : [1710159342, 497551918]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/RandomSample.swift"
+  : [1710159342, 497950077]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Reductions.swift"
+  : [1710159342, 500418663]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Rotate.swift"
+  : [1710159342, 501594543]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Split.swift"
+  : [1710159342, 502120733]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Stride.swift"
+  : [1710159342, 502524614]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Suffix.swift"
+  : [1710159342, 503009796]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Trim.swift"
+  : [1710159342, 503308296]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Unique.swift"
+  : [1710159342, 503631114]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-algorithms/Sources/Algorithms/Windows.swift"
+  : [1710159342, 503988265]

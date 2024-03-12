@@ -330,7 +330,7 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject14LeaveRequestVC")
 @class UITextField;
 
 SWIFT_CLASS("_TtC19SoftmonksCMSproject7LoginVc")
-@interface LoginVc : UIViewController
+@interface LoginVc : UIViewController <UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified loginButton;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified emailTextField;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified borderViewForEmail;
@@ -338,6 +338,7 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject7LoginVc")
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified passwordTextField;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified borderViewForPassword;
 - (void)viewDidLoad;
+- (void)doneButtonTapped;
 - (IBAction)tapEyeButton:(id _Nonnull)sender;
 - (IBAction)TappedLoginButtom:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
@@ -424,22 +425,39 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject27appliedRequestTableViewCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIDatePicker;
 @class UIPickerView;
+@class UITapGestureRecognizer;
 
 SWIFT_CLASS("_TtC19SoftmonksCMSproject35leaveApplicationPopUPViewController")
-@interface leaveApplicationPopUPViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface leaveApplicationPopUPViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified backView;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified popupContentView;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified selectedLeaveType;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified noOfDaysLabel;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified toDateTextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified fromDateTextField;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified crossButtonView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified fromDateLabel;
+@property (nonatomic, weak) IBOutlet DesingsForUIView * _Null_unspecified fromDateView;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified toDateLabel;
+@property (nonatomic, weak) IBOutlet DesingsForUIView * _Null_unspecified toDateView;
 - (void)viewDidLoad;
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView * _Nonnull)pickerView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)pickerView:(UIPickerView * _Nonnull)pickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
-- (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
-- (void)pickerView:(UIPickerView * _Nonnull)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
-- (void)doneButtonPressed;
+- (void)textFieldDidChangeSelection:(UITextField * _Nonnull)sender;
+- (void)textFieldDidBeginEditing:(UITextField * _Nonnull)textField;
+- (void)fromDateDatePickerValueChanged:(UIDatePicker * _Nonnull)sender;
+- (void)toDateDatePickerValueChanged:(UIDatePicker * _Nonnull)sender;
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView * _Nonnull)leavepickerView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)pickerView:(UIPickerView * _Nonnull)leavepickerView numberOfRowsInComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nullable)pickerView:(UIPickerView * _Nonnull)leavepickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component SWIFT_WARN_UNUSED_RESULT;
+- (void)pickerView:(UIPickerView * _Nonnull)leavepickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+- (void)viewTappedWithSender:(UITapGestureRecognizer * _Nonnull)sender;
+- (void)doneButtonTapped;
+- (void)cancelButtonTapped;
 - (IBAction)sendLeaveRequest:(id _Nonnull)sender;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (IBAction)crossButtonTaped:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 

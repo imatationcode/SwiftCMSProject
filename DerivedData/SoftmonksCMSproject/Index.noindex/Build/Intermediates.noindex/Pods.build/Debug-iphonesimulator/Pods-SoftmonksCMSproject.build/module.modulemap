@@ -1,6 +1,0 @@
-framework module Pods_SoftmonksCMSproject {
-  umbrella header "Pods-SoftmonksCMSproject-umbrella.h"
-
-  export *
-  module * { export * }
-}

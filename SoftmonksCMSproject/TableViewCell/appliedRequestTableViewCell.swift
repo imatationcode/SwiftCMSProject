@@ -28,10 +28,11 @@ class appliedRequestTableViewCell: UITableViewCell {
     }
 
     override func awakeFromNib() {
-        
- 
-        
         super.awakeFromNib()
+        inProgressView.onlyCornerRadius(conRadius: 10.0)
+        outterView.onlyCornerRadius(conRadius: 8.0)
+        addElevatedShadow(to: outterView)
+        
         // Initialization code
     }
 

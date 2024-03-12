@@ -1,0 +1,25 @@
+version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
+options: "8b5c116c787def5576f167cc5f228c73b0847d501e75651f9b717dc11d19689a"
+build_start_time: [1710216032, 347574949]
+build_end_time: [1710216037, 901839017]
+inputs:
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/AlgebraicField.swift"
+  : [1710159343, 203242301]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/ApproximateEquality.swift"
+  : [1710159343, 203669548]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/AugmentedArithmetic.swift"
+  : [1710159343, 204027652]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/Double+Real.swift"
+  : [1710159343, 206288337]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/ElementaryFunctions.swift"
+  : [1710159343, 207563877]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/Float+Real.swift"
+  : [1710159343, 207959890]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/Float16+Real.swift"
+  : [1710159343, 208688259]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/Float80+Real.swift"
+  : [1710159343, 212447643]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/Real.swift"
+  : [1710159343, 213274002]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/SourcePackages/checkouts/swift-numerics/Sources/RealModule/RealFunctions.swift"
+  : [1710159343, 213723421]

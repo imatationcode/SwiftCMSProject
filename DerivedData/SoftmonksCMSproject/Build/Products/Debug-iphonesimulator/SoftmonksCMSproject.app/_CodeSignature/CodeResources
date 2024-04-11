@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		HHDZ6CpPz3CapJbc9Vg2FTRHel8=
+		hFDGnVy26QqSc5YLDYaPxb0l3vc=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -20,21 +20,29 @@
 		<data>
 		U0x8EM0781fCPb62BbZIXKeDlZ4=
 		</data>
+		<key>Base.lproj/Main.storyboardc/8xP-NJ-XXJ-view-Ogl-fc-Kgf.nib</key>
+		<data>
+		r88c1cVqYbSiz57Wump0YZQ05x4=
+		</data>
 		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<data>
-		hCyxr+lvK5zHbchsmMB4J7FtN7A=
+		EPN5BEpK9kmfsGIMGW61vLwoxrc=
 		</data>
 		<key>Base.lproj/Main.storyboardc/CheckCounterVC.nib</key>
 		<data>
 		I5wZRD8e4oBNlj5DcWzgdxwngn4=
 		</data>
+		<key>Base.lproj/Main.storyboardc/ForgotPasswordViewController.nib</key>
+		<data>
+		ACoWbR3m/acdiDTB6sSDTjGqldw=
+		</data>
 		<key>Base.lproj/Main.storyboardc/GCH-Vy-1if-view-IGO-80-gjt.nib</key>
 		<data>
-		cRq1x2Lys6Bvwl0Y/p3rUb735Jg=
+		lArB+vMaQEDbDwII/gyuwDpGQoY=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
-		wgNu31dLonH7iyWeNab+l6ruzko=
+		ps1NOMV82I4iDR/p18wfgjq8KAg=
 		</data>
 		<key>Base.lproj/Main.storyboardc/LeaveRequestVC.nib</key>
 		<data>
@@ -44,6 +52,14 @@
 		<data>
 		yzh/IPXZjQ7AazsBSDTFDPiIO9c=
 		</data>
+		<key>Base.lproj/Main.storyboardc/NewPasswordVC.nib</key>
+		<data>
+		+H0iBPxNV+nxinebfX7FnNOC1zw=
+		</data>
+		<key>Base.lproj/Main.storyboardc/PasswordResetCompletionVC.nib</key>
+		<data>
+		e3BTDqx8lnqI4eFjWQZQ/4qJjA4=
+		</data>
 		<key>Base.lproj/Main.storyboardc/ProfileMenuVC.nib</key>
 		<data>
 		UFj6iC3pnfurJObKSFw/UyeVkKc=
@@ -52,13 +68,29 @@
 		<data>
 		7zMrufHc2lyVRggiXZnC1rTy+VA=
 		</data>
+		<key>Base.lproj/Main.storyboardc/j1e-C6-NoS-view-PWV-X6-KZd.nib</key>
+		<data>
+		rd/18976+CWjaDiiMTeDRSZto1c=
+		</data>
+		<key>Base.lproj/Main.storyboardc/kBm-bH-pf3-view-lUJ-Sp-KK9.nib</key>
+		<data>
+		Yh8tH9De7ZZnAlu/v+iUPFdblrY=
+		</data>
 		<key>Base.lproj/Main.storyboardc/kTO-h4-63p-view-c9z-6I-lNg.nib</key>
 		<data>
-		9+gV83es6kH1o2vbZX7l2gFGdEI=
+		sGK8Zd2uQOhCyV2/vYudkDYnCgo=
+		</data>
+		<key>Base.lproj/Main.storyboardc/oHc-ge-KDQ-view-Bx2-xD-JGB.nib</key>
+		<data>
+		qyyl9e677CDyU2C/ak+KrdSfq80=
+		</data>
+		<key>Base.lproj/Main.storyboardc/verificationViewController.nib</key>
+		<data>
+		n5vF33NN+vyvGNLX0TJZaUpWKIU=
 		</data>
 		<key>Base.lproj/Main.storyboardc/xin-4w-hRT-view-nGf-cf-aof.nib</key>
 		<data>
-		Cf3fJKZjfs6f6UwXoG7nS+KKpw8=
+		rK9Pzc89rwrnUosaZBqCAenQhH4=
 		</data>
 		<key>CollectionViewCell.nib</key>
 		<data>
@@ -70,7 +102,7 @@
 		</data>
 		<key>Frameworks/TPKeyboardAvoiding.framework/TPKeyboardAvoiding</key>
 		<data>
-		VjKxo5cAaOv5UHKLGoUIX+moNlc=
+		QtkomAq2HqvYpw9MbbndPoaNleg=
 		</data>
 		<key>Frameworks/TPKeyboardAvoiding.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -80,9 +112,17 @@
 		<data>
 		Gskb/+N5zbflSVQw8HFixr/ntro=
 		</data>
+		<key>OTPDigitvalidationView.nib</key>
+		<data>
+		Z+zYclLqCV9Ndo9mPPaDLCeDAzU=
+		</data>
 		<key>PkgInfo</key>
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
+		</data>
+		<key>ProfileImageCustomeView.nib</key>
+		<data>
+		a0CWkJdTzDgduWUcCofF7wCCylo=
 		</data>
 		<key>TableViewCell.nib</key>
 		<data>
@@ -96,6 +136,10 @@
 		<data>
 		Jv1EbZQEqAtxgUt7zmCih+Glw2E=
 		</data>
+		<key>headingAndPhotoView.nib</key>
+		<data>
+		nsVAsGZocSUG7BbnqsLRaDMpGZk=
+		</data>
 		<key>leaveApplicationPopUPViewController.nib</key>
 		<data>
 		gCXxLEy6w2I9KKhRWTMsuIzOzng=
@@ -104,6 +148,10 @@
 		<data>
 		a4HN6zWnqHAn7qz5yO8AE+yzC3s=
 		</data>
+		<key>testXIB.nib</key>
+		<data>
+		KRyA/S9akN1fFQh6S+EV1E/H3Xc=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -111,7 +159,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6OebhVYYM5XW5N5JM0GrFGcSSYUsi6sJmwrCgh39Slw=
+			zydYDOE5X34Tpb8Xhcf//gTCglanps5eEENUGCRqGws=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -135,11 +183,18 @@
 			cWq7q+iQcmpSoaFGecnyPdKFEPFwRD3slgUmxFADkVs=
 			</data>
 		</dict>
+		<key>Base.lproj/Main.storyboardc/8xP-NJ-XXJ-view-Ogl-fc-Kgf.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mljreGYg/fWxsepqS/k0OA31WTu5piWsldtZ5+O3gtA=
+			</data>
+		</dict>
 		<key>Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nkKIkRgPQB+8nYK6/lavYRGOoLrDTeWh+jP1g1FyETE=
+			zQ+jm0sUduZl43TbuqUdhiTNd4oO0LHKy9qv454aP+s=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/CheckCounterVC.nib</key>
@@ -149,18 +204,25 @@
 			pkyirkoogBU5mc28gi+37G0Ac9VqLRyE0x2FIXwanLI=
 			</data>
 		</dict>
+		<key>Base.lproj/Main.storyboardc/ForgotPasswordViewController.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5/X21GxwstiIsbCM2deRiV0USZnih/Q7CgXPyCWuLGk=
+			</data>
+		</dict>
 		<key>Base.lproj/Main.storyboardc/GCH-Vy-1if-view-IGO-80-gjt.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iyMgWg1MFFcWtb8QyxXK7Ul9PrKffxOooljnbqMFfUA=
+			YwK1hsW5ikZscmXJT6wqskC/CIQYMv2/tJIVYdUb6ZY=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fKNlddyX7a7md5OwTjVyitWo8cHG7XiTKIOjyaDDWQE=
+			GF3B+tfAdUQ4VDOh8P7x+iy06jykSZme/L5mXnKz7YA=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/LeaveRequestVC.nib</key>
@@ -177,6 +239,20 @@
 			fx8ZJLf5Jc82Wle+FU7ytIs1QMFx9Jlr409N4gKBXlc=
 			</data>
 		</dict>
+		<key>Base.lproj/Main.storyboardc/NewPasswordVC.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			L6MGwIqszRbhC1hyXIoTw2TzNboY3yhtC3kyJrwOxg0=
+			</data>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/PasswordResetCompletionVC.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jud2ZOtQJ7YZC3moQXlUZ9YoAf8tkpBCdawTgsEkbNQ=
+			</data>
+		</dict>
 		<key>Base.lproj/Main.storyboardc/ProfileMenuVC.nib</key>
 		<dict>
 			<key>hash2</key>
@@ -191,18 +267,46 @@
 			m7+GfBt+PoxirYYXVXmA8nrBllhs5hyepBr52+Uz7nE=
 			</data>
 		</dict>
+		<key>Base.lproj/Main.storyboardc/j1e-C6-NoS-view-PWV-X6-KZd.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			US8WShUvjeiftaaE+AUDtOsJbVPHpyUNCWHno6txV2s=
+			</data>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/kBm-bH-pf3-view-lUJ-Sp-KK9.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/X7AuCHKIsRaXRIZlydD5KnXikOgE7he/pv5LNmIoag=
+			</data>
+		</dict>
 		<key>Base.lproj/Main.storyboardc/kTO-h4-63p-view-c9z-6I-lNg.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BqIpdx/A0KKnVXZRf7wkPMotXISUOjJawcXL6pHhu2I=
+			OPzbhKtS2cQd/ceb9zyQPGYizCBdN3zTcfR4BRxu5lE=
+			</data>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/oHc-ge-KDQ-view-Bx2-xD-JGB.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			SRaUJ6lTB3noAkqaLZnMnsUTM9ltVOPi6QLCcDG+LA4=
+			</data>
+		</dict>
+		<key>Base.lproj/Main.storyboardc/verificationViewController.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			e88wQiUtt3UDDT5aHDrn6DSjFkd8TF8Kq2zE+2bDbtc=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/xin-4w-hRT-view-nGf-cf-aof.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cjkOPyGEKJMEjy2JaiaHMHFL+Yi0Z7kuTWcm50v83/w=
+			ALS9FdCKrThGRduy/g4o9uyV/VOzkzAugHkI4TImxqc=
 			</data>
 		</dict>
 		<key>CollectionViewCell.nib</key>
@@ -223,7 +327,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+pgr1o7bAiURwruZ5WXvg3aM77GsBIZVHnOoyb7jkcE=
+			pqyRprcQdALlmaDqugycrPhi3RldWNtftSFByMAO07g=
 			</data>
 		</dict>
 		<key>Frameworks/TPKeyboardAvoiding.framework/_CodeSignature/CodeResources</key>
@@ -231,6 +335,20 @@
 			<key>hash2</key>
 			<data>
 			Z+BRAoX7qWurclXT1m+LzuBw1BHnYRZwX7lNmpmWG3A=
+			</data>
+		</dict>
+		<key>OTPDigitvalidationView.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6+seh8kMtITGw8fn6HRSYCzkQPr282Nt7PF8NF/XQ3g=
+			</data>
+		</dict>
+		<key>ProfileImageCustomeView.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Fb3wd5uFOfKezO98Fz6jgxAAiLjtDHFelTObxhXuG70=
 			</data>
 		</dict>
 		<key>TableViewCell.nib</key>
@@ -254,6 +372,13 @@
 			WLzdvxD1W2sZ8Fnls43AwgNp4tH6JmO/BglfKRQLlrk=
 			</data>
 		</dict>
+		<key>headingAndPhotoView.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pmEzUQ4mo12cWmO5fkQUJcgCwZ9rvtYp7uZgJMxX+IA=
+			</data>
+		</dict>
 		<key>leaveApplicationPopUPViewController.nib</key>
 		<dict>
 			<key>hash2</key>
@@ -266,6 +391,13 @@
 			<key>hash2</key>
 			<data>
 			rtWussa1qSAe9kzGOnH0BYVpaxIyQd54l9vPU4ShSk4=
+			</data>
+		</dict>
+		<key>testXIB.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LVoAqLRLF9uKs9VR1LE4kepVBQetiGU3BR2dzbxpXKA=
 			</data>
 		</dict>
 	</dict>

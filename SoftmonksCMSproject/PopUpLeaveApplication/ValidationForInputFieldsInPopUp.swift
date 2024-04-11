@@ -14,26 +14,8 @@ func validateTextFields(textField1: UITextField, textField2: UITextField, textFi
     
     return false
   }
-    print(textField2)
-//
-// let date2 = formatDate(textField2.text)
-// let date3 = formatDate(textField3.text)
-//
-//
-//  if date2 >= date3 {
-//    showAlert(viewController: viewController, message: "From Date must be earlier than To Date .")
-//    return false
-//  }
-
   return true
 }
-
-// Helper function to format date strings
-//private func formatDate(_ dateString: String) -> Date? {
-//  let formatter = DateFormatter()
-//  formatter.dateFormat = "YYYY-MM-DD"  // Adjust format as needed
-//  return formatter.date(from: dateString)
-//}
 
 // Helper function to show alert with a generic message
 private func showAlert(viewController: UIViewController, message: String) {

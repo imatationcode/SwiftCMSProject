@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuI-dl-ec4">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OHe-Xe-zEb">
+                            <rect key="frame" x="71.666666666666686" y="285.66666666666669" width="250" height="187.66666666666669"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WxM-gG-dl3">
+                                    <rect key="frame" x="10" y="10" width="230" height="167.66666666666666"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQr-Zj-mRn">
+                                            <rect key="frame" x="82.999999999999986" y="57" width="64.000000000000014" height="54"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="BtnArrows"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="oQr-Zj-mRn" firstAttribute="centerY" secondItem="WxM-gG-dl3" secondAttribute="centerY" id="40P-8S-ery"/>
+                                        <constraint firstItem="oQr-Zj-mRn" firstAttribute="centerX" secondItem="WxM-gG-dl3" secondAttribute="centerX" id="ZLy-Rs-G9w"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.26839682459999997" green="0.4198953211" blue="0.61014974119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="OHe-Xe-zEb" secondAttribute="height" multiplier="4:3" id="0FT-e7-Gox"/>
+                                <constraint firstItem="WxM-gG-dl3" firstAttribute="leading" secondItem="OHe-Xe-zEb" secondAttribute="leading" constant="10" id="Ud7-Pg-Qj3"/>
+                                <constraint firstItem="WxM-gG-dl3" firstAttribute="top" secondItem="OHe-Xe-zEb" secondAttribute="top" constant="10" id="XlL-0u-iuK"/>
+                                <constraint firstAttribute="width" constant="250" id="YWq-tb-SwD"/>
+                                <constraint firstAttribute="trailing" secondItem="WxM-gG-dl3" secondAttribute="trailing" constant="10" id="jZA-mM-QHz"/>
+                                <constraint firstAttribute="bottom" secondItem="WxM-gG-dl3" secondAttribute="bottom" constant="10" id="ncj-n5-uaC"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="OHe-Xe-zEb" firstAttribute="centerX" secondItem="xuI-dl-ec4" secondAttribute="centerX" id="Moe-uV-hvK"/>
+                        <constraint firstItem="OHe-Xe-zEb" firstAttribute="centerY" secondItem="xuI-dl-ec4" secondAttribute="centerY" id="SL9-Yg-klV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xuI-dl-ec4" secondAttribute="bottom" id="GAz-Mm-USZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xuI-dl-ec4" secondAttribute="trailing" id="JMA-TH-vtb"/>
+                <constraint firstItem="xuI-dl-ec4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JPa-X6-LKk"/>
+                <constraint firstItem="xuI-dl-ec4" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="coV-1a-xIC"/>
+            </constraints>
+            <point key="canvasLocation" x="131" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BtnArrows" width="40" height="40"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

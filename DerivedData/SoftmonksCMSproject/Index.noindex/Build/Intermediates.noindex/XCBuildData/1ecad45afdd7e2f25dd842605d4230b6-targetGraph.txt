@@ -1,0 +1,28 @@
+Target dependency graph (9 targets)
+_NumericsShims in swift-numerics, no dependencies
+RealModule in swift-numerics, depends on:
+_NumericsShims in swift-numerics (explicit)
+RealModule in swift-numerics, depends on:
+RealModule in swift-numerics (explicit)
+_NumericsShims in swift-numerics (explicit)
+Algorithms in swift-algorithms, depends on:
+RealModule in swift-numerics (explicit)
+Algorithms in swift-algorithms, depends on:
+Algorithms in swift-algorithms (explicit)
+RealModule in swift-numerics (explicit)
+ComplexModule in swift-numerics, depends on:
+_NumericsShims in swift-numerics (explicit)
+RealModule in swift-numerics (explicit)
+Numerics in swift-numerics, depends on:
+_NumericsShims in swift-numerics (explicit)
+RealModule in swift-numerics (explicit)
+ComplexModule in swift-numerics (explicit)
+ComplexModule in swift-numerics, depends on:
+ComplexModule in swift-numerics (explicit)
+_NumericsShims in swift-numerics (explicit)
+RealModule in swift-numerics (explicit)
+Numerics in swift-numerics, depends on:
+Numerics in swift-numerics (explicit)
+_NumericsShims in swift-numerics (explicit)
+RealModule in swift-numerics (explicit)
+ComplexModule in swift-numerics (explicit)

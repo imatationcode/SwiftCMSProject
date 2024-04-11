@@ -1,0 +1,37 @@
+Target dependency graph (16 targets)
+TPKeyboardAvoiding in Pods, no dependencies
+Pods-SoftmonksCMSproject in Pods, depends on:
+TPKeyboardAvoiding in Pods (explicit)
+_NumericsShims in swift-numerics, no dependencies
+RealModule in swift-numerics, depends on:
+_NumericsShims in swift-numerics (explicit)
+RealModule in swift-numerics, depends on:
+RealModule in swift-numerics (explicit)
+_NumericsShims in swift-numerics (explicit)
+Algorithms in swift-algorithms, depends on:
+RealModule in swift-numerics (explicit)
+Algorithms in swift-algorithms, depends on:
+Algorithms in swift-algorithms (explicit)
+RealModule in swift-numerics (explicit)
+SoftmonksCMSproject in SoftmonksCMSproject, depends on:
+Pods-SoftmonksCMSproject in Pods (implicit dependency via file 'Pods_SoftmonksCMSproject.framework' in build phase 'Link Binary')
+TPKeyboardAvoiding in Pods (implicit dependency via options '-framework TPKeyboardAvoiding' in build setting 'OTHER_LDFLAGS')
+Algorithms in swift-algorithms (explicit)
+TPKeyboardAvoiding in Pods, no dependencies
+Pods-SoftmonksCMSproject in Pods, depends on:
+TPKeyboardAvoiding in Pods (explicit)
+_NumericsShims in swift-numerics, no dependencies
+RealModule in swift-numerics, depends on:
+_NumericsShims in swift-numerics (explicit)
+RealModule in swift-numerics, depends on:
+RealModule in swift-numerics (explicit)
+_NumericsShims in swift-numerics (explicit)
+Algorithms in swift-algorithms, depends on:
+RealModule in swift-numerics (explicit)
+Algorithms in swift-algorithms, depends on:
+Algorithms in swift-algorithms (explicit)
+RealModule in swift-numerics (explicit)
+SoftmonksCMSproject in SoftmonksCMSproject, depends on:
+Pods-SoftmonksCMSproject in Pods (implicit dependency via file 'Pods_SoftmonksCMSproject.framework' in build phase 'Link Binary')
+TPKeyboardAvoiding in Pods (implicit dependency via options '-framework TPKeyboardAvoiding' in build setting 'OTHER_LDFLAGS')
+Algorithms in swift-algorithms (explicit)

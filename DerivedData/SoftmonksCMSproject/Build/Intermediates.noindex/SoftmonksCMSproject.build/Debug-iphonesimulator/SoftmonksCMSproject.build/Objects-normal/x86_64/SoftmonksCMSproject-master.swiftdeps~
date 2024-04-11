@@ -1,23 +1,32 @@
 version: "Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)"
 options: "aefb738c508f5f9199c22a8ff8a7b4d0012485a843989cc39641d94d787d100a"
-build_start_time: [1710216041, 209124088]
-build_end_time: [1710216041, 285998821]
+build_start_time: [1710931680, 437028884]
+build_end_time: [1710931680, 530126094]
 inputs:
-  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/AppDelegate.swift": !private [1709270804, 117915391]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/AppDelegate.swift": !private [1710303020, 591651439]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/CollectionView/CollectionViewCell.swift": !private [1708573428, 765198707]
-  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/CheckCounterVC.swift": !private [1709288629, 213573932]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/CheckCounterVC.swift": !private [1710416006, 42582511]
+  ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/ForgotPasswordViewController.swift"
+  : !private [1710920376, 330371379]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/LeaveRequestVC.swift": !private [1709796663, 235977411]
-  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/LoginVC.swift": !private [1710161254, 551804065]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/LoginVC.swift": !private [1710919754, 806294441]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/NewPasswordVC.swift": !private [1710920238, 810216426]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/PasswordResetCompletionVC.swift": !private [1710751620, 130937576]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/ProfileMenuVC.swift": !private [1709555817, 542431831]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Controllerss/verificationViewController.swift": !private [1710931660, 33188104]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/CustomeViews/OTPDigitvalidationView.swift": !private [1710831234, 861036539]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/CustomeViews/ProfileImageCustomeView.swift": !private [1710497609, 148889780]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/CustomeViews/TableViewCell.swift": !private [1709532804, 266613721]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/CustomeViews/TitleTopView.swift": !private [1708586894, 111317157]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/CustomeViews/headingAndPhotoView.swift": !private [1710487156, 442960739]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/CustomeViews/otptest.swift": !private [1710931659, 980500698]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Designs/DesingsForUIView.swift": !private [1709796663, 192181587]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Models/LeaveRequest.swift": !private [1709622329, 715246677]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Models/menuIteam.swift": !private [1708503410, 673074960]
   ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/PopUpLeaveApplication/ValidationForInputFieldsInPopUp.swift"
-  : !private [1710160710, 691428661]
+  : !private [1710223516, 403038024]
   ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/PopUpLeaveApplication/leaveApplicationPopUPViewController.swift"
-  : !private [1710161323, 415843486]
+  : !private [1710320443, 842545270]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/SceneDelegate.swift": !private [1708075728, 424430370]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Services/DataService.swift": !private [1709784059, 752351522]
   ? "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/TableViewCell/appliedRequestTableViewCell.swift"
@@ -26,4 +35,4 @@ inputs:
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Validation/LogInOutStatus.swift": !private [1709207759, 765263557]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/Validation/LoginValidation.swift": !private [1710215144, 908644676]
   "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/extension/FooterLogoDisplayable.swift": !private [1708579606, 822225809]
-  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/extension/UIExtensions.swift": !private [1709901704, 472702503]
+  "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject/extension/UIExtensions.swift": !private [1710919691, 580988407]

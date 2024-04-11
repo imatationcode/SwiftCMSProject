@@ -24,7 +24,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     @IBOutlet weak var toDateLabel: UILabel!
     @IBOutlet weak var toDateView: DesingsForUIView!
     
-    let leaveTypes = ["Full Day", "Morning Half-Day", "Afternoon Half-Day"]
+    let leaveTypes: [String: String] = ["FD": "Full Day", "MHD": "Morning Half-Day", "AHD": "Afternoon Haf-Day"]
     var focusedControl: UITextField?
     lazy var leavepickerView: UIPickerView = {
             let picker = UIPickerView()
@@ -37,7 +37,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
             let picker = UIDatePicker()
             picker.datePickerMode = .date
             picker.addTarget(self, action: #selector(fromDateDatePickerValueChanged(_:)), for: .valueChanged)
-            picker.frame.size = CGSize(width: 0.0, height: 300)
+            picker.frame.size = CGSize(width: 0.0, height: 200)
             picker.preferredDatePickerStyle = .wheels
             let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Date())
             picker.minimumDate = tomorrow
@@ -48,7 +48,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
            let picker = UIDatePicker()
            picker.datePickerMode = .date
            picker.addTarget(self, action: #selector(toDateDatePickerValueChanged(_:)), for: .valueChanged)
-           picker.frame.size = CGSize(width: 0.0, height: 300)
+           picker.frame.size = CGSize(width: 0.0, height: 200)
            picker.preferredDatePickerStyle = .wheels
            return picker
        }()
@@ -56,13 +56,13 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedLeaveType.delegate = self
+        
 //        let bar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
 //        let reset = UIBarButtonItem(title: "done", style: .plain, target: self, action: #selector(doneButtonTapped))
 //        bar.items = [reset]
 //        bar.isTranslucent = false
 //        bar.sizeToFit()
 //        selectedLeaveType.inputAccessoryView = bar
-        
         crossButtonView.addElevatedShadow(to: crossButtonView)
         crossButtonView.layer.cornerRadius = 3.0
         conFigView()
@@ -71,38 +71,31 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         toDateTextField.inputView = toDateDatePicker
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender: )))
-        view.addGestureRecognizer(gesture)
+        view.addGestureRecognizer(gesture) 
         
         fromDateTextField.delegate = self
         toDateTextField.delegate = self
         
 //        let bar = UIToolbar()
-        let toolbar = UIToolbar()
+        let toolbar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
         toolbar.sizeToFit()
-//        toolbar.isTranslucent = false
-//        toolbar.barTintColor = UIColor.red
-//        toolbar.autoresizingMask = .flexibleWidth
         toolbar.alpha = 1.0
         //toolbar buttons
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        let DonebuttonIcon = UIImage(named: "Done20")
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(doneButtonTapped))
+        doneButton.image = DonebuttonIcon
+        let cancelIcone = UIImage(named: "Cancel20")
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelButtonTapped))
+        cancelButton.image = cancelIcone
         let spaceBetween = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
-        toolbar.setItems([doneButton,spaceBetween,cancelButton], animated: true)
+        toolbar.setItems([cancelButton,spaceBetween,doneButton], animated: true)
 
         selectedLeaveType.inputAccessoryView = toolbar
         fromDateTextField.inputAccessoryView = toolbar
         toDateTextField.inputAccessoryView = toolbar
-        
-
-        
-//        fromDateView.isHidden = true
-//        fromDateLabel.isHidden = true
-//        toDateView.isHidden = true
-//        toDateLabel.isHidden = true
         fromDateTextField.isEnabled = false
         toDateTextField.isEnabled = false
-        
     }
     func textFieldDidChangeSelection(_ sender: UITextField) {
         if sender === selectedLeaveType {
@@ -135,7 +128,9 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         let selectedDate = sender.date
         toDateDatePicker.minimumDate = selectedDate
         updateDateTextField(fromDateTextField, with: sender.date)
-        
+        toDateTextField.text = ""
+        noOfDaysLabel.text = "00"
+//        calculateAndDisplayDaysBetweenDates()
      }
 
      @objc func toDateDatePickerValueChanged(_ sender: UIDatePicker) {
@@ -145,6 +140,13 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     func calculateAndDisplayDaysBetweenDates() {
         let fromDate = fromDateDatePicker.date
         let toDate = toDateDatePicker.date
+        let todateText = toDateTextField.text
+        
+//        if ((todateText?.isEmpty) != nil) {
+//            noOfDaysLabel.text = "00"
+//            return
+//          }
+        
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: fromDate, to: toDate)
         let daysBetween = components.day ?? 0 // Handle potential nil value
@@ -168,10 +170,12 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         return leaveTypes.count
     }
     func pickerView(_ leavepickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return leaveTypes[row]
+        let key = Array(leaveTypes.keys)[row]
+        return leaveTypes[key]
     }
     func pickerView(_ leavepickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedLeaveType.text = leaveTypes[row]
+        let key = Array(leaveTypes.keys)[row]
+        selectedLeaveType.text = leaveTypes[key]
     }
     
     @objc func viewTapped(sender: UITapGestureRecognizer){
@@ -241,4 +245,26 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         hide()
     }
     
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Validation Error", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    func setupToolbar(){
+            //Create a toolbar
+            let bar = UIToolbar()
+            //Create a done button with an action to trigger our function to dismiss the keyboard
+            let doneBtn = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissMyKeyboard))
+            //Create a felxible space item so that we can add it around in toolbar to position our done button
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            //Add the created button items in the toobar
+            bar.items = [flexSpace, flexSpace, doneBtn]
+            bar.sizeToFit()
+            //Add the toolbar to our textfield
+            selectedLeaveType.inputAccessoryView = bar
+        }
+        @objc func dismissMyKeyboard(){
+            view.endEditing(true)
+        }
 }

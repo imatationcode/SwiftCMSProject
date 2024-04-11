@@ -29,8 +29,15 @@ extension UIColor {
 
 //toolbar function
 
+
 //for gradiant view behind Designation
 extension UIView {
+     
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
     
 //    func applyGradientDesignation(hexColors: [String],angle: Double,corner_Radius: CGFloat) {
 //
@@ -135,6 +142,14 @@ extension UIView {
     }
 }
 
+extension UIViewController {
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
 
 //to make text size as per screen
 extension UILabel {

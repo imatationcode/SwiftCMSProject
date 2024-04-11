@@ -18,13 +18,13 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     var optionNames: [String] = ["Profile", "Calendar", "Check Counter", "Leave Requests", "Salary Details", "Company Policies"]
     
     override func viewDidLoad() {
-        print(LogManager.shared.isLoggedIn)
+        print("Int the View did load of MainMenu")
         navigationItem.hidesBackButton = true
         super.viewDidLoad()
         addLogoToFooter()
         menuListCollectionView.dataSource = self
         menuListCollectionView.delegate = self
-        print("Int the Viewdid load")
+        
 
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -152,4 +152,7 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
 
     }
     
+    @IBAction func tappedOnLogout(_ sender: Any) {
+        if let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVc {navigationController?.pushViewController(loginVc, animated: true)}
+    }
 }

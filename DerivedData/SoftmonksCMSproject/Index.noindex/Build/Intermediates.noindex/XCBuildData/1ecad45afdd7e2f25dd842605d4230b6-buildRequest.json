@@ -1,0 +1,73 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "PACKAGE-PRODUCT:Algorithms"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:ComplexModule"
+    },
+    {
+      "guid" : "PACKAGE-TARGET:Numerics"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:ComplexModule"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:Numerics"
+    },
+    {
+      "guid" : "PACKAGE-PRODUCT:RealModule"
+    }
+  ],
+  "containerPath" : "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/SoftmonksCMSproject.xcworkspace",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "x86_64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator16.2",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "x86_64"
+      ],
+      "targetArchitecture" : "x86_64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/Index.noindex/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/Index.noindex/Build/Products",
+      "derivedDataPath" : "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/Index.noindex/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "INDEX_ARENA_INFO_REGULAR_BUILD_PRODUCTS_DIR" : "/Users/shivakumar/Desktop/IntershipProject/SoftmonksCMSproject/DerivedData/SoftmonksCMSproject/Build/Products",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

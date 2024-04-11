@@ -6,6 +6,8 @@ target 'SoftmonksCMSproject' do
   use_frameworks!
 
   # Pods for SoftmonksCMSproject
-  pod 'TPKeyboardAvoiding'
+   pod 'TPKeyboardAvoiding'
+   pod 'Alamofire'
+ 
 
 end

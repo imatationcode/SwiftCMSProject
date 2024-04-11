@@ -268,6 +268,8 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UIImageView;
+@class UIControl;
 @class UIButton;
 @class UILabel;
 @class UIView;
@@ -277,7 +279,8 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject11AppDelegate")
 
 SWIFT_CLASS("_TtC19SoftmonksCMSproject14CheckCounterVC")
 @interface CheckCounterVC : UIViewController
-@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified checkInOutBtn;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified checkArrowImage;
+@property (nonatomic, weak) IBOutlet UIControl * _Null_unspecified mainButtonView;
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified resumeBtn;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tapToCheckInLabel;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified timerViewBottom;
@@ -287,14 +290,13 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject14CheckCounterVC")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified timePeriodLabel;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;
-- (IBAction)checkInOutBtnTapped:(id _Nonnull)sender;
+- (IBAction)mainCheckButtonTapped:(id _Nonnull)sender;
 - (IBAction)takeBreakeBtnTapped:(id _Nonnull)sender;
 - (IBAction)resumeBtnTapped:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIImageView;
 
 SWIFT_CLASS("_TtC19SoftmonksCMSproject18CollectionViewCell")
 @interface CollectionViewCell : UICollectionViewCell
@@ -314,6 +316,25 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject16DesingsForUIView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UITextField;
+@class UIScrollView;
+@class ProfileImageCustomeView;
+@class NSNotification;
+
+SWIFT_CLASS("_TtC19SoftmonksCMSproject28ForgotPasswordViewController")
+@interface ForgotPasswordViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified emailTextField;
+@property (nonatomic, weak) IBOutlet UIScrollView * _Null_unspecified outerScrollView;
+@property (nonatomic, weak) IBOutlet ProfileImageCustomeView * _Null_unspecified mainImageView;
+- (void)viewDidLoad;
+- (void)keyboardWillShowWithNotification:(NSNotification * _Nonnull)notification;
+- (void)keyboardWillHideWithNotification:(NSNotification * _Nonnull)notification;
+- (IBAction)mailsendButtonTapped:(id _Nonnull)sender;
+- (IBAction)loginButtonTaped:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class UITableView;
 @class NSIndexPath;
 @class UITableViewCell;
@@ -329,10 +350,9 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject14LeaveRequestVC")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITextField;
 
 SWIFT_CLASS("_TtC19SoftmonksCMSproject7LoginVc")
-@interface LoginVc : UIViewController <UITextFieldDelegate>
+@interface LoginVc : UIViewController <UINavigationControllerDelegate, UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified loginButton;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified emailTextField;
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified borderViewForEmail;
@@ -343,8 +363,68 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject7LoginVc")
 - (void)doneButtonTapped;
 - (IBAction)tapEyeButton:(id _Nonnull)sender;
 - (IBAction)TappedLoginButtom:(id _Nonnull)sender;
+- (IBAction)forgotPasswordTapped:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19SoftmonksCMSproject13NewPasswordVC")
+@interface NewPasswordVC : UIViewController <UITextFieldDelegate>
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified confirmPassEyeButton;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified newpassEyeButton;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified confirmPasswordTextfields;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified newPasswordTextField;
+@property (nonatomic, weak) IBOutlet ProfileImageCustomeView * _Null_unspecified mainImageIconView;
+- (void)viewDidLoad;
+- (IBAction)eyeButton1Tapped:(id _Nonnull)sender;
+- (IBAction)eye2ButtonConfirmpass:(id _Nonnull)sender;
+- (IBAction)resetButtonTappeed:(id _Nonnull)sender;
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19SoftmonksCMSproject22OTPDigitvalidationView")
+@interface OTPDigitvalidationView : UIView
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified otpDigit1TextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified otpDigit6TextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified otpDigit5TextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified otpDigit4TextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified otpDigit3TextField;
+@property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified otpDigit2TextField;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19SoftmonksCMSproject7OTPView")
+@interface OTPView : UIStackView <UITextFieldDelegate>
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC19SoftmonksCMSproject25PasswordResetCompletionVC")
+@interface PasswordResetCompletionVC : UIViewController
+@property (nonatomic, weak) IBOutlet ProfileImageCustomeView * _Null_unspecified mainImageView;
+- (void)viewDidLoad;
+- (IBAction)loginButtonTaped:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19SoftmonksCMSproject23ProfileImageCustomeView")
+@interface ProfileImageCustomeView : UIView
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified containerView;
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified outerContainerView;
+@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified innerImageView;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified mainIconImage;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UICollectionView;
@@ -361,6 +441,7 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject13ProfileMenuVC")
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView didHighlightItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (void)viewDidLayoutSubviews;
+- (IBAction)tappedOnLogout:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -410,6 +491,7 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject12TitleTopView")
 
 
 
+
 SWIFT_CLASS("_TtC19SoftmonksCMSproject27appliedRequestTableViewCell")
 @interface appliedRequestTableViewCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UIView * _Null_unspecified outterView;
@@ -425,6 +507,17 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject27appliedRequestTableViewCell")
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=3.0);
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19SoftmonksCMSproject19headingAndPhotoView")
+@interface headingAndPhotoView : UIView
+@property (nonatomic, strong) IBOutlet UIView * _Null_unspecified ContainerViewOfPhoto;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified BlueRingWithSolidWhiteFIllingImage;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified BlurBlueCircleBackViewImage;
+@property (nonatomic, weak) IBOutlet UIImageView * _Null_unspecified mainIconImage;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UIDatePicker;
@@ -460,6 +553,7 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject35leaveApplicationPopUPViewController")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (IBAction)crossButtonTaped:(id _Nonnull)sender;
+- (void)dismissMyKeyboard;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 
@@ -476,6 +570,20 @@ SWIFT_CLASS("_TtC19SoftmonksCMSproject21reviewedTableViewCell")
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified requestStatus;
 - (void)awakeFromNib;
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=3.0);
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC19SoftmonksCMSproject26verificationViewController")
+@interface verificationViewController : UIViewController
+@property (nonatomic, weak) IBOutlet OTPView * _Null_unspecified otpStackVIew;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified countDownlabel;
+@property (nonatomic, weak) IBOutlet UIButton * _Null_unspecified resendButton;
+@property (nonatomic, weak) IBOutlet ProfileImageCustomeView * _Null_unspecified mainImageView;
+- (void)viewDidLoad;
+- (IBAction)verifyButtonTapped:(id _Nonnull)sender;
+- (IBAction)resendOTPtapped:(id _Nonnull)sender;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 

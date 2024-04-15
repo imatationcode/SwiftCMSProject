@@ -15,7 +15,7 @@ class LogManager{
         return UserDefaults.standard.bool(forKey: isLoggedInKey)
     }
     
-    func setLoggedIn(_ loggedIn: Bool){
+   func setLoggedIn(_ loggedIn: Bool){
         UserDefaults.standard.set(loggedIn, forKey: isLoggedInKey)
     }
     

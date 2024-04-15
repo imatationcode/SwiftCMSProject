@@ -6,6 +6,8 @@
 //
 
 import Foundation
+
 struct loginCheck: Codable {
-    let mode, username, password: String?
+    let err: Int
+    let key, errMsg, userId, name, designation: String
 }

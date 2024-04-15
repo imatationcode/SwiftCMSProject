@@ -36,6 +36,8 @@
 		0BAC6CF82B831788006FF50F /* FooterLogoDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAC6CF72B831788006FF50F /* FooterLogoDisplayable.swift */; };
 		0BC6190F2B871012005F0DCB /* CheckCounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC6190E2B871012005F0DCB /* CheckCounterVC.swift */; };
 		0BC9579B2B9098DE00F1664D /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9579A2B9098DE00F1664D /* LogManager.swift */; };
+		0BCC36372BC9487D0025DED0 /* homeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC36362BC9487D0025DED0 /* homeNavigationViewController.swift */; };
+		0BCC36392BC953DD0025DED0 /* MainMenuNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCC36382BC953DD0025DED0 /* MainMenuNavigationViewController.swift */; };
 		0BCF62832B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCF62822B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift */; };
 		0BCF62862B9F2D7900A6490C /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 0BCF62852B9F2D7900A6490C /* Algorithms */; };
 		0BD693422BA42E3800FB9327 /* ProfileImageCustomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BD693412BA42E3800FB9327 /* ProfileImageCustomeView.xib */; };
@@ -84,6 +86,8 @@
 		0BAC6CF72B831788006FF50F /* FooterLogoDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterLogoDisplayable.swift; sourceTree = "<group>"; };
 		0BC6190E2B871012005F0DCB /* CheckCounterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCounterVC.swift; sourceTree = "<group>"; };
 		0BC9579A2B9098DE00F1664D /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		0BCC36362BC9487D0025DED0 /* homeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeNavigationViewController.swift; sourceTree = "<group>"; };
+		0BCC36382BC953DD0025DED0 /* MainMenuNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuNavigationViewController.swift; sourceTree = "<group>"; };
 		0BCF62822B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationForInputFieldsInPopUp.swift; sourceTree = "<group>"; };
 		0BD693412BA42E3800FB9327 /* ProfileImageCustomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileImageCustomeView.xib; sourceTree = "<group>"; };
 		0BD693432BA42EF300FB9327 /* ProfileImageCustomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCustomeView.swift; sourceTree = "<group>"; };
@@ -174,6 +178,26 @@
 			path = extension;
 			sourceTree = "<group>";
 		};
+		0BBE34232BCD3B6900F805EC /* NavigationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BCC36362BC9487D0025DED0 /* homeNavigationViewController.swift */,
+				0BCC36382BC953DD0025DED0 /* MainMenuNavigationViewController.swift */,
+			);
+			path = NavigationControllers;
+			sourceTree = "<group>";
+		};
+		0BBE34242BCD3BA600F805EC /* ForgotPassScreens */ = {
+			isa = PBXGroup;
+			children = (
+				0B857DCD2BA313FE00513680 /* ForgotPasswordViewController.swift */,
+				0B7580652BA83E4D00366E7C /* verificationViewController.swift */,
+				0B4031752BA9B273005B9489 /* NewPasswordVC.swift */,
+				0B98638B2BA8270C003EAB50 /* PasswordResetCompletionVC.swift */,
+			);
+			path = ForgotPassScreens;
+			sourceTree = "<group>";
+		};
 		0BC14ACA2BC657EF008B1596 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,10 +271,9 @@
 		0BE087952B7F62500067102F /* SoftmonksCMSproject */ = {
 			isa = PBXGroup;
 			children = (
-				0BC14ACD2BC65872008B1596 /* Resources */,
-				0BC14ACC2BC6584A008B1596 /* Storyboard */,
-				0BC14ACB2BC65817008B1596 /* Helper */,
 				0BC14ACA2BC657EF008B1596 /* Application */,
+				0BC14ACD2BC65872008B1596 /* Resources */,
+				0BC14ACB2BC65817008B1596 /* Helper */,
 				0BE1F2432B999A6000725AC9 /* PopUpLeaveApplication */,
 				0B4FC3CA2B95A51C00F69EF1 /* TableViewCell */,
 				0B405B9C2B84A5A800E6C210 /* CollectionView */,
@@ -261,6 +284,7 @@
 				0BAC6CF62B831744006FF50F /* extension */,
 				0BE317C92B7F81F30082C74B /* Designs */,
 				0BE087AA2B7F628F0067102F /* Controllerss */,
+				0BC14ACC2BC6584A008B1596 /* Storyboard */,
 				0BE087A42B7F62520067102F /* Info.plist */,
 			);
 			path = SoftmonksCMSproject;
@@ -269,14 +293,12 @@
 		0BE087AA2B7F628F0067102F /* Controllerss */ = {
 			isa = PBXGroup;
 			children = (
+				0BBE34242BCD3BA600F805EC /* ForgotPassScreens */,
+				0BBE34232BCD3B6900F805EC /* NavigationControllers */,
 				0BE0879A2B7F62500067102F /* LoginVC.swift */,
 				0B7DBCE22B836BAD0072EF55 /* ProfileMenuVC.swift */,
 				0BC6190E2B871012005F0DCB /* CheckCounterVC.swift */,
 				0B40F41A2B91E31A0041C00B /* LeaveRequestVC.swift */,
-				0B857DCD2BA313FE00513680 /* ForgotPasswordViewController.swift */,
-				0B7580652BA83E4D00366E7C /* verificationViewController.swift */,
-				0B4031752BA9B273005B9489 /* NewPasswordVC.swift */,
-				0B98638B2BA8270C003EAB50 /* PasswordResetCompletionVC.swift */,
 			);
 			path = Controllerss;
 			sourceTree = "<group>";
@@ -451,11 +473,13 @@
 				0BE0879B2B7F62500067102F /* LoginVC.swift in Sources */,
 				0B857DCE2BA313FE00513680 /* ForgotPasswordViewController.swift in Sources */,
 				0BCF62832B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift in Sources */,
+				0BCC36372BC9487D0025DED0 /* homeNavigationViewController.swift in Sources */,
 				0B4268E82B8729E600868118 /* TitleTopView.swift in Sources */,
 				0BC6190F2B871012005F0DCB /* CheckCounterVC.swift in Sources */,
 				0B7DBCE32B836BAD0072EF55 /* ProfileMenuVC.swift in Sources */,
 				0BA1E7302B96ED5A00BB3B70 /* DataService.swift in Sources */,
 				0B7DBCE52B8379790072EF55 /* UIExtensions.swift in Sources */,
+				0BCC36392BC953DD0025DED0 /* MainMenuNavigationViewController.swift in Sources */,
 				0BA1E72E2B96E9AB00BB3B70 /* LeaveRequest.swift in Sources */,
 				0BAC6CF82B831788006FF50F /* FooterLogoDisplayable.swift in Sources */,
 				0B4031722BA96CDF005B9489 /* otptest.swift in Sources */,

@@ -16,25 +16,21 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var borderViewForPassword: UIView!
-    
+    var loginData : loginCheck?
     var isPasswordVisible = false
     
     override func viewDidLoad() {
-        print("in te default Loging View DID Load")
+        print("Loging ViewDIDLoad")
         super.viewDidLoad()
         addLogoToFooter()
         navigationItem.hidesBackButton = true
         updatePasswordVisibility()
         navigationController?.delegate = self
-        // Check if the user is already logged in
-//        if isUserLoggedIn() {
-//            navigateToMainPage()
-//        }
         
- }
+    }
     @objc func doneButtonTapped() {
         view.endEditing(true)
-        }
+    }
     @IBAction func tapEyeButton(_ sender: Any) {
         isPasswordVisible.toggle()
         updatePasswordVisibility()
@@ -47,94 +43,80 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
     }
     @IBAction func TappedLoginButtom(_ sender: Any) {
         guard let mailAdd = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
-             let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-            //  if both email and password are empty
-            if mailAdd.isEmpty && password.isEmpty {
-              showAlert(title: "Missing Fields", message: "Please enter your email address and password.")
-              return
-            }
-            // if password is empty
-            if password.isEmpty {
-              showAlert(title: "Missing Password", message: "Please enter your password.")
-              return
-            }
-            // if email is empty
-            if mailAdd.isEmpty {
-              showAlert(title: "Missing Email", message: "Please enter your email address.")
-              return
-            }
+              let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        //  if both email and password are empty
+        if mailAdd.isEmpty && password.isEmpty {
+            showAlert(title: "Missing Fields", message: "Please enter your email address and password.")
+            return
+        }
+        // if password is empty
+        if password.isEmpty {
+            showAlert(title: "Missing Password", message: "Please enter your password.")
+            return
+        }
+        // if email is empty
+        if mailAdd.isEmpty {
+            showAlert(title: "Missing Email", message: "Please enter your email address.")
+            return
+        }
         if (isEmailValid(mailAdd) && !(password.isEmpty)) {
-            LogManager.shared.setLoggedIn(true)
-            print(LogManager.shared.isLoggedIn)
-            //print("Valid email address")
-            // Set the user as logged in
-            // setLoggedInStatus(true)
-            // Navigate to the main page
+            let urlString = "https://monks.weblogicz.com/apps/softmonks.json?os=ios&v=1b1&b=SMK" //API endpoint
+            let parameters = ["mode": "login", "username": mailAdd, "password": password]
+            self.performLoginRequest(urlString: urlString, parameters: parameters)
         } else {
             showAlert(title: "Invalid Mail", message: "Please enter Valid EmailID.")
-         }
-        let urlString = "https://monks.weblogicz.com/apps/softmonks.json?os=android&v=1b1&b=SMK&mode=login&T=1" //API endpoint
-          let parameters = ["email": mailAdd, "password": password]
-
-          //Making API call using Alamofire
-        AF.request(urlString, method: .post, parameters: parameters).responseDecodable(of: loginCheck.self) { [weak self] response in
-            guard let self = self else {
-                return }
-            switch response.result {
-                
-            case .success(let data):
-              // Handle successful login
-              self.handleLoginSuccess(data: data)
-            case .failure(let error):
-              // Handle login failure
-              self.handleLoginFailure(error: error)
-            }
-          }
+        }
         
-          }//loginPress button function close
+        //
+    }//loginPress button function close
     
-    private func handleLoginSuccess(data: Any) {
-      //Parse response for access token or other relevant data
-      guard let jsonData = data as? [String: Any],
-            let accessToken = jsonData["access_token"] as? String else {
-        return
-      }
-
-      // Store access token securely (e.g., Keychain)
-      UserDefaults.standard.set(accessToken, forKey: "accessToken")
-
-      // Navigate to MainVC
-        navigateToMainPage()
+    func performLoginRequest(urlString: String, parameters: [String: Any]) {
+        print  ("in the performLogin")
+        AF.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+            .responseDecodable(of: loginCheck.self) { [weak self] response in  // Move switch statement closer
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let loginCheckData):
+                    self.loginData = loginCheckData
+                    // Handle successful login data retrieval
+                    
+                    guard loginCheckData.err == 0 else {
+                        self.showAlert(title: "Login Failed", message: loginCheckData.errMsg)
+                        
+                        print(loginCheckData)  // Optional: For debugging purposes
+                        return
+                    }
+                    
+                    print(loginCheckData)  // Optional: For debugging purposes
+                    LogManager.shared.setLoggedIn(true)
+                    // Update UI using window scene (if needed)
+                    print  ("in the performLogin")
+                    self.navigateToMainPage()
+                    
+                case .failure(let error):
+                    // Handle login data retrieval failure (including potential decoding errors)
+                    print(error)
+                    self.showAlert(title: "Login Error", message: error.localizedDescription)
+                }
+            }
     }
-
-    private func handleLoginFailure(error: Error) {
-      // Display an error message to the user based on the error details
-      let errorMessage = error.localizedDescription
-        showAlert(title: "Login Error", message: "Please Check Your Credentials.")
-    }
-        
     //if Valid mail and Password
     
     func navigateToMainPage() {
-        if let profileMenuVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileMenuVC") as? ProfileMenuVC {
-            navigationController?.pushViewController(profileMenuVC, animated: true)
-        }
+        print("test")
+        let profileVC = storyboard?.instantiateViewController(identifier: "ProfileMenuVC") as! ProfileMenuVC
+        self.navigationController?.pushViewController(profileVC, animated: true)
+        profileVC.username  = loginData?.name ?? ""
+        profileVC.id  = loginData?.userId ?? ""
+        
     }
+    
     @IBAction func forgotPasswordTapped(_ sender: Any) {
         if let forgotPassword = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordViewController") as? ForgotPasswordViewController {navigationController?.pushViewController(forgotPassword, animated: true)}
-     
+        
         
     }
 }
 
-
-//
-//    private func setLoggedInStatus(_ isLoggedIn: Bool) {
-//        UserDefaults.standard.set(isLoggedIn, forKey: Keys.isLoggedIn)
-//    }
-//
-//    private func isUserLoggedIn() -> Bool {
-//        return UserDefaults.standard.bool(forKey: Keys.isLoggedIn)
-//    }
 
 

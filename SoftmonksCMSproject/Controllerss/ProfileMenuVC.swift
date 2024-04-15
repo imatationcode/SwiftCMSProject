@@ -9,24 +9,28 @@ import UIKit
 
 class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
   
+    @IBOutlet weak var EmployeNameLabel: UILabel!
     @IBOutlet weak var menuListCollectionView: UICollectionView!
     @IBOutlet weak var designationBackgrdView: UIView!
     @IBOutlet weak var potraitImg: UIImageView!
-    
-    
+    var username  =  ""
+    var id = ""
     var optionImg: [String] = ["personIcon", "calendarSVGIcon", "OnTimeIcon", "LeaveOfficeIcon", "SalaryIcon", "ClipboardIcon"]
     var optionNames: [String] = ["Profile", "Calendar", "Check Counter", "Leave Requests", "Salary Details", "Company Policies"]
     
     override func viewDidLoad() {
-        print("Int the View did load of MainMenu")
+       // print("In MainMenu")
         navigationItem.hidesBackButton = true
         super.viewDidLoad()
         addLogoToFooter()
         menuListCollectionView.dataSource = self
         menuListCollectionView.delegate = self
-        
-
+        print("Check")
+        EmployeNameLabel.text = username
+        print(username)
+        print(id)
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return optionNames.count
     }
@@ -153,6 +157,15 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     }
     
     @IBAction func tappedOnLogout(_ sender: Any) {
-        if let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVc {navigationController?.pushViewController(loginVc, animated: true)}
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "homeNavigationViewController") as! homeNavigationViewController
+        if let sd =  self.view.window?.windowScene?.delegate as? SceneDelegate , let window = sd.window {
+            //self.navigationController?.pushViewController(vc, animated: true)
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+            
+            UserDefaults.standard.set(false, forKey: "isLogedin")
+        }
+       
     }
 }

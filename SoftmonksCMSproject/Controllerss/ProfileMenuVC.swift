@@ -6,29 +6,61 @@
 //
 
 import UIKit
+import Alamofire
 
 class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-  
+    var userdetails: UserDetails?
+    var username  =  ""
+    var id = ""
+    let myId: String = UserDefaults.standard.object(forKey: "isLoggedIN") as! String
+    var optionImg: [String] = ["personIcon", "calendarSVGIcon", "OnTimeIcon", "LeaveOfficeIcon", "SalaryIcon", "ClipboardIcon"]
+    var optionNames: [String] = ["Profile", "Calendar", "Check Counter", "Leave Requests", "Salary Details", "Company Policies"]
+    
     @IBOutlet weak var EmployeNameLabel: UILabel!
     @IBOutlet weak var menuListCollectionView: UICollectionView!
     @IBOutlet weak var designationBackgrdView: UIView!
     @IBOutlet weak var potraitImg: UIImageView!
-    var username  =  ""
-    var id = ""
-    var optionImg: [String] = ["personIcon", "calendarSVGIcon", "OnTimeIcon", "LeaveOfficeIcon", "SalaryIcon", "ClipboardIcon"]
-    var optionNames: [String] = ["Profile", "Calendar", "Check Counter", "Leave Requests", "Salary Details", "Company Policies"]
-    
+
     override func viewDidLoad() {
        // print("In MainMenu")
         navigationItem.hidesBackButton = true
         super.viewDidLoad()
         addLogoToFooter()
+        apiCall()
         menuListCollectionView.dataSource = self
         menuListCollectionView.delegate = self
         print("Check")
-        EmployeNameLabel.text = username
+        //EmployeNameLabel.text = username
         print(username)
         print(id)
+        
+    }
+    
+    func apiCall(){
+        print(UserDefaults.standard.object(forKey: "isLoggedIN"))
+        let url = "https://monks.weblogicz.com/apps/softmonks.json?os=ios&v=1b1&b=SMK"
+        let parameters = ["mode": "getUserData", "id": UserDefaults.standard.object(forKey: "isLoggedIN") as! String]
+        AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+            .responseDecodable(of: UserDetails.self) { [weak self] response in  // Move switch statement closer
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let userData):
+                    self.userdetails = userData
+                    print(userData)
+                    self.EmployeNameLabel.text = userData.name
+                    // Handle successful login data retrieval
+                    guard userData.err == 0 else {
+//                        self.showAlert(title: "Login Failed", message: userData.errMsg)
+                        print(userData.errMsg)  //  debugging purposes
+                        return
+                    }
+                    print(userData)  //  debugging purpose
+                    
+                case .failure(let error):
+                    // Handle login data retrieval failure (including potential decoding errors)
+                    print(error)
+                }
+            }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -64,21 +96,17 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
      }
 
      func profileTapped() {
-         
         print("Profile tapped")
          
      }
 
      func calendarTapped() {
-        
          print("Calendar tapped")
      }
 
      func checkCounterTapped() {
-        
-         //print("Check Counter tapped")
-         
          if let checkcounterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CheckCounterVC") as? CheckCounterVC{
+             checkcounterVC.username = userdetails?.name ?? ""
              navigationController?.pushViewController(checkcounterVC, animated: true)
          }
          
@@ -162,9 +190,9 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
         if let sd =  self.view.window?.windowScene?.delegate as? SceneDelegate , let window = sd.window {
             //self.navigationController?.pushViewController(vc, animated: true)
             vc.modalPresentationStyle = .fullScreen
+            UserDefaults.standard.removeObject(forKey: "isLoggedIN")
             self.present(vc, animated: true)
             
-            UserDefaults.standard.set(false, forKey: "isLogedin")
         }
        
     }

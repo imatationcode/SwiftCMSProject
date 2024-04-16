@@ -61,8 +61,8 @@ class ForgotPasswordViewController: UIViewController, LogoDisplayable {
             present(alertController, animated: true, completion: nil)
           }
         if (isEmailValid(mailAdd)) {
-            LogManager.shared.setLoggedIn(true)
-            print(LogManager.shared.isLoggedIn)
+           // LogManager.shared.setLoggedIn(true)
+            
             if let varificationVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "verificationViewController") as? verificationViewController {navigationController?.pushViewController(varificationVc, animated: true)}
         } else {
             showAlert(title: "Invalid Mail", message: "Please enter Valid EmailID.")

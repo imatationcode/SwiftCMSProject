@@ -18,22 +18,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0n-JY-sfR">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQr-72-ssB">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gd-Eb-m3k" customClass="TPKeyboardAvoidingCollectionView">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="715"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SoftmonksLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FUw-DT-NnF">
-                                                        <rect key="frame" x="120.66666666666667" y="50" width="151.66666666666663" height="151.66666666666666"/>
+                                                        <rect key="frame" x="125" y="50" width="143" height="143"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="FUw-DT-NnF" secondAttribute="height" multiplier="1:1" id="GXu-kL-Pdh"/>
                                                         </constraints>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9d-rh-CHF">
-                                                        <rect key="frame" x="39.333333333333343" y="291.66666666666669" width="314.33333333333326" height="176"/>
+                                                        <rect key="frame" x="39.333333333333343" y="269.66666666666669" width="314.33333333333326" height="176"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t22-8u-dob">
                                                                 <rect key="frame" x="0.0" y="0.0" width="314.33333333333331" height="21"/>
@@ -124,7 +124,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zn6-0V-Wrn">
-                                                                <rect key="frame" x="0.0" y="150" width="110" height="26"/>
+                                                                <rect key="frame" x="0.0" y="149.99999999999994" width="110" height="26"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="26" id="3o0-ba-XR9"/>
                                                                 </constraints>
@@ -160,7 +160,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9N-bt-z4v">
-                                                        <rect key="frame" x="39.333333333333343" y="507.66666666666657" width="314.33333333333326" height="40.333333333333314"/>
+                                                        <rect key="frame" x="39.333333333333343" y="485.66666666666663" width="314.33333333333326" height="38"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="Login">
                                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
@@ -786,6 +786,7 @@
                     <connections>
                         <outlet property="checkArrowImage" destination="XTr-Rj-mRO" id="bIc-sV-P1N"/>
                         <outlet property="dateLabel" destination="b98-5v-6Ia" id="KHv-ms-9bx"/>
+                        <outlet property="employeeName" destination="orc-Cf-Wy2" id="u1W-A3-Ws7"/>
                         <outlet property="mainButtonView" destination="kMZ-IN-KT8" id="Ecp-dX-jGr"/>
                         <outlet property="resumeBtn" destination="wHc-xZ-3xL" id="Hrp-aH-Q4l"/>
                         <outlet property="takeBreakButton" destination="GFo-eS-NCV" id="7x3-tb-aZ3"/>
@@ -1636,9 +1637,10 @@
         <!--Home Navigation View Controller-->
         <scene sceneID="8AJ-Q4-vaJ">
             <objects>
-                <navigationController storyboardIdentifier="homeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Gw2-S6-KIn" customClass="homeNavigationViewController" customModule="SoftmonksCMSproject" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="homeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="Gw2-S6-KIn" customClass="homeNavigationViewController" customModule="SoftmonksCMSproject" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kj3-RX-n5S">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

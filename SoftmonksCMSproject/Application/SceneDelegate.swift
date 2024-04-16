@@ -21,9 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard : UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         let rootconroller : UIViewController
 
-        if LogManager.shared.isLoggedIn {
+        if UserDefaults.standard.object(forKey: "isLoggedIN") != nil {
+            print(UserDefaults.standard.object(forKey: "isLoggedIN"))
             rootconroller = storyboard.instantiateViewController(withIdentifier: "MainMenuNavigationViewController")
         } else {
+            print(UserDefaults.standard.object(forKey: "isLoggedIN"))
             rootconroller = storyboard.instantiateViewController(withIdentifier: "homeNavigationViewController")
         }
         window.rootViewController = rootconroller

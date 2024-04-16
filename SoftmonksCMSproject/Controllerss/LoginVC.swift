@@ -10,23 +10,26 @@ import Alamofire
 
 class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigationControllerDelegate {
     
+    var loginData : loginCheck?
+    var isPasswordVisible = false
+    let myId = UserDefaults.standard.object(forKey: "isLoggedIN")
+    
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var borderViewForEmail: UIView!
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var borderViewForPassword: UIView!
-    var loginData : loginCheck?
-    var isPasswordVisible = false
-    
+
     override func viewDidLoad() {
-        print("Loging ViewDIDLoad")
+        print("Loging ViewDIDLoad")//debug Purpose
         super.viewDidLoad()
         addLogoToFooter()
         navigationItem.hidesBackButton = true
         updatePasswordVisibility()
+        print(UserDefaults.standard.object(forKey: "isLoggedIN"))
         navigationController?.delegate = self
-        
+      
     }
     @objc func doneButtonTapped() {
         view.endEditing(true)
@@ -41,6 +44,7 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
         let eyeIconImage = isPasswordVisible ? UIImage(named: "noVisibility") : UIImage(named: "visibility")
         eyeButton.setImage(eyeIconImage, for: .normal)
     }
+    
     @IBAction func TappedLoginButtom(_ sender: Any) {
         guard let mailAdd = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
               let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
@@ -66,7 +70,6 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
         } else {
             showAlert(title: "Invalid Mail", message: "Please enter Valid EmailID.")
         }
-        
         //
     }//loginPress button function close
     
@@ -78,43 +81,35 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
                 switch response.result {
                 case .success(let loginCheckData):
                     self.loginData = loginCheckData
+                    print(loginCheckData.errMsg)
                     // Handle successful login data retrieval
-                    
                     guard loginCheckData.err == 0 else {
                         self.showAlert(title: "Login Failed", message: loginCheckData.errMsg)
-                        
-                        print(loginCheckData)  // Optional: For debugging purposes
+                        print(loginCheckData.errMsg)  //  debugging purposes
                         return
                     }
-                    
-                    print(loginCheckData)  // Optional: For debugging purposes
-                    LogManager.shared.setLoggedIn(true)
-                    // Update UI using window scene (if needed)
-                    print  ("in the performLogin")
+                    print(loginCheckData)  //  debugging purposes
+                    UserDefaults.standard.set(loginCheckData.userId, forKey: "isLoggedIN")
                     self.navigateToMainPage()
-                    
                 case .failure(let error):
-                    // Handle login data retrieval failure (including potential decoding errors)
                     print(error)
-                    self.showAlert(title: "Login Error", message: error.localizedDescription)
+                    self.showAlert(title: "Login Error", message: "Please Re-Check Your Email and Password")
                 }
             }
     }
     //if Valid mail and Password
     
-    func navigateToMainPage() {
+    func navigateToMainPage() { //navigate to mainMenu page
         print("test")
         let profileVC = storyboard?.instantiateViewController(identifier: "ProfileMenuVC") as! ProfileMenuVC
         self.navigationController?.pushViewController(profileVC, animated: true)
         profileVC.username  = loginData?.name ?? ""
-        profileVC.id  = loginData?.userId ?? ""
         
-    }
+        profileVC.id  = loginData?.userId ?? ""
+        }
     
     @IBAction func forgotPasswordTapped(_ sender: Any) {
         if let forgotPassword = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordViewController") as? ForgotPasswordViewController {navigationController?.pushViewController(forgotPassword, animated: true)}
-        
-        
     }
 }
 

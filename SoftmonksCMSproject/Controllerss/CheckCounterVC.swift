@@ -27,7 +27,11 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var takeBreakButton: UIButton!
     @IBOutlet weak var timePeriodLabel: UILabel!
-
+    
+    @IBOutlet weak var employeeName: UILabel!
+    
+    
+    var username  =  ""
     override func viewDidLoad() {
         super.viewDidLoad()
         let titleFont = UIFont.systemFont(ofSize: 20.0) // Set font size
@@ -35,6 +39,7 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
         self.title = "Check Counter"
        // initialState()
       //  checkInOutBtn.addTarget(self, action: #selector(checkInOutBtnTapped), for: .touchUpInside)
+        employeeName.text = username
         addLogoToFooter()
         updateTimeDate()
         isCheckinoutBtnClicked = UserDefaults.standard.bool(forKey: keysStruct().checkInOutStatusKey)

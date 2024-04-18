@@ -250,8 +250,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBp-vM-ieR">
                                                         <rect key="frame" x="137.66666666666666" y="155.33333333333331" width="118" height="17"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Software Intern" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDe-Rn-sud">
-                                                                <rect key="frame" x="17.333333333333343" y="1" width="83.333333333333329" height="15"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dev" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDe-Rn-sud">
+                                                                <rect key="frame" x="48.333333333333343" y="1" width="21" height="15"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="svP-Ei-jgd"/>
                                                                 </constraints>
@@ -266,8 +266,8 @@
                                                             <constraint firstItem="bDe-Rn-sud" firstAttribute="centerX" secondItem="IBp-vM-ieR" secondAttribute="centerX" id="eNr-vt-uZl"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shubham Gaonkar" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.55000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Q5Y-c7-Rcy">
-                                                        <rect key="frame" x="135.66666666666666" y="134.33333333333334" width="121.66666666666666" height="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Softmonks" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.55000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Q5Y-c7-Rcy">
+                                                        <rect key="frame" x="161" y="134.33333333333334" width="71.333333333333314" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -417,8 +417,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="a1g-7j-Dq5"/>
                     <connections>
-                        <outlet property="EmployeNameLabel" destination="Q5Y-c7-Rcy" id="igs-gQ-Uea"/>
                         <outlet property="designationBackgrdView" destination="IBp-vM-ieR" id="pmb-WR-sqn"/>
+                        <outlet property="empDesignationLabel" destination="bDe-Rn-sud" id="hD4-mP-Uel"/>
+                        <outlet property="employeNameLabel" destination="Q5Y-c7-Rcy" id="igs-gQ-Uea"/>
                         <outlet property="menuListCollectionView" destination="npK-Oe-0nK" id="ub3-fF-wal"/>
                         <outlet property="potraitImg" destination="15b-Kt-qr5" id="Yud-Le-05B"/>
                     </connections>
@@ -786,6 +787,7 @@
                     <connections>
                         <outlet property="checkArrowImage" destination="XTr-Rj-mRO" id="bIc-sV-P1N"/>
                         <outlet property="dateLabel" destination="b98-5v-6Ia" id="KHv-ms-9bx"/>
+                        <outlet property="empDesignationLabel" destination="nC6-5o-rde" id="dI8-SD-c1k"/>
                         <outlet property="employeeName" destination="orc-Cf-Wy2" id="u1W-A3-Ws7"/>
                         <outlet property="mainButtonView" destination="kMZ-IN-KT8" id="Ecp-dX-jGr"/>
                         <outlet property="resumeBtn" destination="wHc-xZ-3xL" id="Hrp-aH-Q4l"/>

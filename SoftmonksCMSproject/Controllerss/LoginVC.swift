@@ -64,7 +64,7 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
             return
         }
         if (isEmailValid(mailAdd) && !(password.isEmpty)) {
-            let urlString = "https://monks.weblogicz.com/apps/softmonks.json?os=ios&v=1b1&b=SMK" //API endpoint
+            let urlString = apiURL //API endpoint
             let parameters = ["mode": "login", "username": mailAdd, "password": password]
             self.performLoginRequest(urlString: urlString, parameters: parameters)
         } else {
@@ -89,7 +89,11 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
                         return
                     }
                     print(loginCheckData)  //  debugging purposes
-                    UserDefaults.standard.set(loginCheckData.userId, forKey: "isLoggedIN")
+                    UserDefaults.standard.set(loginCheckData.userData.id, forKey: "isLoggedIN")
+                    let UserDataDictionary = ["id": loginCheckData.userData.id, "name": loginCheckData.userData.name, "designation": loginCheckData.userData.designation]
+                    
+                    UserDefaults.standard.set(UserDataDictionary, forKey: "UserDetails")
+                    
                     self.navigateToMainPage()
                 case .failure(let error):
                     print(error)
@@ -103,9 +107,6 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
         print("test")
         let profileVC = storyboard?.instantiateViewController(identifier: "ProfileMenuVC") as! ProfileMenuVC
         self.navigationController?.pushViewController(profileVC, animated: true)
-        profileVC.username  = loginData?.name ?? ""
-        
-        profileVC.id  = loginData?.userId ?? ""
         }
     
     @IBAction func forgotPasswordTapped(_ sender: Any) {

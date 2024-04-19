@@ -20,12 +20,14 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
     var isrotated = false
     var isCheckinoutBtnClicked = false
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
-    var InitailCheckCounterDataVar : checkCounterModel?
+    var initailCheckCounterDataVar : checkCounterModel?
     
+    @IBOutlet weak var duraitonTimeLabel: UILabel!
+    @IBOutlet weak var checkOUTTimeLabel: UILabel!
+    @IBOutlet weak var checkINTimeLabel: UILabel!
     @IBOutlet weak var checkArrowImage: UIImageView!
     @IBOutlet weak var mainButtonView: UIControl!
     @IBOutlet weak var empDesignationLabel: UILabel!
-    @IBOutlet weak var resumeBtn: UIButton!
     @IBOutlet weak var tapToCheckInLabel: UILabel!
     @IBOutlet weak var timerViewBottom: UIView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -34,38 +36,24 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
     @IBOutlet weak var timePeriodLabel: UILabel!
     @IBOutlet weak var employeeName: UILabel!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let titleFont = UIFont.systemFont(ofSize: 20.0) // Set font size
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: titleFont]
         self.title = "Check Counter"
         initialAPICall()
-       // initialState()
+       
       //  checkInOutBtn.addTarget(self, action: #selector(checkInOutBtnTapped), for: .touchUpInside)
         employeeName.text = userDict?["name"] as? String
         empDesignationLabel.text = userDict?["designation"] as? String
-        
         addLogoToFooter()
         updateTimeDate()
-        isCheckinoutBtnClicked = UserDefaults.standard.bool(forKey: keysStruct().checkInOutStatusKey)
-        isrotated = UserDefaults.standard.bool(forKey: keysStruct().rotationAnleKey)
-        istakebreakeTaped = UserDefaults.standard.bool(forKey: keysStruct().takeBreakKey)
-        updateButtonState()
-        intialStatus()
+//        isCheckinoutBtnClicked = UserDefaults.standard.bool(forKey: keysStruct().checkInOutStatusKey)
+//        isrotated = UserDefaults.standard.bool(forKey: keysStruct().rotationAnleKey)
+//        istakebreakeTaped = UserDefaults.standard.bool(forKey: keysStruct().takeBreakKey)
+//        updateButtonState()
+//        intialStatus()
 
-    }
-    
-    @IBAction func takeBreakeBtnTapped(_ sender: Any) {
-        istakebreakeTaped.toggle()
-        UserDefaults.standard.set(istakebreakeTaped, forKey: keysStruct().takeBreakKey)
-        updateButtonVisibility()
-    }
-    
-    @IBAction func resumeBtnTapped(_ sender: Any) {
-        istakebreakeTaped.toggle()
-        UserDefaults.standard.set(istakebreakeTaped, forKey: keysStruct().takeBreakKey)
-        updateButtonVisibility()
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,6 +61,20 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
         //bottomview
         timerViewBottom.applyCornerRadiusAndBorder(radius: 0.5, borderWidth: 0.5, borderColor:"E5E5E5", shadowRadius: 2, shadowOpacity: 0.5, shadowColor: "000000" , shadowOffset: CGSize(width: 0, height: 2))
     }
+    
+    @IBAction func takeBreakeBtnTapped(_ sender: Any) {
+        istakebreakeTaped.toggle()
+        UserDefaults.standard.set(istakebreakeTaped, forKey: keysStruct().takeBreakKey)
+//        updateButtonVisibility()
+    }
+    
+//    @IBAction func resumeBtnTapped(_ sender: Any) {
+//        istakebreakeTaped.toggle()
+//        UserDefaults.standard.set(istakebreakeTaped, forKey: keysStruct().takeBreakKey)
+//        updateButtonVisibility()
+//    }
+    
+
     
     func initialAPICall() {
       //  print(userDict?["id"])
@@ -82,7 +84,7 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
                         guard let self = self else { return }
                         switch response.result {
                         case .success(let initailCheckCounterData):
-                            self.InitailCheckCounterDataVar = initailCheckCounterData
+                            self.initailCheckCounterDataVar = initailCheckCounterData
                             print(initailCheckCounterData)
                             // Handle successful login data retrieval
                             guard initailCheckCounterData.err == 0 else {
@@ -90,9 +92,10 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
                                 print(initailCheckCounterData.errMsg ?? "Request failed")  //  debugging purposes
                                 return
                             }  //  debugging purpose
+                            self.intialStatus()
                         case .failure(let error):
                             print(error)
-                            self.showAlert(title: "Login Error", message: "Please Re-Check Your Email and Password")
+                            self.showAlert(title: "Error", message: "Error IN API Call")
                         }
                     }
             }
@@ -103,19 +106,37 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
     
    
     func intialStatus(){
-        if (!isCheckinoutBtnClicked){
-            takeBreakButton.isHidden = true
-            resumeBtn.isHidden = true
+        if (initailCheckCounterDataVar?.timeBtn == 1) {
+            takeBreakButton.isHidden = false
         }
+        updateButtonState()
     }
+    
+    func updateButtonState() {
+        let btnRotationAngle: Double = initailCheckCounterDataVar?.timeBtn == 1 ? 180.0 : 0.0
+        checkArrowImage.transform = CGAffineTransform(rotationAngle: convertDegreeRadians(degrees: CGFloat(btnRotationAngle)))
+        tapToCheckInLabel.text = initailCheckCounterDataVar?.timeBtnTxt
+        checkINTimeLabel.text = initailCheckCounterDataVar?.clockInTime
+        checkOUTTimeLabel.text = initailCheckCounterDataVar?.clockOutTime
+        let buttonText = initailCheckCounterDataVar?.breakBtnTxt ?? ""
+        let titleAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 20, weight: .bold),
+//            .foregroundColor: UIColor.red
+        ]
+        let attributedTitle = NSAttributedString(string: buttonText, attributes: titleAttributes)
+        takeBreakButton.setAttributedTitle(attributedTitle, for: .normal)
+        
+    }
+    
+    
     @IBAction func mainCheckButtonTapped(_ sender: Any) {
         tapToCheckInLabel.text = isCheckinoutBtnClicked ? "TAP TO CHECK IN" : "TAP TO CHECK OUT"
         isCheckinoutBtnClicked.toggle()
         isrotated.toggle()
-        //        let btnRotationAngle: Double = isrotated ? 180.0 : 0.0
-        //        UIView.animate(withDuration: 0.3, delay: 0.0, options: [.curveEaseInOut, .beginFromCurrentState]) {
-        //                self.checkInOutBtn.transform = CGAffineTransform(rotationAngle: btnRotationAngle)
-        //            }
+              let btnRotationAngle: Double = isrotated ? 180.0 : 0.0
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: [.curveEaseInOut, .beginFromCurrentState]) {
+                        self.checkArrowImage.transform = CGAffineTransform(rotationAngle: btnRotationAngle)
+                    }
                 
                 if isCheckinoutBtnClicked {
                     rotateButtonTo180()
@@ -126,15 +147,15 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
                 UserDefaults.standard.set(isCheckinoutBtnClicked, forKey: keysStruct().checkInOutStatusKey)
                 UserDefaults.standard.set(isrotated, forKey: keysStruct().rotationAnleKey)
                // updateButtonState()
-                if (!isCheckinoutBtnClicked){
-                    takeBreakButton.isHidden = true
-                    resumeBtn.isHidden = true
-                    istakebreakeTaped = true
-                    UserDefaults.standard.set(istakebreakeTaped, forKey: keysStruct().takeBreakKey)
-                } else {
-                    resumeBtn.isHidden = true
-                    takeBreakButton.isHidden = false
-                  }
+//                if (!isCheckinoutBtnClicked){
+//                    takeBreakButton.isHidden = true
+//                    resumeBtn.isHidden = true
+//                    istakebreakeTaped = true
+//                    UserDefaults.standard.set(istakebreakeTaped, forKey: keysStruct().takeBreakKey)
+//                } else {
+//                    resumeBtn.isHidden = true
+//                    takeBreakButton.isHidden = false
+//                  }
         
     }
     
@@ -150,22 +171,7 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
             self.checkArrowImage.transform = CGAffineTransform(rotationAngle: -CGFloat(180.0) * .pi / 180.0)
         }
     }
-    
-    func updateButtonState() {
-        let btnRotationAngle: Double = isrotated ? 180.0 : 360.0
-        checkArrowImage.transform = CGAffineTransform(rotationAngle: convertDegreeRadians(degrees: CGFloat(btnRotationAngle)))
-        tapToCheckInLabel.text = isCheckinoutBtnClicked ? "TAP TO CHECK OUT" : "TAP TO CHECK IN"
-        takeBreakButton.isHidden = !istakebreakeTaped
-        resumeBtn.isHidden = istakebreakeTaped
-    }
 
-    func updateButtonVisibility() {
-        // Hide or show buttons based on the state
-        takeBreakButton.isHidden = !istakebreakeTaped
-        resumeBtn.isHidden = istakebreakeTaped
-    }
-    
-    
     func updateTime() {
             // Update the timeLabel with the current time
             let dateFormatter = DateFormatter()

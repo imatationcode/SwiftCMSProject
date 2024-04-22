@@ -16,3 +16,14 @@ struct checkCounterModel: Codable {
     let errMsg: String?
     let derivedClass: Int?
 }
+
+struct CheckInOutData: Codable {
+  let timeBtn: Int?
+  let timeBtnTxt: String?
+  let timeBtnType: String?
+  let breakBtn: Int?
+  let breakBtnTxt: String?
+  let breakBtnType: String?
+  let clockInTime: String?
+  let clockOutTime: String? // Optional to handle null value for clockOutTime
+}

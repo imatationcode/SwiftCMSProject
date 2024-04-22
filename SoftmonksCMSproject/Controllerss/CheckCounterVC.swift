@@ -42,17 +42,11 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: titleFont]
         self.title = "Check Counter"
         initialAPICall()
-       
       //  checkInOutBtn.addTarget(self, action: #selector(checkInOutBtnTapped), for: .touchUpInside)
         employeeName.text = userDict?["name"] as? String
         empDesignationLabel.text = userDict?["designation"] as? String
         addLogoToFooter()
         updateTimeDate()
-//        isCheckinoutBtnClicked = UserDefaults.standard.bool(forKey: keysStruct().checkInOutStatusKey)
-//        isrotated = UserDefaults.standard.bool(forKey: keysStruct().rotationAnleKey)
-//        istakebreakeTaped = UserDefaults.standard.bool(forKey: keysStruct().takeBreakKey)
-//        updateButtonState()
-//        intialStatus()
 
     }
     
@@ -68,17 +62,33 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
 //        updateButtonVisibility()
     }
     
-//    @IBAction func resumeBtnTapped(_ sender: Any) {
-//        istakebreakeTaped.toggle()
-//        UserDefaults.standard.set(istakebreakeTaped, forKey: keysStruct().takeBreakKey)
-//        updateButtonVisibility()
-//    }
-    
-
-    
     func initialAPICall() {
       //  print(userDict?["id"])
-        let parameters = ["mode":"initClock", "id" : userDict?["id"] ?? ""] as [String : Any]
+        let parameters = ["mode":"initClock", "id" : userDict?["id"] ?? ""]
+        AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+                    .responseDecodable(of: checkCounterModel.self) { [weak self] response in  // Move switch statement closer
+                        guard let self = self else { return }
+                        switch response.result {
+                        case .success(let initailCheckCounterData):
+                            self.initailCheckCounterDataVar = initailCheckCounterData
+                            print(initailCheckCounterData)
+                            // Handle successful login data retrieval
+                            guard initailCheckCounterData.err == 0 else {
+                                self.showAlert(title: "Login Failed", message: initailCheckCounterData.errMsg ?? "")
+                                print(initailCheckCounterData.errMsg ?? "Request failed")  //  debugging purposes
+                                return
+                            }  //  debugging purpose
+                            self.intialStatus()
+                        case .failure(let error):
+                            print(error)
+                            self.showAlert(title: "Error", message: "Error IN API Call")
+                        }
+                    }
+            }
+    
+    func checkInOutAPICall() {
+      //  print(userDict?["id"])
+        let parameters = ["mode":"saveClock", "id" : userDict?["id"] ?? "", "userStatus" : "IN",  "ClockDT":"04/17/2024 08:45 AM"]
         AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
                     .responseDecodable(of: checkCounterModel.self) { [weak self] response in  // Move switch statement closer
                         guard let self = self else { return }
@@ -128,6 +138,10 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
         
     }
     
+    func CheckInOutState() {
+        updateButtonState()
+    }
+    
     
     @IBAction func mainCheckButtonTapped(_ sender: Any) {
         tapToCheckInLabel.text = isCheckinoutBtnClicked ? "TAP TO CHECK IN" : "TAP TO CHECK OUT"
@@ -144,8 +158,8 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
                     reverseButtonRotation()
                 }
                 
-                UserDefaults.standard.set(isCheckinoutBtnClicked, forKey: keysStruct().checkInOutStatusKey)
-                UserDefaults.standard.set(isrotated, forKey: keysStruct().rotationAnleKey)
+//                UserDefaults.standard.set(isCheckinoutBtnClicked, forKey: keysStruct().checkInOutStatusKey)
+//                UserDefaults.standard.set(isrotated, forKey: keysStruct().rotationAnleKey)
                // updateButtonState()
 //                if (!isCheckinoutBtnClicked){
 //                    takeBreakButton.isHidden = true

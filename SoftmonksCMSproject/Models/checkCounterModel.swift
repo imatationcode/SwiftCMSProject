@@ -8,22 +8,25 @@
 import Foundation
 struct checkCounterModel: Codable {
     let cDate: String?
-    let timeBtn: Int?
-    let timeBtnTxt, timeBtnType: String?
+    var isCheckedIn: Int?
+    let timeBtnTxt: String
+    var timeBtnType: String?
     let breakBtn: Int?
     let breakBtnTxt, breakBtnType, clockInTime, clockOutTime: String?
+    let duration: String?
     let err: Int?
     let errMsg: String?
     let derivedClass: Int?
 }
 
 struct CheckInOutData: Codable {
-  let timeBtn: Int?
+  let isCheckedIn: Int?
   let timeBtnTxt: String?
   let timeBtnType: String?
   let breakBtn: Int?
   let breakBtnTxt: String?
   let breakBtnType: String?
   let clockInTime: String?
-  let clockOutTime: String? // Optional to handle null value for clockOutTime
+  let clockOutTime: String?
+  let duration: String? // Optional to handle null value for clockOutTime
 }

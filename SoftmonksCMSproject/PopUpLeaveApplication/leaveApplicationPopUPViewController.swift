@@ -17,14 +17,13 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     @IBOutlet weak var toDateTextField: UITextField!
     @IBOutlet weak var fromDateTextField: UITextField!
     @IBOutlet weak var crossButtonView: UIView!
-    
     @IBOutlet weak var fromDateLabel: UILabel!
     @IBOutlet weak var fromDateView: DesingsForUIView!
-    
     @IBOutlet weak var toDateLabel: UILabel!
     @IBOutlet weak var toDateView: DesingsForUIView!
+    @IBOutlet weak var leaveReasonTextView: UITextView!
     
-    let leaveTypes: [String: String] = ["FD": "Full Day", "MHD": "Morning Half-Day", "AHD": "Afternoon Haf-Day"]
+    let leaveTypes: [String: String] = ["FD": "Full Day", "MHD": "Morning Half-Day", "EHD": "Afternoon Haf-Day"]
     var focusedControl: UITextField?
     lazy var leavepickerView: UIPickerView = {
             let picker = UIPickerView()
@@ -32,7 +31,6 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
             picker.delegate = self
             return picker
         }()
-    
     lazy var fromDateDatePicker: UIDatePicker = {
             let picker = UIDatePicker()
             picker.datePickerMode = .date
@@ -43,7 +41,6 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
             picker.minimumDate = tomorrow
             return picker
        }()
-
    lazy var toDateDatePicker: UIDatePicker = {
            let picker = UIDatePicker()
            picker.datePickerMode = .date
@@ -187,8 +184,11 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
             fromDateTextField.resignFirstResponder() // Dismiss the date picker
             toDateTextField.resignFirstResponder()
         }
+    
     @objc func cancelButtonTapped(){
         selectedLeaveType.text = ""
+        fromDateTextField.text = ""
+        toDateTextField.text = ""
         view.endEditing(true)
     }
     
@@ -210,6 +210,9 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     }
     
     func conFigView() {
+        self.leaveReasonTextView.layer.borderColor = UIColor(red: 147/255, green: 203/255, blue: 255/255, alpha: 1.0).cgColor
+        self.leaveReasonTextView.layer.borderWidth = 2.0
+        self.leaveReasonTextView.layer.cornerRadius = 10.0
         self.view.backgroundColor = .clear
         self.backView.backgroundColor = .black.withAlphaComponent(0.6)
         self.backView.alpha = 0
@@ -264,6 +267,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
             //Add the toolbar to our textfield
             selectedLeaveType.inputAccessoryView = bar
         }
+    
         @objc func dismissMyKeyboard(){
             view.endEditing(true)
         }

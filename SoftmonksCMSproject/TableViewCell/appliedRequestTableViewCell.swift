@@ -19,12 +19,24 @@ class appliedRequestTableViewCell: UITableViewCell {
     @IBOutlet weak var leaveTypeLabel: UILabel!
     @IBOutlet weak var inProgressView: UIView!
     
-    func updateViews(leaveReuests: LeaveRequest){
-        appliedOnDateLabel.text = leaveReuests.appliedOnDate
+    func updateViews(leaveReuests: LeaveData){
+        appliedOnDateLabel.text = leaveReuests.appliedDate
         fromDateLabel.text = leaveReuests.fromDate
         toDateLabel.text = leaveReuests.toDate
         NoOfDaysLabel.text = leaveReuests.noOfDays
-        leaveTypeLabel.text = leaveReuests.leaveType
+        let leaveTypeMap: [String: String] = [
+                "fd": "FULL DAY",
+                "mhd": "Morning Half Day",
+                "ehd": "Evening Half Day"
+                // Add more mappings as needed
+            ]
+            
+            // Set leaveTypeLabel text based on the mapping
+        if let leaveTypeText = leaveTypeMap[leaveReuests.leaveType ?? ""] {
+                leaveTypeLabel.text = leaveTypeText
+            } else {
+                leaveTypeLabel.text = leaveReuests.leaveType
+            }
     }
 
     override func awakeFromNib() {
@@ -35,13 +47,11 @@ class appliedRequestTableViewCell: UITableViewCell {
         
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
- 
     
 }

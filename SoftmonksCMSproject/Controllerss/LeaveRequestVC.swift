@@ -6,47 +6,79 @@
 //
 
 import UIKit
+import Alamofire
 
 class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UITableViewDataSource {
+    var leaveListData: [LeaveData] = []
+    var initialAPIDataVar: LeaveResponse?
+    var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
     
     @IBOutlet weak var leaveReuestsTableView: UITableView!
-    var list = [1,2,3,4,5,6,7,8,9,10]
+    @IBOutlet weak var totalLeavesLabel: UILabel!
+    @IBOutlet weak var availabelLeavesLabel: UILabel!
+    @IBOutlet weak var takenLeavesLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let titleFont = UIFont.systemFont(ofSize: 20.0) // Set font size
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: titleFont]
         self.title = "Leave Requests"
         addLogoToFooter()
+        self.leaveReuestsTableView.register(UINib(nibName: "appliedRequestTableViewCell", bundle: nil), forCellReuseIdentifier: "appliedRequestTableViewCell")
+//        self.leaveReuestsTableView.register(UINib(nibName: "reviewedTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewedTableViewCell")
+        initialLeaveDataFromAPI()
         self.leaveReuestsTableView.delegate = self
         self.leaveReuestsTableView.dataSource = self
-//        self.leaveReuestsTableView.rowHeight = UITableView.automaticDimension
-//        self.leaveReuestsTableView.estimatedRowHeight = 144.0
-      //  self.leaveReuestsTableView.register(UINib(nibName: "InProcessTableViewCell", bundle: nil), forCellReuseIdentifier: "inProcessCell")
-        self.leaveReuestsTableView.register(UINib(nibName: "appliedRequestTableViewCell", bundle: nil), forCellReuseIdentifier: "appliedRequestTableViewCell")
-        self.leaveReuestsTableView.register(UINib(nibName: "reviewedTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewedTableViewCell")
         
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//
-//    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataService.instance.getLeaveRequests().count
-        //return self.list.count
+    
+    func initialLeaveDataFromAPI(){
+    
+        let parameters: [String: Any] = ["mode": "initLeaveRequest", "id": userDict?["id"] ?? ""]
+        
+        AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+            .responseDecodable(of: LeaveResponse.self) { [weak self] response in
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let leaveResponse):
+                    print(leaveResponse)
+                    self.initialAPIDataVar = leaveResponse
+                    self.configLayout()
+                    
+
+                case .failure(let error):
+                    print(error)
+                    self.showAlert(title: "Error", message: "Error in API Call")
+                }
+            }
     }
-       
+    
+    func configLayout() {
+        totalLeavesLabel.text = initialAPIDataVar?.leaveTotal
+        availabelLeavesLabel.text = initialAPIDataVar?.leaveAvailable
+        takenLeavesLabel.text = initialAPIDataVar?.leaveTaken
+        self.leaveListData = initialAPIDataVar?.leaveListData ?? []
+        DispatchQueue.main.async {
+            self.leaveReuestsTableView.reloadData()
+        }
+        
+        
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return leaveListData.count
+        //return DataService.instance.getLeaveRequests().count
+    
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = (self.leaveReuestsTableView.dequeueReusableCell(withIdentifier: "appliedRequestTableViewCell") as? appliedRequestTableViewCell)!
-        let leaveReq = DataService.instance.getLeaveRequests()[indexPath.row]
-        cell.updateViews(leaveReuests: leaveReq)
+        let cell = self.leaveReuestsTableView.dequeueReusableCell(withIdentifier: "appliedRequestTableViewCell", for: indexPath) as! appliedRequestTableViewCell
+        let leaveData = leaveListData[indexPath.row]
+        cell.updateViews(leaveReuests: leaveData)
+        
         return cell
-//
-        //Finall cell after the request has been reviewed
-//        let fCell = (self.leaveReuestsTableView.dequeueReusableCell(withIdentifier: "reviewedTableViewCell") as? reviewedTableViewCell)!
-//        let leaveReq = DataService.instance.getLeaveRequests()[indexPath.row]
-//        fCell.updateViews(leaveReuests: leaveReq)
-//        return fCell
         
     }
 

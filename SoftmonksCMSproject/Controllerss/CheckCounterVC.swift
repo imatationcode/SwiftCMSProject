@@ -8,20 +8,12 @@
 import UIKit
 import Alamofire
 
-struct keysStruct {
-    let checkInOutStatusKey = "MainButtonStatus"
-    let rotationAnleKey = "rotationAngleStatus"
-    let takeBreakKey = "takeBreakStatus"
-}
-
-
 class CheckCounterVC: UIViewController,LogoDisplayable {
     var istakebreakeTaped : Bool = false
     var isrotated = false
     var isCheckinoutBtnClicked = false
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
-    var initailCheckCounterDataVar : checkCounterModel?
-    var checkInOutdataVar: CheckInOutData?
+    var initailCheckCounterDataVar : checkCounterModel? // variable to store response from api call
     
     @IBOutlet weak var duraitonTimeLabel: UILabel!
     @IBOutlet weak var checkOUTTimeLabel: UILabel!
@@ -57,12 +49,6 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
         timerViewBottom.applyCornerRadiusAndBorder(radius: 0.5, borderWidth: 0.5, borderColor:"E5E5E5", shadowRadius: 2, shadowOpacity: 0.5, shadowColor: "000000" , shadowOffset: CGSize(width: 0, height: 2))
     }
     
-    @IBAction func takeBreakeBtnTapped(_ sender: Any) {
-        istakebreakeTaped.toggle()
-        UserDefaults.standard.set(istakebreakeTaped, forKey: keysStruct().takeBreakKey)
-        //        updateButtonVisibility()
-    }
-    
     func initialAPICall() {
         //  print(userDict?["id"])
         let parameters = ["mode":"initClock", "id" : userDict?["id"] ?? ""]
@@ -88,17 +74,14 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
     }
     
     func intialStatus(){
-        let btnRotationAngle: Double = initailCheckCounterDataVar?.isCheckedIn == 1 ? 180.0 : 0.0
+        let btnRotationAngle: Double = initailCheckCounterDataVar?.isCheckedIn == 1 ? 180.0 : 360.0
         checkArrowImage.transform = CGAffineTransform(rotationAngle: convertDegreeRadians(degrees: CGFloat(btnRotationAngle)))
         updateButtonState()
-        
-//        checkInOutdataVar?.isCheckedIn = initailCheckCounterDataVar?.isCheckedIn
-//        checkInOutdataVar?.timeBtnType = initailCheckCounterDataVar?.timeBtnType
     }
     
     func getCurrentDateTimeString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a" // Set desired format
+        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm:ss a" // Set desired format
         let currentDateTime = Date()
         let formattedDateTime = dateFormatter.string(from: currentDateTime)
         return formattedDateTime
@@ -107,14 +90,16 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
     func checkInOutAPICall(_ dateAndTime: String) {
         //  print(userDict?["id"])
         let userstatus: String = initailCheckCounterDataVar?.timeBtnType ?? ""
-        print("\(userstatus) woooo \(dateAndTime)")
+//        let Sid = userDict?["id"]
+//        print("\(userstatus) \(dateAndTime) \(String(describing: Sid))")
+        
         let parameters = ["mode":"saveClock", "id" : userDict?["id"] ?? "", "userStatus" : userstatus, "ClockDT" : dateAndTime]
         AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-            .responseDecodable(of: CheckInOutData.self) { [weak self] response in  // Move switch statement closer
+            .responseDecodable(of: checkCounterModel.self) { [weak self] response in  // Move switch statement closer
                 guard let self = self else { return }
                 switch response.result {
                 case .success(let CheckCounterData):
-                    self.checkInOutdataVar = CheckCounterData
+                    self.initailCheckCounterDataVar = CheckCounterData
                     print(CheckCounterData)
                     self.CheckInOutState()
                 case .failure(let error):
@@ -122,6 +107,38 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
                     self.showAlert(title: "Error", message: "Error IN Check Counter API Call")
                 }
             }
+    }
+    
+    
+    @IBAction func takeBreakeBtnTapped(_ sender: Any) {
+        
+        let breakDateTimeString = getCurrentDateTimeString()
+        print("Current date and time: \(breakDateTimeString)")
+        breakAPICall(breakDateTimeString)
+    }
+    
+    func breakAPICall(_ breakDateTimeString: String) {
+        let userstatus: String = initailCheckCounterDataVar?.breakBtnType ?? ""
+        let Sid = userDict?["id"]
+        print("\(userstatus) \(breakDateTimeString) \(String(describing: Sid))")
+        let parameters = ["mode":"saveBreak", "id" : userDict?["id"] ?? "", "userStatus" : userstatus, "ClockDT" : breakDateTimeString]
+        AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+            .responseDecodable(of: checkCounterModel.self) { [weak self] response in  // Move switch statement closer
+                guard let self = self else { return }
+                switch response.result {
+                case .success(let CheckCounterData):
+                    self.initailCheckCounterDataVar = CheckCounterData
+                    print(CheckCounterData)
+                    self.breakStatusUpdate()
+                case .failure(let error):
+                    print(error)
+                    self.showAlert(title: "Error", message: "Error IN Check Counter API Call")
+                }
+            }
+    }
+    
+    func breakStatusUpdate(){
+        updateButtonState()
     }
     
     
@@ -135,6 +152,7 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
         tapToCheckInLabel.text = initailCheckCounterDataVar?.timeBtnTxt
         checkINTimeLabel.text = initailCheckCounterDataVar?.clockInTime
         checkOUTTimeLabel.text = initailCheckCounterDataVar?.clockOutTime
+        duraitonTimeLabel.text = initailCheckCounterDataVar?.duration
         let buttonText = initailCheckCounterDataVar?.breakBtnTxt ?? ""
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 20, weight: .bold),
@@ -144,42 +162,25 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
         takeBreakButton.setAttributedTitle(attributedTitle, for: .normal)
     }
     
-    func checkInOutupdateButton() {
-        if (checkInOutdataVar?.isCheckedIn == 1) {
-            takeBreakButton.isHidden = false
-        }
-        else {
-            takeBreakButton.isHidden = true
-        }
-        tapToCheckInLabel.text = checkInOutdataVar?.timeBtnTxt
-        checkINTimeLabel.text = checkInOutdataVar?.clockInTime
-        checkOUTTimeLabel.text = checkInOutdataVar?.clockOutTime
-        duraitonTimeLabel.text = checkInOutdataVar?.duration
-        let buttonText = checkInOutdataVar?.breakBtnTxt ?? ""
-        let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 20, weight: .bold),
-            //            .foregroundColor: UIColor.red
-        ]
-        let attributedTitle = NSAttributedString(string: buttonText, attributes: titleAttributes)
-        takeBreakButton.setAttributedTitle(attributedTitle, for: .normal)
-    }
-    
     func CheckInOutState() {
-        checkInOutupdateButton()
+        updateButtonState()
     }
-    
+
     @IBAction func mainCheckButtonTapped(_ sender: Any) {
-        
-                let dateTimeString = getCurrentDateTimeString()
-                print("Current date and time: \(dateTimeString)")
-                checkInOutAPICall(dateTimeString)
+    
+        print("taped on main button ")
+
                 let rotate = initailCheckCounterDataVar?.isCheckedIn
-                print("taped on main button  \(String(describing: rotate))")
-                if ( rotate == 1 ) {
+                print("taped on main button")
+                if ( rotate == 0 ) {
                     rotateButtonTo180()
                 } else {
                     reverseButtonRotation()
                      }
+                
+                let dateTimeString = getCurrentDateTimeString()
+                print("Current date and time: \(dateTimeString)")
+                checkInOutAPICall(dateTimeString)
         
     }
     

@@ -16,6 +16,7 @@ struct LeaveResponse: Codable {
 
 struct LeaveData: Codable {
     let userId: Int?
+    let recordId: String?
     let leaveType: String?
     let day: String?
     let fromDate: String?
@@ -26,6 +27,12 @@ struct LeaveData: Codable {
     let approved: Int?
     let rejected: Int?
     let inProcess: Int?
+}
+
+struct DeleteAPIResponse: Codable {
+    let err: Int
+    let errMsg: String
+    let derivedClass: Int
 }
 
 //struct LeaveRequest {

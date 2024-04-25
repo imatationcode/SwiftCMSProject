@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UITableViewDataSource {
+class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UITableViewDataSource, CellDelegate {
     var leaveListData: [LeaveData] = []
     var initialAPIDataVar: LeaveResponse?
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
@@ -25,7 +25,7 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
         self.title = "Leave Requests"
         addLogoToFooter()
         self.leaveReuestsTableView.register(UINib(nibName: "appliedRequestTableViewCell", bundle: nil), forCellReuseIdentifier: "appliedRequestTableViewCell")
-//        self.leaveReuestsTableView.register(UINib(nibName: "reviewedTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewedTableViewCell")
+        self.leaveReuestsTableView.register(UINib(nibName: "reviewedTableViewCell", bundle: nil), forCellReuseIdentifier: "reviewedTableViewCell")
         initialLeaveDataFromAPI()
         self.leaveReuestsTableView.delegate = self
         self.leaveReuestsTableView.dataSource = self
@@ -44,8 +44,6 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
                     print(leaveResponse)
                     self.initialAPIDataVar = leaveResponse
                     self.configLayout()
-                    
-
                 case .failure(let error):
                     print(error)
                     self.showAlert(title: "Error", message: "Error in API Call")
@@ -74,16 +72,31 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.leaveReuestsTableView.dequeueReusableCell(withIdentifier: "appliedRequestTableViewCell", for: indexPath) as! appliedRequestTableViewCell
         let leaveData = leaveListData[indexPath.row]
-        cell.updateViews(leaveReuests: leaveData)
         
-        return cell
-        
+        if leaveData.inProcess == 0 {
+            let cell = self.leaveReuestsTableView.dequeueReusableCell(withIdentifier: "appliedRequestTableViewCell", for: indexPath) as! appliedRequestTableViewCell
+            cell.updateViews(leaveReuests: leaveData)
+            cell.delegate = self
+            return cell
+        } else {
+            let cell = self.leaveReuestsTableView.dequeueReusableCell(withIdentifier: "reviewedTableViewCell", for: indexPath) as! reviewedTableViewCell
+            cell.updateViews(leaveReuests: leaveData)
+            return cell
+        }
     }
-
+    
+    @IBAction func refreshButton(_ sender: Any) {
+        initialLeaveDataFromAPI()
+    }
+    
     @IBAction func applyLeaveTapped(_ sender: Any) {
         let overLayer = leaveApplicationPopUPViewController()
         overLayer.popUp(sender: self)
     }
+    
+    func deleteBtnPressed(forCell cell: appliedRequestTableViewCell) {
+        initialLeaveDataFromAPI()
+    }
+    
 }

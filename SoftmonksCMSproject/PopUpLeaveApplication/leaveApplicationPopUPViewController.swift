@@ -23,7 +23,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     @IBOutlet weak var toDateView: DesingsForUIView!
     @IBOutlet weak var leaveReasonTextView: UITextView!
     
-    let leaveTypes: [String: String] = ["FD": "Full Day", "MHD": "Morning Half-Day", "EHD": "Afternoon Haf-Day"]
+    let leaveTypes: [String: String] = ["fd": "Full Day", "mhd": "Morning Half-Day", "ehd": "Afternoon Haf-Day"]
     var focusedControl: UITextField?
     lazy var leavepickerView: UIPickerView = {
             let picker = UIPickerView()

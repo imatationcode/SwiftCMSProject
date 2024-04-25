@@ -6,8 +6,18 @@
 //
 
 import UIKit
+import Alamofire
+
+//protocole defining
+    protocol CellDelegate: AnyObject {
+        func deleteBtnPressed (forCell cell: appliedRequestTableViewCell)
+//        func editBtnPressed(forCell cell: appliedRequestTableViewCell)
+    }
 
 class appliedRequestTableViewCell: UITableViewCell {
+    var leaveCell: LeaveData? = nil
+    //adding delegae property
+    weak var delegate: CellDelegate?
     
     @IBOutlet weak var outterView: UIView!
     @IBOutlet weak var deleteButton: UIButton!
@@ -20,25 +30,52 @@ class appliedRequestTableViewCell: UITableViewCell {
     @IBOutlet weak var inProgressView: UIView!
     
     func updateViews(leaveReuests: LeaveData){
+        leaveCell = leaveReuests
         appliedOnDateLabel.text = leaveReuests.appliedDate
         fromDateLabel.text = leaveReuests.fromDate
         toDateLabel.text = leaveReuests.toDate
         NoOfDaysLabel.text = leaveReuests.noOfDays
         let leaveTypeMap: [String: String] = [
-                "fd": "FULL DAY",
-                "mhd": "Morning Half Day",
-                "ehd": "Evening Half Day"
-                // Add more mappings as needed
-            ]
-            
-            // Set leaveTypeLabel text based on the mapping
+            "fd": "Full Day",
+            "mhd": "Morning Half Day",
+            "ehd": "Evening Half Day"
+            // Add more mappings as needed
+        ]
+        
+        // Set leaveTypeLabel text based on the mapping
         if let leaveTypeText = leaveTypeMap[leaveReuests.leaveType ?? ""] {
-                leaveTypeLabel.text = leaveTypeText
-            } else {
-                leaveTypeLabel.text = leaveReuests.leaveType
-            }
+            leaveTypeLabel.text = leaveTypeText
+        } else {
+            leaveTypeLabel.text = leaveReuests.leaveType
+        }
     }
-
+    
+    @IBAction func tappedOnDelete(_ sender: Any) {
+        
+        let id: String = leaveCell?.recordId ?? ""
+        print(id)
+        let parameters: [String: Any] = ["mode" : "deleteLeaveRequest", "recordId" : id ]
+        AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+            .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
+                guard let self = self else {return}
+                switch response.result {
+                case .success(let response):
+                    print (response)
+                    self.inputViewController?.showAlert(title: "Done", message: response.errMsg)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        //trigering the protocole
+        delegate?.deleteBtnPressed(forCell: self)
+    }
+    
+    @IBAction func tappedOnEdit(_ sender: Any) {
+        delegate?.deleteBtnPressed(forCell: self)
+        
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         inProgressView.onlyCornerRadius(conRadius: 10.0)
@@ -47,11 +84,13 @@ class appliedRequestTableViewCell: UITableViewCell {
         
         // Initialization code
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }
+
+    
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
+    
+

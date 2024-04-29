@@ -125,13 +125,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24/01/2024" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOS-eB-KTZ">
-                                <rect key="frame" x="94.666666666666671" y="88.666666666666671" width="56.000000000000014" height="12"/>
+                                <rect key="frame" x="98.666666666666671" y="88.666666666666671" width="56.000000000000014" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.59889453650000002" green="0.59889453650000002" blue="0.59889453650000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Applied on :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h98-kx-JfT">
-                                <rect key="frame" x="35" y="88.666666666666671" width="57.666666666666657" height="12"/>
+                                <rect key="frame" x="39" y="88.666666666666671" width="57.666666666666657" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.59889453650000002" green="0.59889453650000002" blue="0.59889453650000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KNU-Dj-jUz" firstAttribute="centerY" secondItem="Q48-Cn-ZqN" secondAttribute="centerY" id="5g7-dF-GdW"/>
-                            <constraint firstItem="h98-kx-JfT" firstAttribute="leading" secondItem="oyK-A5-r5A" secondAttribute="trailing" constant="2" id="6Jx-vQ-Pcs"/>
+                            <constraint firstItem="h98-kx-JfT" firstAttribute="leading" secondItem="oyK-A5-r5A" secondAttribute="trailing" constant="6" id="6Jx-vQ-Pcs"/>
                             <constraint firstItem="aZA-TF-y5S" firstAttribute="centerY" secondItem="Eco-R7-UbZ" secondAttribute="centerY" id="9BW-ja-Wuj"/>
                             <constraint firstAttribute="trailing" secondItem="KNU-Dj-jUz" secondAttribute="trailing" constant="18" id="FIs-VM-M8S"/>
                             <constraint firstItem="Eco-R7-UbZ" firstAttribute="leading" secondItem="sFp-Ga-XI2" secondAttribute="leading" constant="16" id="Ghv-WF-hEw"/>

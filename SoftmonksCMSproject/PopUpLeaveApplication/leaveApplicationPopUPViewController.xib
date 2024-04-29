@@ -15,7 +15,7 @@
                 <outlet property="fromDateLabel" destination="jw7-uH-Wg3" id="luK-JU-kiS"/>
                 <outlet property="fromDateTextField" destination="5xb-dM-d1w" id="xc2-7L-nni"/>
                 <outlet property="fromDateView" destination="Cb2-1u-oZp" id="NdS-P9-dap"/>
-                <outlet property="leaveReasonTextView" destination="9lU-Ea-FKz" id="aTv-2L-aYf"/>
+                <outlet property="leaveReasonTextView" destination="9lU-Ea-FKz" id="zmd-hM-7WS"/>
                 <outlet property="noOfDaysLabel" destination="cB4-4Y-EoG" id="VU7-d6-vGJ"/>
                 <outlet property="popupContentView" destination="C24-pM-4bx" id="bKS-VV-auk"/>
                 <outlet property="selectedLeaveType" destination="kvo-FG-ZVM" id="4Ug-MK-pWy"/>

@@ -76,6 +76,7 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
         
         if leaveData.inProcess == 0 {
             let cell = self.leaveReuestsTableView.dequeueReusableCell(withIdentifier: "appliedRequestTableViewCell", for: indexPath) as! appliedRequestTableViewCell
+            cell.viewController = self
             cell.updateViews(leaveReuests: leaveData)
             cell.delegate = self
             return cell

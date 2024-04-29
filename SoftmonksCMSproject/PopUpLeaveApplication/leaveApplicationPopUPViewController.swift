@@ -6,10 +6,22 @@
 //
 
 import UIKit
+import Alamofire
 
 class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate
 {
-   
+    let leaveTypes: [String: String] = ["fd": "Full Day", "mhd": "Morning Half Day", "ehd": "Evening Half Day"]
+    var focusedControl: UITextField?
+    var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
+    var fromDate: String?
+    var toDate: String?
+    var noOfDaysLeave: String?
+    var selectedLeaveTypestring: String?
+    var leaveReason: String?
+    var noofdays = 0.0
+    var leaveTypeKey: String?
+    var saveLeveAPIRespons: DeleteAPIResponse?
+
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var popupContentView: UIView!
     @IBOutlet weak var selectedLeaveType: UITextField!
@@ -23,8 +35,6 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     @IBOutlet weak var toDateView: DesingsForUIView!
     @IBOutlet weak var leaveReasonTextView: UITextView!
     
-    let leaveTypes: [String: String] = ["fd": "Full Day", "mhd": "Morning Half-Day", "ehd": "Afternoon Haf-Day"]
-    var focusedControl: UITextField?
     lazy var leavepickerView: UIPickerView = {
             let picker = UIPickerView()
             picker.dataSource = self
@@ -53,27 +63,17 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedLeaveType.delegate = self
-        
-//        let bar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
-//        let reset = UIBarButtonItem(title: "done", style: .plain, target: self, action: #selector(doneButtonTapped))
-//        bar.items = [reset]
-//        bar.isTranslucent = false
-//        bar.sizeToFit()
-//        selectedLeaveType.inputAccessoryView = bar
         crossButtonView.addElevatedShadow(to: crossButtonView)
         crossButtonView.layer.cornerRadius = 3.0
-        conFigView()
         selectedLeaveType.inputView = leavepickerView
         fromDateTextField.inputView = fromDateDatePicker
         toDateTextField.inputView = toDateDatePicker
+        conFigView()
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender: )))
-        view.addGestureRecognizer(gesture) 
-        
+        view.addGestureRecognizer(gesture)
         fromDateTextField.delegate = self
         toDateTextField.delegate = self
-        
-//        let bar = UIToolbar()
         let toolbar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
         toolbar.sizeToFit()
         toolbar.alpha = 1.0
@@ -85,15 +85,14 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelButtonTapped))
         cancelButton.image = cancelIcone
         let spaceBetween = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
         toolbar.setItems([cancelButton,spaceBetween,doneButton], animated: true)
-
         selectedLeaveType.inputAccessoryView = toolbar
         fromDateTextField.inputAccessoryView = toolbar
         toDateTextField.inputAccessoryView = toolbar
         fromDateTextField.isEnabled = false
         toDateTextField.isEnabled = false
     }
+    
     func textFieldDidChangeSelection(_ sender: UITextField) {
         if sender === selectedLeaveType {
             let dataStatus = enableNextTextField(currentField: selectedLeaveType, nextField: fromDateTextField)
@@ -121,37 +120,55 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         self.focusedControl = textField
       }
 
+
     @objc func fromDateDatePickerValueChanged(_ sender: UIDatePicker) {
         let selectedDate = sender.date
         toDateDatePicker.minimumDate = selectedDate
         updateDateTextField(fromDateTextField, with: sender.date)
         toDateTextField.text = ""
         noOfDaysLabel.text = "00"
-//        calculateAndDisplayDaysBetweenDates()
-     }
+        calculateAndDisplayDaysBetweenDates()
+        
+    }
 
      @objc func toDateDatePickerValueChanged(_ sender: UIDatePicker) {
          updateDateTextField(toDateTextField, with: sender.date)
          calculateAndDisplayDaysBetweenDates()
      }
     func calculateAndDisplayDaysBetweenDates() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        
         let fromDate = fromDateDatePicker.date
         let toDate = toDateDatePicker.date
+        self.fromDate = dateFormatter.string(from: fromDate)
+        self.toDate = dateFormatter.string(from: toDate)
         let todateText = toDateTextField.text
-        
-//        if ((todateText?.isEmpty) != nil) {
-//            noOfDaysLabel.text = "00"
-//            return
-//          }
-        
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: fromDate, to: toDate)
-        let daysBetween = components.day ?? 0 // Handle potential nil value
-        let noofdays = daysBetween + 1
+        let daysBetween: Double = Double(components.day ?? 0)
+        print("Nor of day = \(daysBetween)")
 
-        // Update your label with the number of days
-       
-        noOfDaysLabel.text = "\(noofdays) "
+        self.leaveTypeKey = getKeyForLeaveType(selectedLeaveType.text ?? "")
+        if leaveTypeKey != "fd" {
+            self.noofdays = ((daysBetween + 1.0) * 0.5)
+        } else {
+            self.noofdays = daysBetween + 1.0
+        }
+        // Update label with the number of days
+        noOfDaysLabel.text = "\(noofdays)"
+        self.noOfDaysLeave = noOfDaysLabel.text
+
+    }
+    
+    func getKeyForLeaveType(_ leaveTypeText: String) -> String? {
+        let leaveTypeMapping: [String: String] = [
+            "Full Day": "fd",
+            "Morning Half Day": "mhd",
+            "Evening Half Day": "ehd"
+        ]
+        
+        return leaveTypeMapping[leaveTypeText]
     }
 
     private func updateDateTextField(_ textField: UITextField, with date: Date) {
@@ -159,6 +176,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
            dateFormatter.dateFormat = "dd/MM/yyyy"
            textField.text = dateFormatter.string(from: date)
        }
+    
     func numberOfComponents(in leavepickerView: UIPickerView) -> Int {
         return 1
     }
@@ -166,20 +184,28 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     func pickerView(_ leavepickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return leaveTypes.count
     }
+    
     func pickerView(_ leavepickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let key = Array(leaveTypes.keys)[row]
         return leaveTypes[key]
     }
+    
     func pickerView(_ leavepickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let key = Array(leaveTypes.keys)[row]
         selectedLeaveType.text = leaveTypes[key]
+        calculateAndDisplayDaysBetweenDates()
+//        toDateTextField.text = nil
+//        fromDateTextField.text = nil
+//        noOfDaysLabel.text = "00"
     }
     
     @objc func viewTapped(sender: UITapGestureRecognizer){
         view.endEditing(true)
     }
+    
     @objc func doneButtonTapped() {
         view.endEditing(true)
+        leaveReason = leaveReasonTextView.text
             selectedLeaveType.resignFirstResponder()
             fromDateTextField.resignFirstResponder() // Dismiss the date picker
             toDateTextField.resignFirstResponder()
@@ -189,14 +215,18 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         selectedLeaveType.text = ""
         fromDateTextField.text = ""
         toDateTextField.text = ""
+        leaveReason = ""
         view.endEditing(true)
     }
     
     @IBAction func sendLeaveRequest(_ sender: Any) {
-        if validateTextFields(textField1: selectedLeaveType, textField2: fromDateTextField, textField3: toDateTextField, viewController: self) {
+
+        
+        if validateTextFields(textField1: selectedLeaveType, textField2: fromDateTextField, textField3: toDateTextField,leaveReason: leaveReasonTextView, viewController: self) {
+            addLeaveRequestAPICall()
+            
             hide()
         }
-        
     }
     
     //Converting it as an popup
@@ -219,11 +249,13 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         self.popupContentView.alpha = 0
         self.popupContentView.layer.cornerRadius = 10
     }
+    
     func popUp(sender: UIViewController) {
         sender.present(self, animated: true)
         self.showup()
         
     }
+    
     private func showup(){
         UIView.animate(withDuration: 0.2, delay: 0.0){
             self.backView.alpha = 1
@@ -266,6 +298,38 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
             bar.sizeToFit()
             //Add the toolbar to our textfield
             selectedLeaveType.inputAccessoryView = bar
+        }
+    
+    func getCurrentDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let currentDate = Date()
+        return dateFormatter.string(from: currentDate)
+    }
+    
+    func addLeaveRequestAPICall(){
+        print("Inside addLeave API")
+        let fromDate = fromDate
+        let toDate = toDate
+        let noOfDaysLeave = noOfDaysLeave
+        let leaveReason = leaveReason
+        let currentDate = getCurrentDate()
+        let parameters: [String: Any] = ["mode" : "saveLeaveRequest", "id": userDict?["id"] ?? "","leaveType": leaveTypeKey!, "fromDate": fromDate!, "toDate": toDate!, "appliedDate": currentDate, "noOfDays": noOfDaysLeave!, "reason": leaveReason!]
+        print(parameters)
+            AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+                .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
+                    guard let self = self else {return}
+                    switch response.result {
+                    case .success(let response):
+                        print (response)
+                        self.saveLeveAPIRespons = response
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+//            self.showAlert(message: self.saveLeveAPIRespons?.errMsg ?? "")
+
+       
         }
     
         @objc func dismissMyKeyboard(){

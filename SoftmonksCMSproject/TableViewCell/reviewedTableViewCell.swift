@@ -37,11 +37,13 @@ class reviewedTableViewCell: UITableViewCell {
                 leaveTypeLabel.text = leaveReuests.leaveType
             }
         if leaveReuests.rejected == 1 {
-            approvedButton.isHidden = true
-            rejectedButton.isHidden = false
+            rejectedButton.backgroundColor = UIColor.init(red: 255/255, green: 32/255, blue: 12/255, alpha: 1)
+            rejectedButton.setTitle("Rejected", for: .normal)
+
         } else {
-            rejectedButton.isHidden = true
-            approvedButton.isHidden = false
+            rejectedButton.backgroundColor = UIColor.init(red: 0/255, green: 111/255, blue: 4/255, alpha: 1)
+            rejectedButton.setTitle("Approved", for: .normal)
+//            approvedButton.isHidden = false
         }
     }
 

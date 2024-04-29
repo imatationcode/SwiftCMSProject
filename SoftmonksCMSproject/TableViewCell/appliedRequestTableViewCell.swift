@@ -52,7 +52,7 @@ class appliedRequestTableViewCell: UITableViewCell {
     
     @IBAction func tappedOnDelete(_ sender: Any) {
         
-        let id: String = leaveCell?.recordId ?? ""
+        let id: Int = leaveCell?.recordId ?? 0
         print(id)
         let parameters: [String: Any] = ["mode" : "deleteLeaveRequest", "recordId" : id ]
         AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
@@ -61,7 +61,8 @@ class appliedRequestTableViewCell: UITableViewCell {
                 switch response.result {
                 case .success(let response):
                     print (response)
-                    self.inputViewController?.showAlert(title: "Done", message: response.errMsg)
+                    let message = response.errMsg
+                    self.showAlert(title: "Success", message: message ?? "")
                 case .failure(let error):
                     print(error)
                 }
@@ -75,7 +76,6 @@ class appliedRequestTableViewCell: UITableViewCell {
         
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         inProgressView.onlyCornerRadius(conRadius: 10.0)
@@ -84,9 +84,21 @@ class appliedRequestTableViewCell: UITableViewCell {
         
         // Initialization code
     }
-}
-
     
+    
+    weak var viewController: UIViewController?
+    
+    func showAlert(title: String, message: String) {
+        guard let viewController = viewController else {
+            print("View controller is nil. Cannot present alert.")
+            return
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        viewController.present(alertController, animated: true, completion: nil)
+    }
+}
 //    override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 //

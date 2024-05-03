@@ -8,8 +8,13 @@
 import UIKit
 import Alamofire
 
+protocol LeaveApplicationPopUpDelegate: AnyObject {
+    func submitLeaveRequest(leaveType: String, fromDate: String, toDate: String, noOfDaysLeave: String, leaveReason: String, appliedDate: String)
+}
+
 class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate
 {
+    var prefilledData: editLeaveData?
     let leaveTypes: [String: String] = ["fd": "Full Day", "mhd": "Morning Half Day", "ehd": "Evening Half Day"]
     var focusedControl: UITextField?
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
@@ -20,7 +25,8 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     var leaveReason: String?
     var noofdays = 0.0
     var leaveTypeKey: String?
-    var saveLeveAPIRespons: DeleteAPIResponse?
+//    var saveLeveAPIRespons: DeleteAPIResponse?
+    var delegateVariable: LeaveApplicationPopUpDelegate?
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var popupContentView: UIView!
@@ -69,7 +75,6 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         fromDateTextField.inputView = fromDateDatePicker
         toDateTextField.inputView = toDateDatePicker
         conFigView()
-        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(sender: )))
         view.addGestureRecognizer(gesture)
         fromDateTextField.delegate = self
@@ -89,8 +94,25 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         selectedLeaveType.inputAccessoryView = toolbar
         fromDateTextField.inputAccessoryView = toolbar
         toDateTextField.inputAccessoryView = toolbar
-        fromDateTextField.isEnabled = false
-        toDateTextField.isEnabled = false
+        
+        toPrefillData()
+        print(" Here is Prefile \(prefilledData)")
+        if prefilledData == nil {
+            fromDateTextField.isEnabled = false
+            toDateTextField.isEnabled = false
+        } else{
+            fromDateTextField.isEnabled = true
+            toDateTextField.isEnabled = true
+        }
+        
+    }//ViewDidLoadEndsHere
+    
+    func toPrefillData() {
+        selectedLeaveType.text = leaveTypes[prefilledData?.leaveType ?? ""]
+        fromDateTextField.text = prefilledData?.fromDate
+        toDateTextField.text = prefilledData?.toDate
+        noOfDaysLabel.text = prefilledData?.noOfDays
+        leaveReasonTextView.text = prefilledData?.reason
     }
     
     func textFieldDidChangeSelection(_ sender: UITextField) {
@@ -147,7 +169,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: fromDate, to: toDate)
         let daysBetween: Double = Double(components.day ?? 0)
-        print("Nor of day = \(daysBetween)")
+        
 
         self.leaveTypeKey = getKeyForLeaveType(selectedLeaveType.text ?? "")
         if leaveTypeKey != "fd" {
@@ -220,11 +242,8 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     }
     
     @IBAction func sendLeaveRequest(_ sender: Any) {
-
-        
         if validateTextFields(textField1: selectedLeaveType, textField2: fromDateTextField, textField3: toDateTextField,leaveReason: leaveReasonTextView, viewController: self) {
             addLeaveRequestAPICall()
-            
             hide()
         }
     }
@@ -299,7 +318,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
             //Add the toolbar to our textfield
             selectedLeaveType.inputAccessoryView = bar
         }
-    
+    //function to return system date
     func getCurrentDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -308,28 +327,29 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     }
     
     func addLeaveRequestAPICall(){
-        print("Inside addLeave API")
-        let fromDate = fromDate
-        let toDate = toDate
-        let noOfDaysLeave = noOfDaysLeave
-        let leaveReason = leaveReason
+      guard let leaveType = leaveTypeKey,
+        let fromDate = fromDate,
+        let toDate = toDate,
+        let noOfDaysLeave = noOfDaysLeave,
+        let leaveReason = leaveReason else { return }
         let currentDate = getCurrentDate()
-        let parameters: [String: Any] = ["mode" : "saveLeaveRequest", "id": userDict?["id"] ?? "","leaveType": leaveTypeKey!, "fromDate": fromDate!, "toDate": toDate!, "appliedDate": currentDate, "noOfDays": noOfDaysLeave!, "reason": leaveReason!]
-        print(parameters)
-            AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-                .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
-                    guard let self = self else {return}
-                    switch response.result {
-                    case .success(let response):
-                        print (response)
-                        self.saveLeveAPIRespons = response
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-//            self.showAlert(message: self.saveLeveAPIRespons?.errMsg ?? "")
-
-       
+        delegateVariable?.submitLeaveRequest(leaveType: leaveType, fromDate: fromDate, toDate: toDate, noOfDaysLeave: noOfDaysLeave, leaveReason: leaveReason, appliedDate: currentDate)
+        
+//        let parameters: [String: Any] = ["mode" : "saveLeaveRequest", "id": userDict?["id"] ?? "","leaveType": leaveTypeKey!, "fromDate": fromDate!, "toDate": toDate!, "appliedDate": currentDate, "noOfDays": noOfDaysLeave!, "reason": leaveReason!]
+////        print(parameters)
+//            AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+//                .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
+//                    guard let self = self else {return}
+//                    switch response.result {
+//                    case .success(let response):
+//                        print (response)
+//                        self.saveLeveAPIRespons = response
+//                        self.delegateVariable?.leaveAppliResponse(withResponse: response)
+//                        self.delegateVariable?.callingRefreshAPI()
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                }
         }
     
         @objc func dismissMyKeyboard(){

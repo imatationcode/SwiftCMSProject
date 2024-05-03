@@ -72,7 +72,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="CompleteEdit"/>
                                 <connections>
-                                    <action selector="tappedOnEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="soB-YQ-Qom"/>
+                                    <action selector="tappedOnEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="H2T-wc-j27"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPq-fh-tzl">

@@ -15,7 +15,7 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     var initialAPIDataVar: LeaveResponse?
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
     var leaveApplicationPop: leaveApplicationPopUPViewController?
-    
+    var cellID: Int?
     @IBOutlet weak var leaveReuestsTableView: UITableView!
     @IBOutlet weak var totalLeavesLabel: UILabel!
     @IBOutlet weak var availabelLeavesLabel: UILabel!
@@ -37,6 +37,12 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
         
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        cellID = nil
+//    }
+    
     func initialLeaveDataFromAPI(){
         let parameters: [String: Any] = ["mode": "initLeaveRequest", "id": userDict?["id"] ?? ""]
         AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
@@ -44,7 +50,7 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
                 guard let self = self else { return }
                 switch response.result {
                 case .success(let leaveResponse):
-                    print(leaveResponse)
+//                    print(leaveResponse)
                     self.initialAPIDataVar = leaveResponse
                     self.configLayout()
                 case .failure(let error):
@@ -98,6 +104,7 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     }
     
     @IBAction func applyLeaveTapped(_ sender: Any) {
+
         leaveApplicationPop = leaveApplicationPopUPViewController()
         leaveApplicationPop?.delegateVariable = self
         leaveApplicationPop?.popUp(sender: self)
@@ -117,7 +124,8 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
                 case .success(let response):
                      print (response)
                     let leaveApplicationPop = leaveApplicationPopUPViewController()
-                    leaveApplicationPop.prefilledData = response.leaveData
+                    leaveApplicationPop.prefilledData = response.leaveData // Passing Prefill data
+                    leaveApplicationPop.cellID = self.cellID
                     leaveApplicationPop.delegateVariable = self
                     leaveApplicationPop.popUp(sender: self)
 //                    self.prefillResponse = response.leaveData
@@ -132,28 +140,76 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     
     func editBtnPressed(forCell cell: appliedRequestTableViewCell, id: Int) {
         print(id)
+        self.cellID = id
         let parameters: [String: Any] = ["mode" : "editLeaveRequest", "recordId" : id ]
         editAPICall(parameters)
     }
     
-    func submitLeaveRequest(leaveType: String, fromDate: String, toDate: String, noOfDaysLeave: String, leaveReason: String, appliedDate: String) {
-                let parameters: [String: Any] = ["mode" : "saveLeaveRequest", "id": userDict?["id"] ?? "","leaveType": leaveType, "fromDate": fromDate, "toDate": toDate, "appliedDate": appliedDate, "noOfDays": noOfDaysLeave, "reason": leaveReason]
-        //        print(parameters)
-                    AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-                        .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
-                            guard let self = self else {return}
-                            switch response.result {
-                            case .success(let response):
-                                print (response)
-                                self.saveLeveAPIRespons = response
-                                if response.err == 1 {
-                                    self.showAlert(title:"Repeating Date", message: response.errMsg)
-                                }
-                                self.initialLeaveDataFromAPI()
-                            case .failure(let error):
-                                print(error)
-                            }
+    func updateLeaveChanges(leaveType: String, fromDate: String, toDate: String, noOfDaysLeave: String, leaveReason: String, appliedDate: String) {
+        let parameters: [String: Any] = ["mode" : "updateLeaveRequest", "id": userDict?["id"] ?? "","recordId": cellID!,"leaveType": leaveType, "fromDate": fromDate, "toDate": toDate, "appliedDate": appliedDate, "noOfDays": noOfDaysLeave, "reason": leaveReason]
+        print(parameters)
+//            AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+//                .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
+//                    guard let self = self else {return}
+//                    switch response.result {
+//                    case .success(let response):
+//                        print (response)
+//                        self.saveLeveAPIRespons = response
+//                        if response.err == 1 {
+//                            self.showAlert(title:"Repeating Date", message: response.errMsg)
+//                        }
+//                        self.initialLeaveDataFromAPI()
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                } 
+    }
+    
+    func submitLeaveRequest(leaveType: String, fromDate: String, toDate: String, noOfDaysLeave: String, leaveReason: String, appliedDate: String, cellID: Int?) {
+        print("inside submitLeaveRequest")
+        if cellID == nil {
+            let parameters: [String: Any] = ["mode" : "saveLeaveRequest", "id": userDict?["id"] ?? "","leaveType": leaveType, "fromDate": fromDate, "toDate": toDate, "appliedDate": appliedDate, "noOfDays": noOfDaysLeave, "reason": leaveReason]
+            //        print(parameters)
+            AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+                .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
+                    guard let self = self else {return}
+                    switch response.result {
+                    case .success(let response):
+                        print (response)
+                        self.saveLeveAPIRespons = response
+                        if response.err == 1 {
+                            self.showAlert(title:"Repeating Date", message: response.errMsg)
+                        } else{
+                            self.showAlert(title: "Success", message: response.errMsg)
                         }
+                        self.initialLeaveDataFromAPI()
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+        } else{
+            print("\n INSIDE UPDATE API")
+            let parameters: [String: Any] = ["mode" : "updateLeaveRequest", "id": userDict?["id"] ?? "","recordId": cellID!,"leaveType": leaveType, "fromDate": fromDate, "toDate": toDate, "appliedDate": appliedDate, "noOfDays": noOfDaysLeave, "reason": leaveReason]
+            print("Here Is YOUR Parameter = \(parameters)")
+            AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+                .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
+                    guard let self = self else {return}
+                    switch response.result {
+                    case .success(let response):
+                        print (response)
+                        self.saveLeveAPIRespons = response
+                        if response.err == 1 {
+                            self.showAlert(title:"Repeating Date", message: response.errMsg)
+                        } else{
+                            self.showAlert(title: "Success", message: response.errMsg)
+                        }
+                        self.initialLeaveDataFromAPI()
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            
+        }
     }
     
 

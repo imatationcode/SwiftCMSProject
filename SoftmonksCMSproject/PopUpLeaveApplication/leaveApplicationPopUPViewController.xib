@@ -19,6 +19,7 @@
                 <outlet property="noOfDaysLabel" destination="cB4-4Y-EoG" id="VU7-d6-vGJ"/>
                 <outlet property="popupContentView" destination="C24-pM-4bx" id="bKS-VV-auk"/>
                 <outlet property="selectedLeaveType" destination="kvo-FG-ZVM" id="4Ug-MK-pWy"/>
+                <outlet property="sendLeaveMainButton" destination="My2-HI-GSi" id="lZ9-6P-8vF"/>
                 <outlet property="toDateLabel" destination="pEi-fA-ygM" id="dAA-Ub-duq"/>
                 <outlet property="toDateTextField" destination="MY8-4a-j2m" id="uHI-l0-r8f"/>
                 <outlet property="toDateView" destination="Y9W-cb-jFr" id="jHz-0W-fRD"/>
@@ -67,25 +68,25 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rY-PT-3en" userLabel="labelFieldsView">
-                                    <rect key="frame" x="5" y="59" width="285" height="398"/>
+                                    <rect key="frame" x="15" y="59" width="265" height="398"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave Type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jha-3h-hFJ">
-                                            <rect key="frame" x="2" y="0.0" width="283" height="14.333333333333334"/>
+                                            <rect key="frame" x="2" y="0.0" width="263" height="14.333333333333334"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KzA-53-Ite" customClass="DesingsForUIView" customModule="SoftmonksCMSproject" customModuleProvider="target">
-                                            <rect key="frame" x="2" y="19.333333333333343" width="283" height="50"/>
+                                            <rect key="frame" x="2" y="19.333333333333343" width="263" height="50"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="---Select---" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kvo-FG-ZVM">
-                                                    <rect key="frame" x="20" y="16.999999999999972" width="243" height="16"/>
+                                                    <rect key="frame" x="20" y="16.999999999999972" width="223" height="16"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down_Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ksI-Gc-l8X">
-                                                    <rect key="frame" x="239" y="12.999999999999972" width="24" height="24"/>
+                                                    <rect key="frame" x="219" y="12.999999999999972" width="24" height="24"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                                 </imageView>
@@ -100,22 +101,22 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jw7-uH-Wg3">
-                                            <rect key="frame" x="2" y="79.333333333333314" width="283" height="14.333333333333329"/>
+                                            <rect key="frame" x="2" y="79.333333333333314" width="263" height="14.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cb2-1u-oZp" customClass="DesingsForUIView" customModule="SoftmonksCMSproject" customModuleProvider="target">
-                                            <rect key="frame" x="2" y="98.666666666666686" width="283" height="50"/>
+                                            <rect key="frame" x="2" y="98.666666666666686" width="263" height="50"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DD/MM/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xb-dM-d1w">
-                                                    <rect key="frame" x="20" y="17" width="243" height="16"/>
+                                                    <rect key="frame" x="20" y="17" width="223" height="16"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar_month (1)" translatesAutoresizingMaskIntoConstraints="NO" id="fiQ-jo-NUU">
-                                                    <rect key="frame" x="243" y="15" width="20" height="20"/>
+                                                    <rect key="frame" x="223" y="15" width="20" height="20"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                                 </imageView>
@@ -130,22 +131,22 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEi-fA-ygM">
-                                            <rect key="frame" x="2" y="158.66666666666669" width="283" height="14.333333333333343"/>
+                                            <rect key="frame" x="2" y="158.66666666666669" width="263" height="14.333333333333343"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9W-cb-jFr" customClass="DesingsForUIView" customModule="SoftmonksCMSproject" customModuleProvider="target">
-                                            <rect key="frame" x="2" y="178" width="283" height="50"/>
+                                            <rect key="frame" x="2" y="178" width="263" height="50"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DD/MM/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MY8-4a-j2m">
-                                                    <rect key="frame" x="20" y="17" width="243" height="16"/>
+                                                    <rect key="frame" x="20" y="17" width="223" height="16"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar_month (1)" translatesAutoresizingMaskIntoConstraints="NO" id="ngG-1C-pMF">
-                                                    <rect key="frame" x="243" y="15" width="20" height="20"/>
+                                                    <rect key="frame" x="223" y="15" width="20" height="20"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                                 </imageView>
@@ -172,13 +173,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05r-9X-UPp">
-                                            <rect key="frame" x="4" y="262.33333333333331" width="273" height="14.333333333333314"/>
+                                            <rect key="frame" x="4" y="262.33333333333331" width="253" height="14.333333333333314"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Wedding" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9lU-Ea-FKz">
-                                            <rect key="frame" x="2" y="281.66666666666663" width="283" height="106.33333333333331"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9lU-Ea-FKz">
+                                            <rect key="frame" x="2" y="281.66666666666663" width="263" height="106.33333333333331"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <color key="textColor" systemColor="labelColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -242,8 +243,8 @@
                                 <constraint firstItem="8rY-PT-3en" firstAttribute="top" secondItem="24k-Qq-Pmz" secondAttribute="bottom" constant="14.666666666666671" id="U7K-zl-vXU"/>
                                 <constraint firstAttribute="trailing" secondItem="24k-Qq-Pmz" secondAttribute="trailing" id="UE8-hA-eM7"/>
                                 <constraint firstItem="My2-HI-GSi" firstAttribute="top" secondItem="8rY-PT-3en" secondAttribute="bottom" constant="5" id="gDa-dP-ozT"/>
-                                <constraint firstAttribute="trailing" secondItem="8rY-PT-3en" secondAttribute="trailing" constant="5" id="mp1-TG-7dm"/>
-                                <constraint firstItem="8rY-PT-3en" firstAttribute="leading" secondItem="C24-pM-4bx" secondAttribute="leading" constant="5" id="rtj-cp-RLo"/>
+                                <constraint firstAttribute="trailing" secondItem="8rY-PT-3en" secondAttribute="trailing" constant="15" id="mp1-TG-7dm"/>
+                                <constraint firstItem="8rY-PT-3en" firstAttribute="leading" secondItem="C24-pM-4bx" secondAttribute="leading" constant="15" id="rtj-cp-RLo"/>
                                 <constraint firstItem="My2-HI-GSi" firstAttribute="leading" secondItem="C24-pM-4bx" secondAttribute="leading" constant="10" id="ta3-dx-i8F"/>
                                 <constraint firstItem="My2-HI-GSi" firstAttribute="centerX" secondItem="C24-pM-4bx" secondAttribute="centerX" id="u3W-Zr-E8i"/>
                                 <constraint firstAttribute="trailing" secondItem="My2-HI-GSi" secondAttribute="trailing" constant="10" id="zHa-lm-CAj"/>

@@ -38,6 +38,7 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
         isPasswordVisible.toggle()
         updatePasswordVisibility()
     }
+    
     private func updatePasswordVisibility() {
         // Update the text and image based on the password visibility state
         passwordTextField.isSecureTextEntry = !isPasswordVisible

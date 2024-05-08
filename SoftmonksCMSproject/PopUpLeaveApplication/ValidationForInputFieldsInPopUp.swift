@@ -8,9 +8,8 @@
 import UIKit
 
 func validateTextFields(textField1: UITextField, textField2: UITextField, textField3: UITextField, leaveReason: UITextView, viewController: UIViewController) -> Bool {
-    
+    print(leaveReason.text)
     if textField1.text!.isEmpty || textField2.text!.isEmpty || textField3.text!.isEmpty || leaveReason.text!.isEmpty {
-      print(textField2)
     showAlert(viewController: viewController, message: "Please fill in all fields.")
     return false
   }

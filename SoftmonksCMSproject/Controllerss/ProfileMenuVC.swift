@@ -32,33 +32,6 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
         
     }
     
-//    func apiCall(){
-//        print(UserDefaults.standard.object(forKey: "isLoggedIN"))
-//        let url = "https://monks.weblogicz.com/apps/softmonks.json?os=ios&v=1b1&b=SMK"
-//        let parameters = ["mode": "getUserData", "id": UserDefaults.standard.object(forKey: "isLoggedIN") as! String]
-//        AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-//            .responseDecodable(of: UserDetails.self) { [weak self] response in  // Move switch statement closer
-//                guard let self = self else { return }
-//                switch response.result {
-//                case .success(let userData):
-//                    self.userdetails = userData
-//                    print(userData)
-//                    self.EmployeNameLabel.text = userData.name
-//                    // Handle successful login data retrieval
-//                    guard userData.err == 0 else {
-////                        self.showAlert(title: "Login Failed", message: userData.errMsg)
-//                        print(userData.errMsg)  //  debugging purposes
-//                        return
-//                    }
-//                    print(userData)  //  debugging purpose
-//
-//                case .failure(let error):
-//                    // Handle login data retrieval failure (including potential decoding errors)
-//                    print(error)
-//                }
-//            }
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return optionNames.count
     }
@@ -93,7 +66,9 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
 
      func profileTapped() {
         print("Profile tapped")
-         
+         if let personalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PersonalDetailsVC") as? PersonalDetailsVC{
+             navigationController?.pushViewController(personalVC, animated: true)
+         }
      }
 
      func calendarTapped() {

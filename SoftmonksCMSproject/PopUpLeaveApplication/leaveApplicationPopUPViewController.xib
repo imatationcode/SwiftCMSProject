@@ -31,17 +31,17 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvE-gd-8zs" userLabel="backView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvE-gd-8zs" userLabel="backView" customClass="TPKeyboardAvoidingScrollView">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C24-pM-4bx" userLabel="contentView">
                             <rect key="frame" x="49" y="172" width="295" height="508"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0e-tc-2eh" userLabel="crossButtonView">
-                                    <rect key="frame" x="270" y="5" width="20" height="20"/>
+                                    <rect key="frame" x="250" y="5" width="40" height="40"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="InO-Oh-tpN">
-                                            <rect key="frame" x="5" y="5" width="10" height="10"/>
+                                            <rect key="frame" x="2" y="2" width="36" height="36"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
                                                 <color key="baseForegroundColor" systemColor="systemGrayColor"/>
@@ -53,12 +53,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="InO-Oh-tpN" secondAttribute="bottom" constant="5" id="5C7-WM-fXs"/>
-                                        <constraint firstItem="InO-Oh-tpN" firstAttribute="top" secondItem="e0e-tc-2eh" secondAttribute="top" constant="5" id="8kq-Ee-4Bu"/>
+                                        <constraint firstAttribute="bottom" secondItem="InO-Oh-tpN" secondAttribute="bottom" constant="2" id="5C7-WM-fXs"/>
+                                        <constraint firstItem="InO-Oh-tpN" firstAttribute="top" secondItem="e0e-tc-2eh" secondAttribute="top" constant="2" id="8kq-Ee-4Bu"/>
                                         <constraint firstAttribute="width" secondItem="e0e-tc-2eh" secondAttribute="height" multiplier="1:1" id="Iyo-ba-wQZ"/>
-                                        <constraint firstAttribute="trailing" secondItem="InO-Oh-tpN" secondAttribute="trailing" constant="5" id="SZ2-gN-tgL"/>
-                                        <constraint firstAttribute="width" constant="20" id="bDq-oN-enk"/>
-                                        <constraint firstItem="InO-Oh-tpN" firstAttribute="leading" secondItem="e0e-tc-2eh" secondAttribute="leading" constant="5" id="vBy-mB-jEE"/>
+                                        <constraint firstAttribute="trailing" secondItem="InO-Oh-tpN" secondAttribute="trailing" constant="2" id="SZ2-gN-tgL"/>
+                                        <constraint firstAttribute="width" constant="40" id="bDq-oN-enk"/>
+                                        <constraint firstItem="InO-Oh-tpN" firstAttribute="leading" secondItem="e0e-tc-2eh" secondAttribute="leading" constant="2" id="vBy-mB-jEE"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24k-Qq-Pmz">

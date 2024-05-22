@@ -198,6 +198,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
          updateDateTextField(toDateTextField, with: sender.date)
          calculateAndDisplayDaysBetweenDates()
      }
+    
     func calculateAndDisplayDaysBetweenDates() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -269,10 +270,13 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         }
     
     @objc func cancelButtonTapped(){
-        selectedLeaveType.text = ""
-        fromDateTextField.text = ""
-        toDateTextField.text = ""
-        leaveReason = ""
+        if selectedLeaveType.isFirstResponder {
+            selectedLeaveType.text = ""
+        } else if fromDateTextField.isFirstResponder {
+                fromDateTextField.text = ""
+        } else if toDateTextField.isFirstResponder {
+            toDateTextField.text = ""
+        }
         view.endEditing(true)
     }
     //Validating  data on press of send leave request button then sending it to main  list screen

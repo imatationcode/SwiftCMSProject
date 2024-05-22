@@ -10,9 +10,9 @@ import UIKit
 class ProfileImageCustomeView: UIView {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var outerContainerView: UIView!
-    
     @IBOutlet weak var innerImageView: UIView!
     @IBOutlet weak var mainIconImage: UIImageView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commitInit()

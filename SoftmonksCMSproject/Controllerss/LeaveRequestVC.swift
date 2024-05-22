@@ -32,18 +32,11 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
         initialLeaveDataFromAPI()
         self.leaveReuestsTableView.delegate = self
         self.leaveReuestsTableView.dataSource = self
-        //        let leaveApplicationPop = leaveApplicationPopUPViewController()
-        //        leaveApplicationPop.delegateVariable = self
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        cellID = nil
-//    }
-    
     func initialLeaveDataFromAPI(){
+        
         let parameters: [String: Any] = ["mode": "initLeaveRequest", "id": userDict?["id"] ?? ""]
         AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .responseDecodable(of: LeaveResponse.self) { [weak self] response in
@@ -61,6 +54,7 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     }
     
     func configLayout() {
+        self.leaveReuestsTableView.setContentOffset(CGPoint.zero, animated: true)
         totalLeavesLabel.text = initialAPIDataVar?.leaveTotal
         availabelLeavesLabel.text = initialAPIDataVar?.leaveAvailable
         takenLeavesLabel.text = initialAPIDataVar?.leaveTaken
@@ -69,6 +63,7 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
             self.leaveReuestsTableView.reloadData()
         }
     }
+    
    @objc func editButtonClicked(_ sender : UIButton){
         let vc = leaveApplicationPopUPViewController()
         vc.modalPresentationStyle = .fullScreen
@@ -96,6 +91,14 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
             let cell = self.leaveReuestsTableView.dequeueReusableCell(withIdentifier: "reviewedTableViewCell", for: indexPath) as! reviewedTableViewCell
             cell.updateViews(leaveReuests: leaveData)
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isIpad() {
+            return 200
+        } else {
+            return 130
         }
     }
     
@@ -148,21 +151,6 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     func updateLeaveChanges(leaveType: String, fromDate: String, toDate: String, noOfDaysLeave: String, leaveReason: String, appliedDate: String) {
         let parameters: [String: Any] = ["mode" : "updateLeaveRequest", "id": userDict?["id"] ?? "","recordId": cellID!,"leaveType": leaveType, "fromDate": fromDate, "toDate": toDate, "appliedDate": appliedDate, "noOfDays": noOfDaysLeave, "reason": leaveReason]
         print(parameters)
-//            AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-//                .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
-//                    guard let self = self else {return}
-//                    switch response.result {
-//                    case .success(let response):
-//                        print (response)
-//                        self.saveLeveAPIRespons = response
-//                        if response.err == 1 {
-//                            self.showAlert(title:"Repeating Date", message: response.errMsg)
-//                        }
-//                        self.initialLeaveDataFromAPI()
-//                    case .failure(let error):
-//                        print(error)
-//                    }
-//                } 
     }
     
     func submitLeaveRequest(leaveType: String, fromDate: String, toDate: String, noOfDaysLeave: String, leaveReason: String, appliedDate: String, cellID: Int?) {
@@ -214,3 +202,8 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     
 
 }//class END
+extension UIViewController {
+    func isIpad() -> Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
+}

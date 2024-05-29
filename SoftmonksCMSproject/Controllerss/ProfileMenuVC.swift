@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-//    let myId: String = UserDefaults.standard.object(forKey: "isLoggedIN") as! String
+    //    let myId: String = UserDefaults.standard.object(forKey: "isLoggedIN") as! String
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
     var optionImg: [String] = ["personIcon", "calendarSVGIcon", "OnTimeIcon", "LeaveOfficeIcon", "SalaryIcon", "ClipboardIcon"]
     var optionNames: [String] = ["Profile", "Calendar", "Check Counter", "Leave Requests", "Salary Details", "Company Policies"]
@@ -19,9 +19,9 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     @IBOutlet weak var menuListCollectionView: UICollectionView!
     @IBOutlet weak var designationBackgrdView: UIView!
     @IBOutlet weak var potraitImg: UIImageView!
-
+    
     override func viewDidLoad() {
-       // print("In MainMenu")
+        // print("In MainMenu")
         navigationItem.hidesBackButton = true
         super.viewDidLoad()
         addLogoToFooter()
@@ -38,66 +38,66 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let mycell = menuListCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            as! CollectionViewCell
+        as! CollectionViewCell
         mycell.optionImg.image = UIImage(named: optionImg[indexPath.row])
         mycell.optionTitle.text = optionNames[indexPath.row]
         return mycell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         // Determine which cell was tapped based on indexPath
-         switch indexPath.item {
-         case 0:
-             profileTapped()
-         case 1:
-             calendarTapped()
-         case 2:
-             checkCounterTapped()
-         case 3:
-             leaveRequestTapped()
-         case 4:
-             salaryTapped()
-         case 5:
-             companyPoliciesTapped()
-         default:
-             break
-         }
-     }
-
-     func profileTapped() {
+        // Determine which cell was tapped based on indexPath
+        switch indexPath.item {
+        case 0:
+            profileTapped()
+        case 1:
+            calendarTapped()
+        case 2:
+            checkCounterTapped()
+        case 3:
+            leaveRequestTapped()
+        case 4:
+            salaryTapped()
+        case 5:
+            companyPoliciesTapped()
+        default:
+            break
+        }
+    }
+    
+    func profileTapped() {
         print("Profile tapped")
-         if let personalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PersonalDetailsVC") as? PersonalDetailsVC{
-             navigationController?.pushViewController(personalVC, animated: true)
-         }
-     }
-
-     func calendarTapped() {
-         print("Calendar tapped")
-     }
-
-     func checkCounterTapped() {
-         if let checkcounterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CheckCounterVC") as? CheckCounterVC{
-             navigationController?.pushViewController(checkcounterVC, animated: true)
-         }
-     }
-
-     func leaveRequestTapped() {
-         print("Leave Request tapped")
-         
-         if let leaveReqsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LeaveRequestVC") as? LeaveRequestVC{
-             navigationController?.pushViewController(leaveReqsVC, animated: true)
-         }
-     }
-     func salaryTapped() {
-         
-         print("Salary Details tapped")
-     }
-
-     func companyPoliciesTapped() {
-         
-         print("Company Policies tapped")
-     }
-
+        if let personalVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PersonalDetailsVC") as? PersonalDetailsVC{
+            navigationController?.pushViewController(personalVC, animated: true)
+        }
+    }
+    
+    func calendarTapped() {
+        print("Calendar tapped")
+    }
+    
+    func checkCounterTapped() {
+        if let checkcounterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CheckCounterVC") as? CheckCounterVC{
+            navigationController?.pushViewController(checkcounterVC, animated: true)
+        }
+    }
+    
+    func leaveRequestTapped() {
+        print("Leave Request tapped")
+        
+        if let leaveReqsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LeaveRequestVC") as? LeaveRequestVC{
+            navigationController?.pushViewController(leaveReqsVC, animated: true)
+        }
+    }
+    func salaryTapped() {
+        
+        print("Salary Details tapped")
+    }
+    
+    func companyPoliciesTapped() {
+        
+        print("Company Policies tapped")
+    }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
@@ -106,7 +106,7 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
             cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         UIView.animate(withDuration: 0.2) {
@@ -149,11 +149,15 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
         // Adding Border
         potraitImg.layer.borderWidth = 2
         potraitImg.layer.borderColor = UIColor(red: 0.2, green: 0.6196, blue: 1.0, alpha: 1.0).cgColor
-
+        
     }
+
     
     @IBAction func tappedOnLogout(_ sender: Any) {
-        
+        logOut()
+    }
+    
+    func logOut() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "homeNavigationViewController") as! homeNavigationViewController
         if let sd =  self.view.window?.windowScene?.delegate as? SceneDelegate , let window = sd.window {
             //self.navigationController?.pushViewController(vc, animated: true)
@@ -163,6 +167,18 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
             self.present(vc, animated: true)
             
         }
-       
+        
     }
+    
 }
+
+//extension ProfileMenuVC: changePasssworddelegate {
+//    func loggingOut() {
+//        print("IN the Delegate")
+//        logOut()
+//    }
+//
+//}
+
+
+

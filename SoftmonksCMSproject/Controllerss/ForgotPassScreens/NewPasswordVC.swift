@@ -9,8 +9,13 @@ import UIKit
 
 class NewPasswordVC: UIViewController, LogoDisplayable, UITextFieldDelegate {
     
-    var isPasswordVisible = false
-
+    var isPasswordVisible: Bool = false
+    var emailID: String?
+    var employeeID: Int?
+    var newPassWordVar: String?
+    var confirmPasswordVar: String?
+    
+    @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var confirmPassEyeButton: UIButton!
     @IBOutlet weak var newpassEyeButton: UIButton!
     @IBOutlet weak var confirmPasswordTextfields: UITextField!
@@ -28,12 +33,12 @@ class NewPasswordVC: UIViewController, LogoDisplayable, UITextFieldDelegate {
         confirmPasswordTextfields.isSecureTextEntry = true
     }
     
-    @IBAction func eyeButton1Tapped(_ sender: Any) {
+    @IBAction func eyeButton1Tapped(_ sender: UIButton) {
         isPasswordVisible.toggle()
         updatePasswordVisibility()
     
 }
-    @IBAction func eye2ButtonConfirmpass(_ sender: Any) {
+    @IBAction func eye2ButtonConfirmpass(_ sender: UIButton) {
         isPasswordVisible.toggle()
         updatePasswordVisibility()
         
@@ -49,18 +54,28 @@ private func updatePasswordVisibility() {
     confirmPassEyeButton.setImage(eyeIconImage, for: .normal)
 }
     
-    @IBAction func resetButtonTappeed(_ sender: Any) {
-        if !performBasicOperations(){
-            return
+    @IBAction func resetButtonTappeed(_ sender: UIButton) {
+        if performBasicOperations(){
+            otpAPICall()
         } else{
-                if let passwordResetCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PasswordResetCompletionVC") as? PasswordResetCompletionVC {navigationController?.pushViewController(passwordResetCompletionVC, animated: true)}
+            return
         }
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            // Dismiss the keyboard when return key is tapped
-            textField.resignFirstResponder()
-            return true
+    
+    func otpAPICall() {
+        let parameters: [String : Any] = ["mode": "createNewPassword", "id" : employeeID!, "newPassword" : newPassWordVar!, "confirmNewPassword" : confirmPasswordVar! ]
+        passAPICall(parameters) { (success, errorMessage, uniqId) in
+            if success {
+                print(errorMessage)
+                self.loaderActivityIncicatior.stopAnimating()
+                if let passwordResetCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PasswordResetCompletionVC") as? PasswordResetCompletionVC {self.navigationController?.pushViewController(passwordResetCompletionVC, animated: true)}
+            } else {
+                self.loaderActivityIncicatior.stopAnimating()
+                self.showAlert(title: "Invalid Mail", message: errorMessage ?? "")
+                return
+            }
         }
+    }
         // Function to perform basic operations on text fields
         func performBasicOperations() -> Bool {
             guard let password = newPasswordTextField.text, !password.isEmpty,
@@ -69,6 +84,9 @@ private func updatePasswordVisibility() {
                 showAlert(title: "Error", message: "Please fill in both password fields.")
                 return false
             }
+            self.newPassWordVar = password
+            self.confirmPasswordVar = confirmPassword
+            
             // Check if passwords match
             if password != confirmPassword {
                 showAlert(title: "Error", message: "New Passwords & Confirem Password do not match. Please try again.")
@@ -78,7 +96,12 @@ private func updatePasswordVisibility() {
             print("Password reset successful!")
             return true
         }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            // Dismiss the keyboard when return key is tapped
+            textField.resignFirstResponder()
+            return true
+        }
     
 
 }

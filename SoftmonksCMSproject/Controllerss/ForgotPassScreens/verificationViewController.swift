@@ -10,15 +10,20 @@ import UIKit
 class verificationViewController: UIViewController, LogoDisplayable {
     private var timer: Timer?
     private var remainingTime = 60
+    
+    var eMailId: String?
+    
     var isbuttonEnabeld = false
+    
+    @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var otpStackVIew: OTPView!
     @IBOutlet weak var countDownlabel: UILabel!
     @IBOutlet weak var resendButton: UIButton!
     @IBOutlet weak var mainImageView: ProfileImageCustomeView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+        print("email in verificatio = \(eMailId)")
+        loaderActivityIncicatior.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         addLogoToFooter()
         mainImageView.mainIconImage.image = UIImage(named: "MailwithTickmark")
         let titleFont = UIFont.systemFont(ofSize: 20.0) // Set font size
@@ -59,18 +64,53 @@ class verificationViewController: UIViewController, LogoDisplayable {
                   alertController.addAction(okAction)
                   present(alertController, animated: true, completion: nil)
         } else {
-            if let newpasswordVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewPasswordVC") as? NewPasswordVC {navigationController?.pushViewController(newpasswordVc, animated: true)}
+            let otp = otpStackVIew.getEnteredOTP()
+            let perameters: [String : Any] = ["mode":"verifyOTP", "otp":otp]
+            passAPICall(perameters) { (success, errorMessage, uniqId) in
+                if success {
+                    self.loaderActivityIncicatior.stopAnimating()
+                    print("all ok")
+                    if let newpasswordVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewPasswordVC") as? NewPasswordVC {
+                        newpasswordVc.emailID = self.eMailId; newpasswordVc.employeeID = uniqId ; self.navigationController?.pushViewController(newpasswordVc, animated: true)}
+                } else {
+                    print("not all ok")
+                    self.loaderActivityIncicatior.stopAnimating()
+                    self.showAlert(title: "Invalid", message: errorMessage ?? "")
+                    return
+                }
+            }
+            
+            
+            
+
         }
     }
+    
+    func resendOtp() {
+        self.loaderActivityIncicatior.startAnimating()
+        let parameters: [String : Any] = ["mode": "verifyEmail" , "username": eMailId! ]
+        passAPICall(parameters) { (success, errorMessage, unqId) in
+            if success {
+                self.loaderActivityIncicatior.stopAnimating()
+                print("all ok")
+            } else {
+                    print("not all ok")
+                    self.loaderActivityIncicatior.stopAnimating()
+                    self.showAlert(title: "Invalid Mail", message: errorMessage ?? "")
+                    return
+                }
+            }
+        }
     
     @IBAction func resendOTPtapped(_ sender: Any) {
         startCountdownTimer()
           // Disable the resend button
         otpStackVIew.clearTextFields()
         resendButton.isEnabled = false
+        resendOtp()
+        print("resend End")
         
     }
-    
 }
 
 

@@ -8,6 +8,7 @@
 import UIKit
 
 class OTPView: UIStackView, UITextFieldDelegate {
+    
     var textFieldArray = [UITextField]()
     var numberOfOTPdigit = 6
     var focusedControl: UITextField?
@@ -65,7 +66,6 @@ class OTPView: UIStackView, UITextFieldDelegate {
             if newLength > 1 {
                 return false
             }
-
             // Move focus to the next text field when a digit is entered
             if newLength == 1 {
                 let nextTag = textField.tag + 1
@@ -77,14 +77,20 @@ class OTPView: UIStackView, UITextFieldDelegate {
                     // All fields filled, handle completed OTP
                     DispatchQueue.main.async {
                         textField.resignFirstResponder()
-                        let otp = self.textFieldArray.compactMap { $0.text }.joined()
-                        print("OTP entered: \(otp)") // Example usage
+//                        let otp = self.textFieldArray.compactMap { $0.text }.joined()
+//                        print("OTP entered: \(otp)") // Example usage
+                        
                     }
                 }
             }
 
             return true
         }
+    
+    func getEnteredOTP() -> String {
+      return textFieldArray.compactMap { $0.text }.joined()
+    }
+
     // Function to clear all text fields
     func clearTextFields() {
       for field in textFieldArray {

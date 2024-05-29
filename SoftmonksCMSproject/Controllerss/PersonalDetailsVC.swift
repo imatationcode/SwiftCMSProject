@@ -12,6 +12,10 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
     let unselectedColor = UIColor.gray
     let textSelectedColor = UIColor.black
     
+    var changePasswordVC: ChangePasswordVC?
+    var popUpPasswordVarification: PasswordVarificationPopUpVC?
+    var varificationPopVar: PasswordVarificationPopUpVC?
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tabBarView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -32,7 +36,7 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
         DispatchQueue.main.async {
             self.loadProfile()
         }
-        updateTabBarImages(selectedIndex: 0)
+        
         
 
         // Do any additional setup after loading the view.
@@ -45,6 +49,7 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
         contentView.addSubview(profileVC.view)
         profileVC.view.frame = contentView.bounds
         profileVC.didMove(toParent: self)
+        updateTabBarImages(selectedIndex: 0)
     }
     
     func designTabBar() {
@@ -59,13 +64,9 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
     
     @IBAction func tabBarButtonTapped(_ sender: UIButton) {
         let tag = sender.tag
-        print(sender.tag)
-        
         switch tag {
         case 1:
             loadProfile()
-            
-            print("In 1")
         case 2:
             title = "Documents"
             let docVC = DocumentsVC(nibName: "DocumentsVC", bundle: nil)
@@ -80,6 +81,21 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
             contentView.addSubview(designVC.view)
             designVC.view.frame = contentView.bounds
             designVC.didMove(toParent: self)
+        case 4:
+            title = "Change Password"
+            let changePassVC = ChangePasswordVC(nibName: "ChangePasswordVC", bundle: nil)
+            changePassVC.changePassdelegateVar = self 
+            addChild(changePassVC)
+            contentView.addSubview(changePassVC.view)
+            changePassVC.view.frame = contentView.bounds
+            changePassVC.didMove(toParent: self)
+            self.changePasswordVC = changePassVC
+            
+            let popupVC = PasswordVarificationPopUpVC()
+            popupVC.delegate = self
+            popupVC.modalPresentationStyle = .fullScreen
+            present(popupVC, animated: true, completion: nil)
+            self.popUpPasswordVarification = PasswordVarificationPopUpVC()
             
         default:
             print("TabBarError")
@@ -99,6 +115,7 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
                 imageView?.tintColor = unselectedColor
             }
         }
+        
         for (index, selectLabel) in tabTextLabels.enumerated() {
             if index == selectedIndex {
                 selectLabel?.textColor = textSelectedColor
@@ -108,9 +125,11 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
 //                selectLabel?.font = UIFont.boldSystemFont(ofSize: 12)
             }
         }
+
     }
     
     func popAnimate(view: UIView?) {
+        
         guard let view = view else { return }
         
         UIView.animate(withDuration: 0.1, animations: {
@@ -120,7 +139,30 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
                 view.transform = CGAffineTransform.identity
             }
         }
+    }
+    
+    func logOut() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "homeNavigationViewController") as? homeNavigationViewController {
+            vc.modalPresentationStyle = .fullScreen
+            UserDefaults.standard.removeObject(forKey: "isLoggedIN")
+            UserDefaults.standard.removeObject(forKey: "UserDetails")
+            self.present(vc, animated: true)
+            
+        }
         
     }
+    
+    
+}// END of VC class
 
+extension PersonalDetailsVC: PasswordVarificationPopUpVCDelegate, changePassDelegate {
+    func loggingOut() {
+        logOut()
+    }
+    
+    func dismissPopUp() {
+        loadProfile()
+    }
+    
+    
 }

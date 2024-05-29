@@ -14,6 +14,7 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
     var isPasswordVisible = false
     let myId = UserDefaults.standard.object(forKey: "isLoggedIN")
     
+    @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var borderViewForEmail: UIView!
@@ -22,6 +23,7 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
     @IBOutlet weak var borderViewForPassword: UIView!
 
     override func viewDidLoad() {
+        loaderActivityIncicatior.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         print("Loging ViewDIDLoad")//debug Purpose
         super.viewDidLoad()
         addLogoToFooter()
@@ -75,6 +77,7 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
     }//loginPress button function close
     
     func performLoginRequest(urlString: String, parameters: [String: Any]) {
+        loaderActivityIncicatior.startAnimating()
         print  ("in the performLogin")
         AF.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .responseDecodable(of: loginCheck.self) { [weak self] response in  // Move switch statement closer
@@ -85,18 +88,19 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
                     print(loginCheckData.errMsg)
                     // Handle successful login data retrieval
                     guard loginCheckData.err == 0 else {
-                        self.showAlert(title: "Login Failed", message: loginCheckData.errMsg)
-                        print(loginCheckData.errMsg)  //  debugging purposes
+                        self.showAlert(title: "Login Failed", message: loginCheckData.errMsg ?? "")
+                        print(loginCheckData.errMsg)
                         return
                     }
-                    print(loginCheckData)  //  debugging purposes
+                    print(loginCheckData)
                     UserDefaults.standard.set(loginCheckData.userData.id, forKey: "isLoggedIN")
                     let UserDataDictionary = ["id": loginCheckData.userData.id, "name": loginCheckData.userData.name, "designation": loginCheckData.userData.designation]
                     
                     UserDefaults.standard.set(UserDataDictionary, forKey: "UserDetails")
-                    
+                    self.loaderActivityIncicatior.stopAnimating()
                     self.navigateToMainPage()
                 case .failure(let error):
+                    self.loaderActivityIncicatior.stopAnimating()
                     print(error)
                     self.showAlert(title: "Login Error", message: "Please Re-Check Your Email and Password")
                 }

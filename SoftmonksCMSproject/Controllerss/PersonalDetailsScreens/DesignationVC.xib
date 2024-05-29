@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DesignationVC" customModule="SoftmonksCMSproject" customModuleProvider="target">
             <connections>
+                <outlet property="designationsListTabelView" destination="ggW-8h-EbN" id="gXr-iT-od1"/>
                 <outlet property="mainImageView" destination="9ru-mC-kcc" id="efU-UP-Jet"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,12 +30,20 @@
                                 <constraint firstAttribute="height" constant="130" id="CFR-2R-MiN"/>
                             </constraints>
                         </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ggW-8h-EbN">
+                            <rect key="frame" x="32" y="305" width="329" height="347"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="9ru-mC-kcc" firstAttribute="top" secondItem="3hD-hY-vmw" secondAttribute="top" constant="120" id="1LL-O6-WKD"/>
+                        <constraint firstAttribute="bottom" secondItem="ggW-8h-EbN" secondAttribute="bottom" constant="200" id="4N9-F2-I2D"/>
                         <constraint firstAttribute="trailing" secondItem="9ru-mC-kcc" secondAttribute="trailing" constant="10" id="9h3-Pv-BSf"/>
+                        <constraint firstItem="ggW-8h-EbN" firstAttribute="top" secondItem="9ru-mC-kcc" secondAttribute="bottom" constant="55" id="D8m-Ux-ngf"/>
                         <constraint firstItem="9ru-mC-kcc" firstAttribute="leading" secondItem="3hD-hY-vmw" secondAttribute="leading" id="RrK-jb-yV4"/>
+                        <constraint firstItem="ggW-8h-EbN" firstAttribute="leading" secondItem="3hD-hY-vmw" secondAttribute="leading" constant="32" id="lVk-5B-Ky7"/>
+                        <constraint firstAttribute="trailing" secondItem="ggW-8h-EbN" secondAttribute="trailing" constant="32" id="qy1-bA-Qua"/>
                     </constraints>
                 </view>
             </subviews>

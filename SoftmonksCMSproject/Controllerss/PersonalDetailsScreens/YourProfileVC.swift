@@ -14,6 +14,7 @@ class YourProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     var detailsList: [UserDetail] = []
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
     
+    @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var staffCodeLabel: UILabel!
     @IBOutlet weak var mainImageView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -22,6 +23,7 @@ class YourProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loaderActivityIncicatior.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         mainImageView.applyGradient(colors: ["00359A", "95CCFF"], angle: -180.0,conRads: 0.0)
         profileImage.layer.cornerRadius = profileImage.bounds.size.height / 2
         mainImageView.layer.cornerRadius = mainImageView.bounds.size.height / 2
@@ -42,7 +44,7 @@ class YourProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                 guard let self = self else{ return }
                 switch response.result {
                 case .success(let response):
-                    print(response)
+//                    print(response)
                     self.userProfileData = response
                     self.updateUI()
                     print("Done WIth API Call")
@@ -67,7 +69,6 @@ class YourProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let profileDtat = detailsList[indexPath.row]
         let cell = self.detailsTableView.dequeueReusableCell(withIdentifier: "PersonalDetailsTableViewCell", for: indexPath) as! PersonalDetailsTableViewCell
 //        cell.viewContrroller = self
         let detailRecord = detailsList[indexPath.row]

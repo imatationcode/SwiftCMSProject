@@ -8,12 +8,13 @@
 import Foundation
 
 struct loginCheck: Codable {
-    let err: Int
-    let key, errMsg: String
+    let err: Int?
+    let key, errMsg: String?
     let userData: UserData
 }
 
 // MARK: - UserData
 struct UserData: Codable {
-    let id, name, designation: String
+    let id: Int?
+    let name, designation: String?
 }

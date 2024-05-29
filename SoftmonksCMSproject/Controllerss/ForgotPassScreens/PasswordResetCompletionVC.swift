@@ -19,8 +19,6 @@ class PasswordResetCompletionVC: UIViewController, LogoDisplayable {
         self.title = "Password Reset Complete"
         navigationItem.hidesBackButton = true
         
-
-        
     }
     
     @IBAction func loginButtonTaped(_ sender: Any) {

@@ -15,6 +15,11 @@ protocol LeaveApplicationPopUpDelegate: AnyObject {
 
 class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate
 {
+//    func dismissPopUp() {
+//            crossBtn = 1
+//            hide()
+//    }
+//
     var prefilledData: editLeaveData?
     var crossBtn = 0
     var cellID: Int?
@@ -142,6 +147,21 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         fromDateTextField.isEnabled = true
         toDateTextField.isEnabled = true
     }
+    
+    func popUp(sender: UIViewController) {
+        sender.present(self, animated: true)
+        self.showup()
+        
+    }
+    
+    private func showup(){
+        UIView.animate(withDuration: 0.2, delay: 0.0){
+            self.backView.alpha = 1
+            self.popupContentView.alpha = 1
+            
+        }
+    }
+    
     
     func textFieldDidChangeSelection(_ sender: UITextField) {
         if sender === selectedLeaveType {
@@ -310,19 +330,7 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
         self.popupContentView.layer.cornerRadius = 10
     }
     
-    func popUp(sender: UIViewController) {
-        sender.present(self, animated: true)
-        self.showup()
-        
-    }
-    
-    private func showup(){
-        UIView.animate(withDuration: 0.2, delay: 0.0){
-            self.backView.alpha = 1
-            self.popupContentView.alpha = 1
-            
-        }
-    }
+
      
     func hide() {
         UIView.animate(withDuration: 0.2, delay: 0.0){

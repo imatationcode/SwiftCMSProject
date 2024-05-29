@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1CADE52BFF052300B5E5FD /* DesignationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CADE32BFF052300B5E5FD /* DesignationTableViewCell.swift */; };
+		0B1CADE62BFF052300B5E5FD /* DesignationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1CADE42BFF052300B5E5FD /* DesignationTableViewCell.xib */; };
+		0B1CADE82BFF11D000B5E5FD /* DesignationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CADE72BFF11D000B5E5FD /* DesignationsData.swift */; };
+		0B2D19612BFF46E400D6EE59 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2D195F2BFF46E400D6EE59 /* ChangePasswordVC.swift */; };
+		0B2D19622BFF46E400D6EE59 /* ChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B2D19602BFF46E400D6EE59 /* ChangePasswordVC.xib */; };
 		0B3330B82BFDD11E0005BE3C /* PersonalDetials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3330B72BFDD11E0005BE3C /* PersonalDetials.swift */; };
 		0B3330BC2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3330BA2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.swift */; };
 		0B3330BD2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B3330BB2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib */; };
-		0B33737A2BFC607E002E73BC /* MidImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B3373792BFC607E002E73BC /* MidImageView.xib */; };
-		0B33737C2BFC60BE002E73BC /* MidImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B33737B2BFC60BE002E73BC /* MidImageView.swift */; };
+		0B3B35092C00633900225C1D /* PasswordVarificationPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3B35072C00633900225C1D /* PasswordVarificationPopUpVC.swift */; };
+		0B3B350A2C00633900225C1D /* PasswordVarificationPopUpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B3B35082C00633900225C1D /* PasswordVarificationPopUpVC.xib */; };
+		0B3F2FB32C05A85D0082E748 /* APICallFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F2FB22C05A85D0082E748 /* APICallFunctions.swift */; };
 		0B40316A2BA94FC6005B9489 /* OTPDigitvalidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4031692BA94FC6005B9489 /* OTPDigitvalidationView.swift */; };
 		0B40316C2BA94FFD005B9489 /* OTPDigitvalidationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B40316B2BA94FFD005B9489 /* OTPDigitvalidationView.xib */; };
 		0B4031722BA96CDF005B9489 /* otptest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4031712BA96CDF005B9489 /* otptest.swift */; };
@@ -25,6 +31,7 @@
 		0B4FC3C92B95840C00F69EF1 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4FC3C72B95840C00F69EF1 /* TableViewCell.xib */; };
 		0B52A7F22B85E74200FE0CAF /* menuIteam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52A7F12B85E74200FE0CAF /* menuIteam.swift */; };
 		0B5E7BA42BC3FD63007982A4 /* loginCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E7BA32BC3FD63007982A4 /* loginCheck.swift */; };
+		0B61BF1B2C04928C00F2404F /* imageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B61BF1A2C04928C00F2404F /* imageAPI.swift */; };
 		0B7580662BA83E4D00366E7C /* verificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7580652BA83E4D00366E7C /* verificationViewController.swift */; };
 		0B7DBCE12B8352D90072EF55 /* LoginValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DBCE02B8352D90072EF55 /* LoginValidation.swift */; };
 		0B7DBCE32B836BAD0072EF55 /* ProfileMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7DBCE22B836BAD0072EF55 /* ProfileMenuVC.swift */; };
@@ -71,11 +78,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1CADE32BFF052300B5E5FD /* DesignationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignationTableViewCell.swift; sourceTree = "<group>"; };
+		0B1CADE42BFF052300B5E5FD /* DesignationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DesignationTableViewCell.xib; sourceTree = "<group>"; };
+		0B1CADE72BFF11D000B5E5FD /* DesignationsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignationsData.swift; sourceTree = "<group>"; };
+		0B2D195F2BFF46E400D6EE59 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		0B2D19602BFF46E400D6EE59 /* ChangePasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordVC.xib; sourceTree = "<group>"; };
 		0B3330B72BFDD11E0005BE3C /* PersonalDetials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetials.swift; sourceTree = "<group>"; };
 		0B3330BA2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		0B3330BB2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDetailsTableViewCell.xib; sourceTree = "<group>"; };
-		0B3373792BFC607E002E73BC /* MidImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MidImageView.xib; sourceTree = "<group>"; };
-		0B33737B2BFC60BE002E73BC /* MidImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidImageView.swift; sourceTree = "<group>"; };
+		0B3B35072C00633900225C1D /* PasswordVarificationPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordVarificationPopUpVC.swift; sourceTree = "<group>"; };
+		0B3B35082C00633900225C1D /* PasswordVarificationPopUpVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordVarificationPopUpVC.xib; sourceTree = "<group>"; };
+		0B3F2FB22C05A85D0082E748 /* APICallFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallFunctions.swift; sourceTree = "<group>"; };
 		0B4031692BA94FC6005B9489 /* OTPDigitvalidationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPDigitvalidationView.swift; sourceTree = "<group>"; };
 		0B40316B2BA94FFD005B9489 /* OTPDigitvalidationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OTPDigitvalidationView.xib; sourceTree = "<group>"; };
 		0B4031712BA96CDF005B9489 /* otptest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otptest.swift; sourceTree = "<group>"; };
@@ -89,6 +102,7 @@
 		0B4FC3C72B95840C00F69EF1 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		0B52A7F12B85E74200FE0CAF /* menuIteam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuIteam.swift; sourceTree = "<group>"; };
 		0B5E7BA32BC3FD63007982A4 /* loginCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginCheck.swift; sourceTree = "<group>"; };
+		0B61BF1A2C04928C00F2404F /* imageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageAPI.swift; sourceTree = "<group>"; };
 		0B7580652BA83E4D00366E7C /* verificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verificationViewController.swift; sourceTree = "<group>"; };
 		0B7DBCE02B8352D90072EF55 /* LoginValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidation.swift; sourceTree = "<group>"; };
 		0B7DBCE22B836BAD0072EF55 /* ProfileMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuVC.swift; sourceTree = "<group>"; };
@@ -150,13 +164,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B3330B92BFDD22C0005BE3C /* ProfileModule */ = {
+		0B1CADE12BFF04C900B5E5FD /* PersonalDetails */ = {
 			isa = PBXGroup;
 			children = (
 				0B3330BA2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.swift */,
 				0B3330BB2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib */,
 			);
+			path = PersonalDetails;
+			sourceTree = "<group>";
+		};
+		0B1CADE22BFF04F900B5E5FD /* Designation */ = {
+			isa = PBXGroup;
+			children = (
+				0B1CADE32BFF052300B5E5FD /* DesignationTableViewCell.swift */,
+				0B1CADE42BFF052300B5E5FD /* DesignationTableViewCell.xib */,
+			);
+			path = Designation;
+			sourceTree = "<group>";
+		};
+		0B3330B92BFDD22C0005BE3C /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				0B1CADE12BFF04C900B5E5FD /* PersonalDetails */,
+				0B1CADE22BFF04F900B5E5FD /* Designation */,
+			);
 			path = ProfileModule;
+			sourceTree = "<group>";
+		};
+		0B3B35052C0062A000225C1D /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				0B3B35062C0062EC00225C1D /* PasswordVarification */,
+				0BE1F2432B999A6000725AC9 /* LeaveApplication */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		0B3B35062C0062EC00225C1D /* PasswordVarification */ = {
+			isa = PBXGroup;
+			children = (
+				0B3B35072C00633900225C1D /* PasswordVarificationPopUpVC.swift */,
+				0B3B35082C00633900225C1D /* PasswordVarificationPopUpVC.xib */,
+			);
+			path = PasswordVarification;
 			sourceTree = "<group>";
 		};
 		0B405B952B8499A900E6C210 /* Models */ = {
@@ -167,6 +217,7 @@
 				0B5E7BA32BC3FD63007982A4 /* loginCheck.swift */,
 				0BCCBDCF2BCFD5DB00BFC948 /* checkCounterModel.swift */,
 				0B3330B72BFDD11E0005BE3C /* PersonalDetials.swift */,
+				0B1CADE72BFF11D000B5E5FD /* DesignationsData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,8 +266,8 @@
 				0B8A1F812BFB1E5C00E40986 /* DocumentsVC.xib */,
 				0B8A1F782BFB1C0D00E40986 /* DesignationVC.swift */,
 				0B8A1F792BFB1C0D00E40986 /* DesignationVC.xib */,
-				0B3373792BFC607E002E73BC /* MidImageView.xib */,
-				0B33737B2BFC60BE002E73BC /* MidImageView.swift */,
+				0B2D195F2BFF46E400D6EE59 /* ChangePasswordVC.swift */,
+				0B2D19602BFF46E400D6EE59 /* ChangePasswordVC.xib */,
 			);
 			path = PersonalDetailsScreens;
 			sourceTree = "<group>";
@@ -266,6 +317,8 @@
 			children = (
 				0BE087962B7F62500067102F /* AppDelegate.swift */,
 				0BE087982B7F62500067102F /* SceneDelegate.swift */,
+				0B61BF1A2C04928C00F2404F /* imageAPI.swift */,
+				0B3F2FB22C05A85D0082E748 /* APICallFunctions.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -338,7 +391,7 @@
 				0BC14ACA2BC657EF008B1596 /* Application */,
 				0BC14ACD2BC65872008B1596 /* Resources */,
 				0BC14ACB2BC65817008B1596 /* Helper */,
-				0BE1F2432B999A6000725AC9 /* PopUpLeaveApplication */,
+				0B3B35052C0062A000225C1D /* PopUp */,
 				0B4FC3CA2B95A51C00F69EF1 /* TableViewCell */,
 				0B405B9C2B84A5A800E6C210 /* CollectionView */,
 				0BC619102B87132C005F0DCB /* CustomeViews */,
@@ -369,14 +422,14 @@
 			path = Controllerss;
 			sourceTree = "<group>";
 		};
-		0BE1F2432B999A6000725AC9 /* PopUpLeaveApplication */ = {
+		0BE1F2432B999A6000725AC9 /* LeaveApplication */ = {
 			isa = PBXGroup;
 			children = (
 				0BE1F2442B999AA700725AC9 /* leaveApplicationPopUPViewController.swift */,
 				0BE1F2452B999AA700725AC9 /* leaveApplicationPopUPViewController.xib */,
 				0BCF62822B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift */,
 			);
-			path = PopUpLeaveApplication;
+			path = LeaveApplication;
 			sourceTree = "<group>";
 		};
 		0BE317C92B7F81F30082C74B /* Designs */ = {
@@ -472,6 +525,7 @@
 			files = (
 				0B8A1F7B2BFB1C0D00E40986 /* DesignationVC.xib in Resources */,
 				0BE087A32B7F62520067102F /* LaunchScreen.storyboard in Resources */,
+				0B1CADE62BFF052300B5E5FD /* DesignationTableViewCell.xib in Resources */,
 				0BD693482BA4408400FB9327 /* testXIB.xib in Resources */,
 				0B4FC3C92B95840C00F69EF1 /* TableViewCell.xib in Resources */,
 				0BE1F2472B999AA700725AC9 /* leaveApplicationPopUPViewController.xib in Resources */,
@@ -483,11 +537,12 @@
 				0B8A1F832BFB1E5C00E40986 /* DocumentsVC.xib in Resources */,
 				0B405BA02B84A5CE00E6C210 /* CollectionViewCell.xib in Resources */,
 				0B3330BD2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib in Resources */,
-				0B33737A2BFC607E002E73BC /* MidImageView.xib in Resources */,
 				0B924A5B2BFCC8DC009365DF /* appliedRequestTableViewCell.xib in Resources */,
+				0B2D19622BFF46E400D6EE59 /* ChangePasswordVC.xib in Resources */,
 				0B8151FC2BA4136500CC74FE /* headingAndPhotoView.xib in Resources */,
 				0B8A1F7F2BFB1E4300E40986 /* YourProfileVC.xib in Resources */,
 				0BE0879E2B7F62500067102F /* Main.storyboard in Resources */,
+				0B3B350A2C00633900225C1D /* PasswordVarificationPopUpVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +598,7 @@
 				0B4FC3C82B95840C00F69EF1 /* TableViewCell.swift in Sources */,
 				0BE0879B2B7F62500067102F /* LoginVC.swift in Sources */,
 				0B857DCE2BA313FE00513680 /* ForgotPasswordViewController.swift in Sources */,
+				0B61BF1B2C04928C00F2404F /* imageAPI.swift in Sources */,
 				0BCF62832B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift in Sources */,
 				0BCC36372BC9487D0025DED0 /* homeNavigationViewController.swift in Sources */,
 				0B924A592BFCC8D7009365DF /* appliedRequestTableViewCell.swift in Sources */,
@@ -553,6 +609,8 @@
 				0BA1E7302B96ED5A00BB3B70 /* DataService.swift in Sources */,
 				0B7DBCE52B8379790072EF55 /* UIExtensions.swift in Sources */,
 				0BCC36392BC953DD0025DED0 /* MainMenuNavigationViewController.swift in Sources */,
+				0B3B35092C00633900225C1D /* PasswordVarificationPopUpVC.swift in Sources */,
+				0B2D19612BFF46E400D6EE59 /* ChangePasswordVC.swift in Sources */,
 				0BA1E72E2B96E9AB00BB3B70 /* LeaveRequest.swift in Sources */,
 				0B8A1F7A2BFB1C0D00E40986 /* DesignationVC.swift in Sources */,
 				0BAC6CF82B831788006FF50F /* FooterLogoDisplayable.swift in Sources */,
@@ -567,7 +625,8 @@
 				0BE087972B7F62500067102F /* AppDelegate.swift in Sources */,
 				0B8A1F822BFB1E5C00E40986 /* DocumentsVC.swift in Sources */,
 				0BE1F2462B999AA700725AC9 /* leaveApplicationPopUPViewController.swift in Sources */,
-				0B33737C2BFC60BE002E73BC /* MidImageView.swift in Sources */,
+				0B3F2FB32C05A85D0082E748 /* APICallFunctions.swift in Sources */,
+				0B1CADE82BFF11D000B5E5FD /* DesignationsData.swift in Sources */,
 				0BE087992B7F62500067102F /* SceneDelegate.swift in Sources */,
 				0B7580662BA83E4D00366E7C /* verificationViewController.swift in Sources */,
 				0B8151FA2BA4133F00CC74FE /* headingAndPhotoView.swift in Sources */,
@@ -577,6 +636,7 @@
 				0B8A1F7E2BFB1E4300E40986 /* YourProfileVC.swift in Sources */,
 				0B3330BC2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.swift in Sources */,
 				0B5E7BA42BC3FD63007982A4 /* loginCheck.swift in Sources */,
+				0B1CADE52BFF052300B5E5FD /* DesignationTableViewCell.swift in Sources */,
 				0B924A5D2BFCC8E1009365DF /* reviewedTableViewCell.swift in Sources */,
 				0BC9579B2B9098DE00F1664D /* LogManager.swift in Sources */,
 				0BCCBDD02BCFD5DB00BFC948 /* checkCounterModel.swift in Sources */,

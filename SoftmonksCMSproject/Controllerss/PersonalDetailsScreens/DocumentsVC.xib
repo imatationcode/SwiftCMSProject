@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DocumentsVC" customModule="SoftmonksCMSproject" customModuleProvider="target">
             <connections>
+                <outlet property="documentsListTableView" destination="0gG-sl-eeK" id="sQC-za-szj"/>
+                <outlet property="documentsTitleLabel" destination="S3c-xw-Ot8" id="Vri-2a-DiL"/>
                 <outlet property="mainProfileImageView" destination="k2C-5M-ocD" id="lPQ-NM-dCW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,16 +27,62 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2C-5M-ocD" customClass="ProfileImageCustomeView" customModule="SoftmonksCMSproject" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="120" width="393" height="130"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Documents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3c-xw-Ot8">
+                            <rect key="frame" x="32" y="290" width="329" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            </variation>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gG-sl-eeK">
+                            <rect key="frame" x="32" y="322" width="329" height="292"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIY-NS-SK9">
+                            <rect key="frame" x="32" y="634" width="329" height="38"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Upload Documents">
+                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="baseBackgroundColor" red="0.0" green="0.21176470589999999" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="tappedOnUploadDocument:" destination="-1" eventType="touchUpInside" id="bIi-xy-ekL"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBG-x4-P1Y">
+                            <rect key="frame" x="32" y="309" width="329" height="1"/>
+                            <color key="backgroundColor" systemColor="systemGray2Color"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="130" id="hoZ-BR-701"/>
+                                <constraint firstAttribute="height" constant="1" id="PZ8-wP-r2D"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="cIY-NS-SK9" firstAttribute="leading" secondItem="S3c-xw-Ot8" secondAttribute="leading" id="1Vx-Py-Uik"/>
+                        <constraint firstItem="0gG-sl-eeK" firstAttribute="leading" secondItem="S3c-xw-Ot8" secondAttribute="leading" id="3oc-4I-M13"/>
+                        <constraint firstItem="cIY-NS-SK9" firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" id="5bz-Yp-Air"/>
+                        <constraint firstItem="S3c-xw-Ot8" firstAttribute="top" secondItem="k2C-5M-ocD" secondAttribute="bottom" constant="40" id="5fS-Ug-Rqm"/>
+                        <constraint firstItem="PBG-x4-P1Y" firstAttribute="leading" secondItem="S3c-xw-Ot8" secondAttribute="leading" id="5id-yP-4fS"/>
+                        <constraint firstItem="S3c-xw-Ot8" firstAttribute="leading" secondItem="dUE-Uy-1cB" secondAttribute="leading" constant="32" id="BfX-X0-ZLc"/>
+                        <constraint firstItem="0gG-sl-eeK" firstAttribute="top" secondItem="PBG-x4-P1Y" secondAttribute="bottom" constant="12" id="Cea-Nb-lUo"/>
                         <constraint firstItem="k2C-5M-ocD" firstAttribute="top" secondItem="dUE-Uy-1cB" secondAttribute="top" constant="120" id="FAE-tP-eg0"/>
+                        <constraint firstItem="k2C-5M-ocD" firstAttribute="height" secondItem="dUE-Uy-1cB" secondAttribute="height" multiplier="0.152582" id="I5w-pU-1dO"/>
                         <constraint firstItem="k2C-5M-ocD" firstAttribute="leading" secondItem="dUE-Uy-1cB" secondAttribute="leading" id="L5d-IE-xB6"/>
+                        <constraint firstItem="PBG-x4-P1Y" firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" id="PLg-nH-TYX"/>
+                        <constraint firstItem="cIY-NS-SK9" firstAttribute="top" secondItem="0gG-sl-eeK" secondAttribute="bottom" constant="20" id="adW-jD-iBV"/>
                         <constraint firstAttribute="trailing" secondItem="k2C-5M-ocD" secondAttribute="trailing" id="b1e-hd-vDG"/>
+                        <constraint firstItem="S3c-xw-Ot8" firstAttribute="centerX" secondItem="dUE-Uy-1cB" secondAttribute="centerX" id="cAf-2J-UbA"/>
+                        <constraint firstItem="cIY-NS-SK9" firstAttribute="height" secondItem="dUE-Uy-1cB" secondAttribute="height" multiplier="0.0446009" id="gjb-cv-7UV"/>
+                        <constraint firstAttribute="bottom" secondItem="cIY-NS-SK9" secondAttribute="bottom" constant="180" id="nJo-oa-irU"/>
+                        <constraint firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" constant="32" id="ncm-mi-Tg0"/>
+                        <constraint firstItem="cIY-NS-SK9" firstAttribute="centerX" secondItem="dUE-Uy-1cB" secondAttribute="centerX" id="rBy-OD-5Y5"/>
+                        <constraint firstItem="PBG-x4-P1Y" firstAttribute="top" secondItem="S3c-xw-Ot8" secondAttribute="bottom" constant="2" id="rad-s4-rml"/>
+                        <constraint firstItem="0gG-sl-eeK" firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" id="ru3-j3-l6U"/>
                     </constraints>
                 </view>
             </subviews>
@@ -46,12 +94,15 @@
                 <constraint firstItem="dUE-Uy-1cB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QfR-eD-Hav"/>
                 <constraint firstAttribute="trailing" secondItem="dUE-Uy-1cB" secondAttribute="trailing" id="ShY-39-eAK"/>
             </constraints>
-            <point key="canvasLocation" x="16" y="-11"/>
+            <point key="canvasLocation" x="14.503816793893129" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

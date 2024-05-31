@@ -16,7 +16,15 @@ class reviewedTableViewCell: UITableViewCell {
     @IBOutlet weak var fromDateLabel: UILabel!
     @IBOutlet weak var leaveTypeLabel: UILabel!
     @IBOutlet weak var rejectedButton: UIButton!
-    @IBOutlet weak var approvedButton: UIButton!
+//    @IBOutlet weak var approvedButton: UIButton!
+    
+    override func awakeFromNib() {
+        // Initialization code
+        super.awakeFromNib()
+        outterView.onlyCornerRadius(conRadius: 8.0)
+        addElevatedShadow(to: outterView)
+        
+    }
     
     func updateViews(leaveReuests: LeaveData){
         appliedOnDateLabel.text = leaveReuests.appliedDate
@@ -47,13 +55,7 @@ class reviewedTableViewCell: UITableViewCell {
         }
     }
 
-    override func awakeFromNib() {
-        // Initialization code
-        super.awakeFromNib()
-        outterView.onlyCornerRadius(conRadius: 8.0)
-        addElevatedShadow(to: outterView)
-        
-    }
+
 
    
     

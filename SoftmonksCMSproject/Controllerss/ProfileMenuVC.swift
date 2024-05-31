@@ -89,7 +89,8 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
         }
     }
     func salaryTapped() {
-        
+        let salaryDetailsVC = SalaryDetailsViewController(nibName: "SalaryDetailsViewController", bundle: nil)
+        self.navigationController?.pushViewController(salaryDetailsVC, animated: true)
         print("Salary Details tapped")
     }
     

@@ -20,6 +20,9 @@ class ChangePasswordVC: UIViewController, UITextFieldDelegate {
     var newPassWordVar: String?
     var confirmPasswordVar: String?
     
+    
+    @IBOutlet weak var confirmPassLabel: UILabel!
+    @IBOutlet weak var newpassLabel: UILabel!
     @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var mainImageView: ProfileImageCustomeView!
     @IBOutlet weak var outterView: UIView!
@@ -31,6 +34,7 @@ class ChangePasswordVC: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        adjustFontSizeForDevice(textFields: [newPasswordTextField, confirmPasswordTextField], labels: [newpassLabel, confirmPassLabel])
         loaderActivityIncicatior.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         mainImageView.mainIconImage.image = UIImage(named: "Coloredkey")
         newPasswordTextField.isSecureTextEntry = true

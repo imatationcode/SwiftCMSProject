@@ -16,6 +16,7 @@ class PersonalDetailsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        adjustFontSizeForDevice(textFields: [], labels: [propertiLabel, valueLabel])
         
     }
     

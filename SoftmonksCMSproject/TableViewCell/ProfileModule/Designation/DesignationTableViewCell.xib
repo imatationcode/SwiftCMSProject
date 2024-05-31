@@ -95,10 +95,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="curentRoleIndicatorView" destination="Wvl-LG-UqC" id="ZYw-lF-cit"/>
+                <outlet property="dateTitleLabel" destination="N8G-kU-LsE" id="YF5-MJ-oNE"/>
+                <outlet property="designationTitle" destination="iPt-j5-gPE" id="VDT-4K-3AW"/>
                 <outlet property="designationValueLabel" destination="utT-7Q-eLd" id="Qhm-bL-Wop"/>
-                <outlet property="fromDate" destination="0F0-9H-WRU" id="H1M-jg-Sc9"/>
+                <outlet property="fromDatelabel" destination="0F0-9H-WRU" id="H1M-jg-Sc9"/>
                 <outlet property="outterView" destination="rjB-MS-C79" id="NKs-AE-Oxg"/>
-                <outlet property="todate" destination="RHk-be-Fc9" id="Rky-IV-l2c"/>
+                <outlet property="todatelabel" destination="RHk-be-Fc9" id="Rky-IV-l2c"/>
             </connections>
             <point key="canvasLocation" x="-150" y="3"/>
         </tableViewCell>

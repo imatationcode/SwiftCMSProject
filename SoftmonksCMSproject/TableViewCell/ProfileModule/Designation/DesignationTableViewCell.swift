@@ -12,13 +12,15 @@ class DesignationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var outterView: UIView!
     @IBOutlet weak var designationValueLabel: UILabel!
-    @IBOutlet weak var fromDate: UILabel!
-    @IBOutlet weak var todate: UILabel!
+    @IBOutlet weak var fromDatelabel: UILabel!
+    @IBOutlet weak var todatelabel: UILabel!
     @IBOutlet weak var curentRoleIndicatorView: UIView!
+    @IBOutlet weak var designationTitle: UILabel!
+    @IBOutlet weak var dateTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        adjustFontSizeForDevice(textFields: [], labels: [designationTitle, designationValueLabel, dateTitleLabel, fromDatelabel, todatelabel])
         initialSetUp()
     }
     
@@ -33,8 +35,8 @@ class DesignationTableViewCell: UITableViewCell {
     
     func configData(with roledata: RoleData) {
         self.designationValueLabel.text = roledata.designationType
-        self.fromDate.text = roledata.startDate
-        self.todate.text = roledata.endDate
+        self.fromDatelabel.text = roledata.startDate
+        self.todatelabel.text = roledata.endDate
         if roledata.isCurrentDesignation == 1 {
             curentRoleIndicatorView.isHidden = false
         }

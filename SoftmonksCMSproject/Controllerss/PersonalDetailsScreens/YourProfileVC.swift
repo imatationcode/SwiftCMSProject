@@ -14,6 +14,7 @@ class YourProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     var detailsList: [UserDetail] = []
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
     
+    @IBOutlet weak var staffTextLabel: UILabel!
     @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var staffCodeLabel: UILabel!
     @IBOutlet weak var mainImageView: UIView!
@@ -23,6 +24,7 @@ class YourProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        adjustFontSizeForDevice(textFields: [], labels: [staffCodeLabel, staffTextLabel])
         loaderActivityIncicatior.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         mainImageView.applyGradient(colors: ["00359A", "95CCFF"], angle: -180.0,conRads: 0.0)
         profileImage.layer.cornerRadius = profileImage.bounds.size.height / 2
@@ -38,6 +40,7 @@ class YourProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func profileDataAPICall(){
+        loaderActivityIncicatior.startAnimating()
         let paramenters: [String : Any] = ["mode": "getUserData", "id": userDict?["id"] ?? "" ]
         AF.request(apiURL, method: .post, parameters: paramenters, encoding: URLEncoding.default, headers: nil)
             .responseDecodable(of: PersonalDetialsResponse.self){ [weak self] response in
@@ -45,14 +48,17 @@ class YourProfileVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                 switch response.result {
                 case .success(let response):
 //                    print(response)
+                    self.loaderActivityIncicatior.stopAnimating()
                     self.userProfileData = response
                     self.updateUI()
                     print("Done WIth API Call")
                 case .failure(let error):
+                    self.loaderActivityIncicatior.stopAnimating()
                     print(error)
                     self.showAlert(title: "Error", message: "Error in API Call")
                 }
             }
+        loaderActivityIncicatior.stopAnimating()
     }
     
    func updateUI() {

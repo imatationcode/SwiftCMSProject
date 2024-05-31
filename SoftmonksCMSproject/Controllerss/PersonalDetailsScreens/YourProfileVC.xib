@@ -15,6 +15,7 @@
                 <outlet property="mainImageView" destination="DX6-6Q-Fju" id="sVF-Vl-Mso"/>
                 <outlet property="profileImage" destination="gmv-dg-QqC" id="Zrv-lv-lRi"/>
                 <outlet property="staffCodeLabel" destination="Z5L-ly-E7m" id="WJf-ir-MfA"/>
+                <outlet property="staffTextLabel" destination="haG-Fp-B2j" id="YOh-yk-4mQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,9 +27,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FxH-15-NiV" userLabel="OutterView">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <subviews>
-                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="inh-w0-G1y">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        </activityIndicatorView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBlurCircle" translatesAutoresizingMaskIntoConstraints="NO" id="2Hk-2b-86X">
                             <rect key="frame" x="106.66666666666669" y="105" width="180" height="180"/>
                             <constraints>
@@ -73,6 +71,9 @@
                             <color key="separatorColor" systemColor="systemGray3Color"/>
                             <inset key="separatorInset" minX="25" minY="0.0" maxX="35" maxY="0.0"/>
                         </tableView>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="inh-w0-G1y">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

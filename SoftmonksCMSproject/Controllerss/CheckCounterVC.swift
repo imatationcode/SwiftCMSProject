@@ -31,6 +31,7 @@ class CheckCounterVC: UIViewController,LogoDisplayable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        adjustFontSizeForDevice(textFields: [], labels: [duraitonTimeLabel, checkINTimeLabel, checkOUTTimeLabel, employeeName, empDesignationLabel, tapToCheckInLabel, dateLabel, timeLabel, timePeriodLabel])
         let titleFont = UIFont.systemFont(ofSize: 20.0) // Set font size
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: titleFont]
         self.title = "Check Counter"

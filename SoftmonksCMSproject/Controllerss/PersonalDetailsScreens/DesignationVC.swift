@@ -23,7 +23,6 @@ class DesignationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         designationsListTabelView.register(UINib(nibName: "DesignationTableViewCell", bundle: nil), forCellReuseIdentifier: "DesignationTableViewCell")
         designationsListTabelView.delegate = self
         designationsListTabelView.dataSource = self
-        
         desingnationsAPICall()
     }
     

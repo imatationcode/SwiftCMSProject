@@ -12,6 +12,12 @@
 		0B1CADE82BFF11D000B5E5FD /* DesignationsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1CADE72BFF11D000B5E5FD /* DesignationsData.swift */; };
 		0B2D19612BFF46E400D6EE59 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2D195F2BFF46E400D6EE59 /* ChangePasswordVC.swift */; };
 		0B2D19622BFF46E400D6EE59 /* ChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B2D19602BFF46E400D6EE59 /* ChangePasswordVC.xib */; };
+		0B2E86842C08478A006FDA8F /* DocumentsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E86822C08478A006FDA8F /* DocumentsTableCell.swift */; };
+		0B2E86852C08478A006FDA8F /* DocumentsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B2E86832C08478A006FDA8F /* DocumentsTableCell.xib */; };
+		0B2E86882C08565B006FDA8F /* SalaryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E86862C08565B006FDA8F /* SalaryDetailsViewController.swift */; };
+		0B2E86892C08565B006FDA8F /* SalaryDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B2E86872C08565B006FDA8F /* SalaryDetailsViewController.xib */; };
+		0B2E868E2C085F60006FDA8F /* SalaryReciptsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2E868C2C085F60006FDA8F /* SalaryReciptsTableViewCell.swift */; };
+		0B2E868F2C085F60006FDA8F /* SalaryReciptsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B2E868D2C085F60006FDA8F /* SalaryReciptsTableViewCell.xib */; };
 		0B3330B82BFDD11E0005BE3C /* PersonalDetials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3330B72BFDD11E0005BE3C /* PersonalDetials.swift */; };
 		0B3330BC2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3330BA2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.swift */; };
 		0B3330BD2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B3330BB2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib */; };
@@ -30,6 +36,7 @@
 		0B4FC3C82B95840C00F69EF1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4FC3C62B95840C00F69EF1 /* TableViewCell.swift */; };
 		0B4FC3C92B95840C00F69EF1 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4FC3C72B95840C00F69EF1 /* TableViewCell.xib */; };
 		0B52A7F22B85E74200FE0CAF /* menuIteam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52A7F12B85E74200FE0CAF /* menuIteam.swift */; };
+		0B5E74D72C09ACEA00FEC3D1 /* variableTextsize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E74D62C09ACEA00FEC3D1 /* variableTextsize.swift */; };
 		0B5E7BA42BC3FD63007982A4 /* loginCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E7BA32BC3FD63007982A4 /* loginCheck.swift */; };
 		0B61BF1B2C04928C00F2404F /* imageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B61BF1A2C04928C00F2404F /* imageAPI.swift */; };
 		0B7580662BA83E4D00366E7C /* verificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7580652BA83E4D00366E7C /* verificationViewController.swift */; };
@@ -83,6 +90,12 @@
 		0B1CADE72BFF11D000B5E5FD /* DesignationsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignationsData.swift; sourceTree = "<group>"; };
 		0B2D195F2BFF46E400D6EE59 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		0B2D19602BFF46E400D6EE59 /* ChangePasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordVC.xib; sourceTree = "<group>"; };
+		0B2E86822C08478A006FDA8F /* DocumentsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsTableCell.swift; sourceTree = "<group>"; };
+		0B2E86832C08478A006FDA8F /* DocumentsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentsTableCell.xib; sourceTree = "<group>"; };
+		0B2E86862C08565B006FDA8F /* SalaryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryDetailsViewController.swift; sourceTree = "<group>"; };
+		0B2E86872C08565B006FDA8F /* SalaryDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SalaryDetailsViewController.xib; sourceTree = "<group>"; };
+		0B2E868C2C085F60006FDA8F /* SalaryReciptsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryReciptsTableViewCell.swift; sourceTree = "<group>"; };
+		0B2E868D2C085F60006FDA8F /* SalaryReciptsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SalaryReciptsTableViewCell.xib; sourceTree = "<group>"; };
 		0B3330B72BFDD11E0005BE3C /* PersonalDetials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetials.swift; sourceTree = "<group>"; };
 		0B3330BA2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		0B3330BB2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalDetailsTableViewCell.xib; sourceTree = "<group>"; };
@@ -101,6 +114,7 @@
 		0B4FC3C62B95840C00F69EF1 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		0B4FC3C72B95840C00F69EF1 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		0B52A7F12B85E74200FE0CAF /* menuIteam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuIteam.swift; sourceTree = "<group>"; };
+		0B5E74D62C09ACEA00FEC3D1 /* variableTextsize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variableTextsize.swift; sourceTree = "<group>"; };
 		0B5E7BA32BC3FD63007982A4 /* loginCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginCheck.swift; sourceTree = "<group>"; };
 		0B61BF1A2C04928C00F2404F /* imageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageAPI.swift; sourceTree = "<group>"; };
 		0B7580652BA83E4D00366E7C /* verificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = verificationViewController.swift; sourceTree = "<group>"; };
@@ -182,9 +196,37 @@
 			path = Designation;
 			sourceTree = "<group>";
 		};
+		0B2E86812C084739006FDA8F /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				0B2E86822C08478A006FDA8F /* DocumentsTableCell.swift */,
+				0B2E86832C08478A006FDA8F /* DocumentsTableCell.xib */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		0B2E868A2C08567A006FDA8F /* SalaryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0B2E86862C08565B006FDA8F /* SalaryDetailsViewController.swift */,
+				0B2E86872C08565B006FDA8F /* SalaryDetailsViewController.xib */,
+			);
+			path = SalaryDetails;
+			sourceTree = "<group>";
+		};
+		0B2E868B2C085F17006FDA8F /* SalaryRecept */ = {
+			isa = PBXGroup;
+			children = (
+				0B2E868C2C085F60006FDA8F /* SalaryReciptsTableViewCell.swift */,
+				0B2E868D2C085F60006FDA8F /* SalaryReciptsTableViewCell.xib */,
+			);
+			path = SalaryRecept;
+			sourceTree = "<group>";
+		};
 		0B3330B92BFDD22C0005BE3C /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
+				0B2E86812C084739006FDA8F /* Documents */,
 				0B1CADE12BFF04C900B5E5FD /* PersonalDetails */,
 				0B1CADE22BFF04F900B5E5FD /* Designation */,
 			);
@@ -242,6 +284,7 @@
 		0B4FC3CA2B95A51C00F69EF1 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0B2E868B2C085F17006FDA8F /* SalaryRecept */,
 				0B3330B92BFDD22C0005BE3C /* ProfileModule */,
 				0B924A602BFCC96F009365DF /* LeaveRequestTV */,
 			);
@@ -412,6 +455,7 @@
 			children = (
 				0B8A1F6F2BFB188800E40986 /* PersonalDetailsScreens */,
 				0BBE34242BCD3BA600F805EC /* ForgotPassScreens */,
+				0B2E868A2C08567A006FDA8F /* SalaryDetails */,
 				0BBE34232BCD3B6900F805EC /* NavigationControllers */,
 				0BE0879A2B7F62500067102F /* LoginVC.swift */,
 				0B7DBCE22B836BAD0072EF55 /* ProfileMenuVC.swift */,
@@ -436,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				0BAC6CF42B830C94006FF50F /* DesingsForUIView.swift */,
+				0B5E74D62C09ACEA00FEC3D1 /* variableTextsize.swift */,
 			);
 			path = Designs;
 			sourceTree = "<group>";
@@ -536,13 +581,16 @@
 				0BD693422BA42E3800FB9327 /* ProfileImageCustomeView.xib in Resources */,
 				0B8A1F832BFB1E5C00E40986 /* DocumentsVC.xib in Resources */,
 				0B405BA02B84A5CE00E6C210 /* CollectionViewCell.xib in Resources */,
+				0B2E86892C08565B006FDA8F /* SalaryDetailsViewController.xib in Resources */,
 				0B3330BD2BFDD2C10005BE3C /* PersonalDetailsTableViewCell.xib in Resources */,
 				0B924A5B2BFCC8DC009365DF /* appliedRequestTableViewCell.xib in Resources */,
 				0B2D19622BFF46E400D6EE59 /* ChangePasswordVC.xib in Resources */,
+				0B2E868F2C085F60006FDA8F /* SalaryReciptsTableViewCell.xib in Resources */,
 				0B8151FC2BA4136500CC74FE /* headingAndPhotoView.xib in Resources */,
 				0B8A1F7F2BFB1E4300E40986 /* YourProfileVC.xib in Resources */,
 				0BE0879E2B7F62500067102F /* Main.storyboard in Resources */,
 				0B3B350A2C00633900225C1D /* PasswordVarificationPopUpVC.xib in Resources */,
+				0B2E86852C08478A006FDA8F /* DocumentsTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,12 +644,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B4FC3C82B95840C00F69EF1 /* TableViewCell.swift in Sources */,
+				0B5E74D72C09ACEA00FEC3D1 /* variableTextsize.swift in Sources */,
 				0BE0879B2B7F62500067102F /* LoginVC.swift in Sources */,
 				0B857DCE2BA313FE00513680 /* ForgotPasswordViewController.swift in Sources */,
 				0B61BF1B2C04928C00F2404F /* imageAPI.swift in Sources */,
 				0BCF62832B9F2C9600A6490C /* ValidationForInputFieldsInPopUp.swift in Sources */,
 				0BCC36372BC9487D0025DED0 /* homeNavigationViewController.swift in Sources */,
 				0B924A592BFCC8D7009365DF /* appliedRequestTableViewCell.swift in Sources */,
+				0B2E868E2C085F60006FDA8F /* SalaryReciptsTableViewCell.swift in Sources */,
 				0B8A1F6E2BFB0E3500E40986 /* PersonalDetailsVC.swift in Sources */,
 				0B4268E82B8729E600868118 /* TitleTopView.swift in Sources */,
 				0BC6190F2B871012005F0DCB /* CheckCounterVC.swift in Sources */,
@@ -613,10 +663,12 @@
 				0B2D19612BFF46E400D6EE59 /* ChangePasswordVC.swift in Sources */,
 				0BA1E72E2B96E9AB00BB3B70 /* LeaveRequest.swift in Sources */,
 				0B8A1F7A2BFB1C0D00E40986 /* DesignationVC.swift in Sources */,
+				0B2E86842C08478A006FDA8F /* DocumentsTableCell.swift in Sources */,
 				0BAC6CF82B831788006FF50F /* FooterLogoDisplayable.swift in Sources */,
 				0B4031722BA96CDF005B9489 /* otptest.swift in Sources */,
 				0B405B9F2B84A5CE00E6C210 /* CollectionViewCell.swift in Sources */,
 				0B7DBCE12B8352D90072EF55 /* LoginValidation.swift in Sources */,
+				0B2E86882C08565B006FDA8F /* SalaryDetailsViewController.swift in Sources */,
 				0BAC6CF52B830C94006FF50F /* DesingsForUIView.swift in Sources */,
 				0B98638C2BA8270C003EAB50 /* PasswordResetCompletionVC.swift in Sources */,
 				0BD693442BA42EF300FB9327 /* ProfileImageCustomeView.swift in Sources */,

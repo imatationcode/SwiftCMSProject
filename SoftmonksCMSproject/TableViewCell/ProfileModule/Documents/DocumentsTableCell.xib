@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentsTableCell" rowHeight="65" id="KGk-i7-Jjw" customClass="DocumentsTableCell" customModule="SoftmonksCMSproject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="426" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="426" height="65"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b15-j6-kHY">
+                        <rect key="frame" x="0.0" y="0.0" width="426" height="65"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageIcone" translatesAutoresizingMaskIntoConstraints="NO" id="jBf-3j-a49">
+                                <rect key="frame" x="2" y="7.6666666666666643" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jBf-3j-a49" secondAttribute="height" multiplier="1:1" id="2id-NN-vSE"/>
+                                    <constraint firstAttribute="height" constant="50" id="J8D-TZ-8SV"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shubham Profile Photo.jpg" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hl5-4d-4fP">
+                                <rect key="frame" x="57" y="18.666666666666668" width="131.66666666666666" height="12"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Date : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zW3-gC-2ju">
+                                <rect key="frame" x="57" y="30.666666666666671" width="57.666666666666657" height="10"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="8"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/01/2026" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJv-Dp-5H6">
+                                <rect key="frame" x="114.00000000000001" y="30.666666666666668" width="45.666666666666671" height="9.6666666666666679"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="8"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hl5-4d-4fP" firstAttribute="leading" secondItem="jBf-3j-a49" secondAttribute="trailing" constant="5" id="CXm-pt-9Th"/>
+                            <constraint firstItem="hl5-4d-4fP" firstAttribute="centerY" secondItem="jBf-3j-a49" secondAttribute="centerY" constant="-8" id="N3G-zs-nFB"/>
+                            <constraint firstItem="zW3-gC-2ju" firstAttribute="leading" secondItem="hl5-4d-4fP" secondAttribute="leading" id="XOd-tO-WEb"/>
+                            <constraint firstItem="jBf-3j-a49" firstAttribute="centerY" secondItem="b15-j6-kHY" secondAttribute="centerY" id="dPp-0f-yPp"/>
+                            <constraint firstItem="UJv-Dp-5H6" firstAttribute="leading" secondItem="zW3-gC-2ju" secondAttribute="trailing" constant="-0.66666666666665719" id="dmD-xL-gVw"/>
+                            <constraint firstItem="zW3-gC-2ju" firstAttribute="top" secondItem="hl5-4d-4fP" secondAttribute="bottom" id="nvI-jU-N7X"/>
+                            <constraint firstItem="jBf-3j-a49" firstAttribute="leading" secondItem="b15-j6-kHY" secondAttribute="leading" constant="2" id="ws8-Hz-BxP"/>
+                            <constraint firstItem="UJv-Dp-5H6" firstAttribute="centerY" secondItem="zW3-gC-2ju" secondAttribute="centerY" id="zmw-xT-juF"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="b15-j6-kHY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BJo-Zr-BWp"/>
+                    <constraint firstAttribute="trailing" secondItem="b15-j6-kHY" secondAttribute="trailing" id="RwP-Mn-jgR"/>
+                    <constraint firstAttribute="bottom" secondItem="b15-j6-kHY" secondAttribute="bottom" id="fjT-ep-BfP"/>
+                    <constraint firstItem="b15-j6-kHY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qid-hT-FWl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="documentImageView" destination="jBf-3j-a49" id="x5e-ux-tAi"/>
+                <outlet property="documentTitleLabel" destination="hl5-4d-4fP" id="aG3-ww-LZH"/>
+                <outlet property="documentUploadDateLabel" destination="UJv-Dp-5H6" id="2QD-cW-m4F"/>
+                <outlet property="uploadDateTitle" destination="zW3-gC-2ju" id="Jrt-zv-mgU"/>
+            </connections>
+            <point key="canvasLocation" x="210.68702290076334" y="-18.661971830985916"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="imageIcone" width="50" height="50"/>
+    </resources>
+</document>

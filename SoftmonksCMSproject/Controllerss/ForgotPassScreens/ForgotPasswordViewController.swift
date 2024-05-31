@@ -14,12 +14,16 @@ class ForgotPasswordViewController: UIViewController, LogoDisplayable {
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
     var mailID: String?
     
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var instructionMessageLabel: UILabel!
     @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
+    @IBOutlet weak var alreadyLoggedINMessageLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var outerScrollView: UIScrollView!
     @IBOutlet weak var mainImageView: ProfileImageCustomeView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        adjustFontSizeForDevice(textFields: [emailTextField,], labels: [emailLabel, instructionMessageLabel, alreadyLoggedINMessageLabel])
         loaderActivityIncicatior.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
@@ -61,12 +65,12 @@ class ForgotPasswordViewController: UIViewController, LogoDisplayable {
     }
         
     func otpAPICall() {
-        let parameters: [String : Any] = ["mode": "verifyEmail" , "username": mailID! ]
+        let parameters: [String : Any] = ["mode": "verifyUser" , "username": mailID! ]
         passAPICall(parameters) { (success, errorMessage, uiqId) in
             if success {
                 self.loaderActivityIncicatior.stopAnimating()
                 if let varificationVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "verificationViewController") as?
-                    verificationViewController { varificationVc.eMailId = self.mailID; self.navigationController?.pushViewController(varificationVc, animated: true)}
+                    verificationViewController { varificationVc.eMailId = self.mailID; varificationVc.empID = uiqId; self.navigationController?.pushViewController(varificationVc, animated: true)}
             } else {
                 self.loaderActivityIncicatior.stopAnimating()
                 self.showAlert(title: "Invalid Mail", message: errorMessage ?? "")

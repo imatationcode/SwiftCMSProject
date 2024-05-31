@@ -7,13 +7,19 @@
 
 import UIKit
 import Alamofire
+//import VariableTextsize
 
 class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigationControllerDelegate {
     
     var loginData : loginCheck?
     var isPasswordVisible = false
     let myId = UserDefaults.standard.object(forKey: "isLoggedIN")
+    var initialTextFieldsFonts: [UITextField : UIFont] = [:]
+    var initialLabelFonts: [UILabel : UIFont] = [:]
+//    var initialButtonFonts: [UIButton: UIFont] = [:]
     
+    @IBOutlet weak var passwordTextLabel: UILabel!
+    @IBOutlet weak var emailTextLabel: UILabel!
     @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,7 +27,9 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var borderViewForPassword: UIView!
-
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+//    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         loaderActivityIncicatior.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         print("Loging ViewDIDLoad")//debug Purpose
@@ -31,8 +39,11 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
         updatePasswordVisibility()
         print(UserDefaults.standard.object(forKey: "isLoggedIN"))
         navigationController?.delegate = self
+//        storeInitialFonts()
+        adjustFontSizeForDevice(textFields: [emailTextField, passwordTextField], labels: [emailTextLabel, passwordTextLabel])
       
     }
+    
     @objc func doneButtonTapped() {
         view.endEditing(true)
     }
@@ -118,6 +129,3 @@ class LoginVc: UIViewController, LogoDisplayable, UITextFieldDelegate, UINavigat
         if let forgotPassword = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordViewController") as? ForgotPasswordViewController {navigationController?.pushViewController(forgotPassword, animated: true)}
     }
 }
-
-
-

@@ -15,6 +15,9 @@ class NewPasswordVC: UIViewController, LogoDisplayable, UITextFieldDelegate {
     var newPassWordVar: String?
     var confirmPasswordVar: String?
     
+    @IBOutlet weak var confirmNewPassLabel: UILabel!
+    @IBOutlet weak var newPassLabel: UILabel!
+    @IBOutlet weak var newPassworMessegeLabel: UILabel!
     @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var confirmPassEyeButton: UIButton!
     @IBOutlet weak var newpassEyeButton: UIButton!
@@ -24,6 +27,7 @@ class NewPasswordVC: UIViewController, LogoDisplayable, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addLogoToFooter()
+        adjustFontSizeForDevice(textFields: [confirmPasswordTextfields, newPasswordTextField], labels: [confirmNewPassLabel, newPassLabel, newPassworMessegeLabel])
         mainImageIconView.mainIconImage.image = UIImage(named: "LockIcon")
         let titleFont = UIFont.systemFont(ofSize: 20.0) // Set font size
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: titleFont]

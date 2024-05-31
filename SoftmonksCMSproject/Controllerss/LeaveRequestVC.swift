@@ -20,9 +20,13 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     @IBOutlet weak var totalLeavesLabel: UILabel!
     @IBOutlet weak var availabelLeavesLabel: UILabel!
     @IBOutlet weak var takenLeavesLabel: UILabel!
+    @IBOutlet weak var leavesTakenTextLabel: UILabel!
+    @IBOutlet weak var leavesAvailableTextlabel: UILabel!
+    @IBOutlet weak var appliedLeaves: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        adjustFontSizeForDevice(textFields: [], labels: [appliedLeaves, leavesAvailableTextlabel,leavesTakenTextLabel, totalLeavesLabel, availabelLeavesLabel, takenLeavesLabel])
         let titleFont = UIFont.systemFont(ofSize: 20.0) // Set font size
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: titleFont]
         self.title = "Leave Requests"

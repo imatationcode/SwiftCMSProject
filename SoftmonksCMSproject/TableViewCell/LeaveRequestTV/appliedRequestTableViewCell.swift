@@ -29,6 +29,22 @@ class appliedRequestTableViewCell: UITableViewCell {
     @IBOutlet weak var fromDateLabel: UILabel!
     @IBOutlet weak var leaveTypeLabel: UILabel!
     @IBOutlet weak var inProgressView: UIView!
+    @IBOutlet weak var inprocessTextLabel: UILabel!
+    @IBOutlet weak var dashLabel: UILabel!
+    @IBOutlet weak var noOfDaysTextLabel: UILabel!
+    @IBOutlet weak var appliedOnTextLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        inProgressView.onlyCornerRadius(conRadius: 10.0)
+        outterView.onlyCornerRadius(conRadius: 8.0)
+        addElevatedShadow(to: outterView)
+        adjustFontSizeForDevice(textFields: [], labels: [appliedOnDateLabel,appliedOnTextLabel, NoOfDaysLabel, noOfDaysTextLabel, fromDateLabel, dashLabel, toDateLabel, leaveTypeLabel, inprocessTextLabel])
+        
+        
+        // Initialization code
+    }
+    
     
     func updateViews(leaveReuests: LeaveData){
         leaveCell = leaveReuests
@@ -79,14 +95,7 @@ class appliedRequestTableViewCell: UITableViewCell {
 
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        inProgressView.onlyCornerRadius(conRadius: 10.0)
-        outterView.onlyCornerRadius(conRadius: 8.0)
-        addElevatedShadow(to: outterView)
-        
-        // Initialization code
-    }
+
     
     func editAPICall(_ parameters : [String: Any]){
         AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)

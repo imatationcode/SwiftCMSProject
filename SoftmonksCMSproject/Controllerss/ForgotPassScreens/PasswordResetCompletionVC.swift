@@ -9,8 +9,10 @@ import UIKit
 
 class PasswordResetCompletionVC: UIViewController, LogoDisplayable {
     @IBOutlet weak var mainImageView: ProfileImageCustomeView!
-
+    @IBOutlet weak var successMessageLabel: UILabel!
+    
     override func viewDidLoad() {
+        adjustFontSizeForDevice(textFields: [], labels: [successMessageLabel])
         super.viewDidLoad()
         addLogoToFooter()
         mainImageView.mainIconImage.image = UIImage(named: "DoneSolidIcon")

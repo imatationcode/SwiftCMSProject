@@ -12,9 +12,14 @@ class verificationViewController: UIViewController, LogoDisplayable {
     private var remainingTime = 60
     
     var eMailId: String?
+    var empID: Int?
     
     var isbuttonEnabeld = false
     
+//    @IBOutlet weak var countDownLabel: UILabel!
+    @IBOutlet weak var inWordLabel: UILabel!
+    @IBOutlet weak var otpNotReceivedMessage: UILabel!
+    @IBOutlet weak var instructionMessageLabel: UILabel!
     @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var otpStackVIew: OTPView!
     @IBOutlet weak var countDownlabel: UILabel!
@@ -22,6 +27,7 @@ class verificationViewController: UIViewController, LogoDisplayable {
     @IBOutlet weak var mainImageView: ProfileImageCustomeView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        adjustFontSizeForDevice(textFields: [], labels: [countDownlabel, inWordLabel, instructionMessageLabel, otpNotReceivedMessage ])
         print("email in verificatio = \(eMailId)")
         loaderActivityIncicatior.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         addLogoToFooter()
@@ -65,7 +71,7 @@ class verificationViewController: UIViewController, LogoDisplayable {
                   present(alertController, animated: true, completion: nil)
         } else {
             let otp = otpStackVIew.getEnteredOTP()
-            let perameters: [String : Any] = ["mode":"verifyOTP", "otp":otp]
+            let perameters: [String : Any] = ["mode":"verifyotpCode", "id": empID!, "otp":otp]
             passAPICall(perameters) { (success, errorMessage, uniqId) in
                 if success {
                     self.loaderActivityIncicatior.stopAnimating()
@@ -79,10 +85,6 @@ class verificationViewController: UIViewController, LogoDisplayable {
                     return
                 }
             }
-            
-            
-            
-
         }
     }
     

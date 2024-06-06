@@ -24,10 +24,11 @@ class DesignationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         designationsListTabelView.delegate = self
         designationsListTabelView.dataSource = self
         desingnationsAPICall()
+        adjustableTableCellSize(for: designationsListTabelView, iPadSize: 80, iPhoneSize: 50)
     }
     
     func desingnationsAPICall() {
-        let parameters: [String : Any] = ["mode" : "getDesignationList", "id" : userDict?["id"] ?? "" ]
+        let parameters: [String : Any] = ["mode" : "getDesignationList", "id" : userDict?["id"] ?? ""]
         AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default , headers: nil)
             .responseDecodable(of: DesignationsData.self) { [weak self] response in
                 guard let self = self else { return }
@@ -59,9 +60,6 @@ class DesignationVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.configData(with: detailRecord)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
+      
 
 }

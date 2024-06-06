@@ -150,17 +150,12 @@ class leaveApplicationPopUPViewController: UIViewController, UIPickerViewDelegat
     
     func popUp(sender: UIViewController) {
         sender.present(self, animated: true)
-        self.showup()
-        
-    }
-    
-    private func showup(){
-        UIView.animate(withDuration: 0.2, delay: 0.0){
+        UIView.animate(withDuration: 0.2, delay: 0.0) {
             self.backView.alpha = 1
             self.popupContentView.alpha = 1
-            
         }
     }
+    
     
     
     func textFieldDidChangeSelection(_ sender: UITextField) {

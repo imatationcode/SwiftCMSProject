@@ -8,26 +8,22 @@ protocol LogoDisplayable {
 
 extension LogoDisplayable where Self: UIViewController {
     func addLogoToFooter() {
-        let screenHeight = UIScreen.main.bounds.height
-        let logoHeightPercentage: CGFloat = 0.15
         
-        
-        let logoHeight = screenHeight * logoHeightPercentage
-        let logoWidth = logoHeight
-        
-        //assign logo
         let logoImageView = UIImageView(image: UIImage(named: "titleSoftmonks"))
-        let BottomSpacing: CGFloat = 0.04
-        
-        logoImageView.frame = CGRect(
-            x: (view.frame.size.width - logoWidth) / 2,
-            y: view.frame.size.height - logoHeight + view.frame.size.height * BottomSpacing ,
-            width: logoWidth,
-            height: logoHeight
-        )
-        logoImageView.contentMode = .scaleAspectFit // Maintain the image's aspect ratio
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.contentMode = .scaleAspectFit
         view.addSubview(logoImageView)
-        
-        
+        let logoHeight: CGFloat
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            logoHeight = 40
+        } else {
+            logoHeight = 25
+        }
+        NSLayoutConstraint.activate([
+            logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            logoImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            logoImageView.heightAnchor.constraint(equalToConstant: logoHeight) // Adjust height as needed
+        ])
     }
 }

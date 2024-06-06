@@ -20,22 +20,25 @@ class PasswordVarificationPopUpVC: UIViewController {
     var enteredPasswordVar: String?
     
     
+    @IBOutlet weak var verificationTextLabel: UILabel!
     @IBOutlet var parentBackView: UIView!
     @IBOutlet weak var crossButtonView: UIView!
     @IBOutlet weak var backTransperantView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var oldPasswordTextFields: UITextField!
+    @IBOutlet weak var curentPassTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.layer.cornerRadius = 8.0
         crossButtonView.layer.cornerRadius = 3.0
         crossButtonView.addElevatedShadow(to: crossButtonView)
-        backTransperantView.backgroundColor = UIColor.black.withAlphaComponent(0.65)
-        parentBackView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        backTransperantView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        parentBackView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         updatePasswordVisibility()
         oldPasswordTextFields.isSecureTextEntry = !isPasswordVisible
+        adjustFontSizeForDevice(textFields: [oldPasswordTextFields], labels: [verificationTextLabel, curentPassTextLabel])
     }
     
     

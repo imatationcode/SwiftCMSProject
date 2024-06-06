@@ -21,9 +21,11 @@ struct RoleData: Codable {
     let isCurrentDesignation: Int?
 }
 
-struct passResponse: Codable {
+struct PassResponse: Codable {
     let id: Int?
     let err: Int?
+    let successMsg: String?
+    let errTitle: String?
     let errMsg: String?
     let derivedClass: Int?
 }

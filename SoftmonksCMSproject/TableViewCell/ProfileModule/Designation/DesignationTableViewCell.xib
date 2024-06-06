@@ -21,37 +21,37 @@
                         <rect key="frame" x="5" y="5" width="310" height="59"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designation Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPt-j5-gPE">
-                                <rect key="frame" x="14" y="16" width="86" height="12"/>
+                                <rect key="frame" x="14" y="13.666666666666668" width="86" height="12"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8G-kU-LsE">
-                                <rect key="frame" x="134.33333333333334" y="16" width="23.333333333333343" height="12"/>
+                                <rect key="frame" x="134.33333333333334" y="13.666666666666668" width="23.333333333333343" height="12"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Backend Developer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utT-7Q-eLd">
-                                <rect key="frame" x="14" y="34" width="95.333333333333329" height="12"/>
+                                <rect key="frame" x="14" y="31.666666666666664" width="95.333333333333329" height="12"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/01/2022" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0F0-9H-WRU">
-                                <rect key="frame" x="134.33333333333334" y="34" width="55.333333333333343" height="12"/>
+                                <rect key="frame" x="134.33333333333334" y="31.666666666666664" width="55.333333333333343" height="12"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuj-Tj-ab5">
-                                <rect key="frame" x="194.66666666666666" y="34" width="12" height="12"/>
+                                <rect key="frame" x="194.66666666666666" y="31.666666666666664" width="12" height="12"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/01/2022" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHk-be-Fc9">
-                                <rect key="frame" x="211.66666666666666" y="34" width="55.333333333333343" height="12"/>
+                                <rect key="frame" x="211.66666666666666" y="31.666666666666664" width="55.333333333333343" height="12"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -73,11 +73,11 @@
                             <constraint firstItem="iPt-j5-gPE" firstAttribute="leading" secondItem="rjB-MS-C79" secondAttribute="leading" constant="14" id="Ea9-w0-Rdz"/>
                             <constraint firstItem="0F0-9H-WRU" firstAttribute="leading" secondItem="utT-7Q-eLd" secondAttribute="trailing" constant="25" id="RQL-H4-bXr"/>
                             <constraint firstItem="iuj-Tj-ab5" firstAttribute="centerY" secondItem="0F0-9H-WRU" secondAttribute="centerY" id="W7h-US-qTD"/>
+                            <constraint firstItem="iPt-j5-gPE" firstAttribute="centerY" secondItem="rjB-MS-C79" secondAttribute="centerY" constant="-10" id="ebm-wc-Tbm"/>
                             <constraint firstItem="N8G-kU-LsE" firstAttribute="centerY" secondItem="iPt-j5-gPE" secondAttribute="centerY" id="gtj-7X-MvE"/>
                             <constraint firstItem="0F0-9H-WRU" firstAttribute="centerY" secondItem="utT-7Q-eLd" secondAttribute="centerY" id="pFo-2N-NP0"/>
                             <constraint firstItem="utT-7Q-eLd" firstAttribute="leading" secondItem="iPt-j5-gPE" secondAttribute="leading" id="q3Y-W9-z9u"/>
                             <constraint firstItem="utT-7Q-eLd" firstAttribute="top" secondItem="iPt-j5-gPE" secondAttribute="bottom" constant="6" id="rvx-31-JcR"/>
-                            <constraint firstItem="iPt-j5-gPE" firstAttribute="top" secondItem="rjB-MS-C79" secondAttribute="top" constant="16" id="sOh-A9-rme"/>
                             <constraint firstAttribute="trailing" secondItem="Wvl-LG-UqC" secondAttribute="trailing" constant="15" id="svl-1U-AVN"/>
                             <constraint firstItem="N8G-kU-LsE" firstAttribute="leading" secondItem="0F0-9H-WRU" secondAttribute="leading" id="to5-sM-4Pc"/>
                             <constraint firstItem="iuj-Tj-ab5" firstAttribute="leading" secondItem="0F0-9H-WRU" secondAttribute="trailing" constant="5" id="yTh-H0-KFS"/>
@@ -100,6 +100,7 @@
                 <outlet property="designationValueLabel" destination="utT-7Q-eLd" id="Qhm-bL-Wop"/>
                 <outlet property="fromDatelabel" destination="0F0-9H-WRU" id="H1M-jg-Sc9"/>
                 <outlet property="outterView" destination="rjB-MS-C79" id="NKs-AE-Oxg"/>
+                <outlet property="toTextLabel" destination="iuj-Tj-ab5" id="h46-Rx-YMN"/>
                 <outlet property="todatelabel" destination="RHk-be-Fc9" id="Rky-IV-l2c"/>
             </connections>
             <point key="canvasLocation" x="-150" y="3"/>

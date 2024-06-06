@@ -17,10 +17,11 @@ class DesignationTableViewCell: UITableViewCell {
     @IBOutlet weak var curentRoleIndicatorView: UIView!
     @IBOutlet weak var designationTitle: UILabel!
     @IBOutlet weak var dateTitleLabel: UILabel!
+    @IBOutlet weak var toTextLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        adjustFontSizeForDevice(textFields: [], labels: [designationTitle, designationValueLabel, dateTitleLabel, fromDatelabel, todatelabel])
+        adjustFontSizeForDevice(textFields: [], labels: [designationTitle, designationValueLabel, dateTitleLabel, fromDatelabel, todatelabel, toTextLabel])
         initialSetUp()
     }
     

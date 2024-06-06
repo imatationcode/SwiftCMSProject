@@ -18,7 +18,7 @@ class NewPasswordVC: UIViewController, LogoDisplayable, UITextFieldDelegate {
     @IBOutlet weak var confirmNewPassLabel: UILabel!
     @IBOutlet weak var newPassLabel: UILabel!
     @IBOutlet weak var newPassworMessegeLabel: UILabel!
-    @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
+//    @IBOutlet weak var loaderActivityIncicatior: UIActivityIndicatorView!
     @IBOutlet weak var confirmPassEyeButton: UIButton!
     @IBOutlet weak var newpassEyeButton: UIButton!
     @IBOutlet weak var confirmPasswordTextfields: UITextField!
@@ -71,10 +71,10 @@ private func updatePasswordVisibility() {
         passAPICall(parameters) { (success, errorMessage, uniqId) in
             if success {
                 print(errorMessage)
-                self.loaderActivityIncicatior.stopAnimating()
+//                self.loaderActivityIncicatior.stopAnimating()
                 if let passwordResetCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PasswordResetCompletionVC") as? PasswordResetCompletionVC {self.navigationController?.pushViewController(passwordResetCompletionVC, animated: true)}
             } else {
-                self.loaderActivityIncicatior.stopAnimating()
+//                self.loaderActivityIncicatior.stopAnimating()
                 self.showAlert(title: "Invalid Mail", message: errorMessage ?? "")
                 return
             }

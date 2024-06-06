@@ -21,6 +21,8 @@ class ForgotPasswordViewController: UIViewController, LogoDisplayable {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var outerScrollView: UIScrollView!
     @IBOutlet weak var mainImageView: ProfileImageCustomeView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         adjustFontSizeForDevice(textFields: [emailTextField,], labels: [emailLabel, instructionMessageLabel, alreadyLoggedINMessageLabel])
@@ -63,26 +65,59 @@ class ForgotPasswordViewController: UIViewController, LogoDisplayable {
             }
         }
     }
-        
+    
     func otpAPICall() {
-        let parameters: [String : Any] = ["mode": "verifyUser" , "username": mailID! ]
-        passAPICall(parameters) { (success, errorMessage, uiqId) in
-            if success {
-                self.loaderActivityIncicatior.stopAnimating()
-                if let varificationVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "verificationViewController") as?
-                    verificationViewController { varificationVc.eMailId = self.mailID; varificationVc.empID = uiqId; self.navigationController?.pushViewController(varificationVc, animated: true)}
-            } else {
-                self.loaderActivityIncicatior.stopAnimating()
-                self.showAlert(title: "Invalid Mail", message: errorMessage ?? "")
-                return
-            }
+        guard let mailID = mailID else {
+            self.showAlert(title: "Error", message: "Mail ID is nil")
+            return
         }
+        
+        let parameters: [String: Any] = ["mode": "verifyUsername", "username": mailID]
+        AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+            .response { response in
+                self.loaderActivityIncicatior.stopAnimating()
+                
+                switch response.result {
+                case .success:
+                    do {
+                        guard let data = response.data, !data.isEmpty else {
+                            // Handle the empty response as success
+                            if let verificationVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "verificationViewController") as? VerificationViewController {
+                                verificationVc.eMailId = self.mailID
+                                self.navigationController?.pushViewController(verificationVc, animated: true)
+                            }
+                            return
+                        }
+                        
+                        if let responseJSON = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                            print(responseJSON)
+                            
+                            if let errMsg = responseJSON["errMsg"] as? String, !errMsg.isEmpty {
+                                let errTitle = responseJSON["errTitle"] as? String ?? "Error"
+                                self.showAlert(title: errTitle, message: errMsg)
+                            } else {
+                                if let verificationVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "verificationViewController") as? VerificationViewController {
+                                    verificationVc.eMailId = self.mailID
+                                    self.navigationController?.pushViewController(verificationVc, animated: true)
+                                }
+                            }
+                        } else {
+                            self.showAlert(title: "Error", message: "Invalid response format")
+                        }
+                    } catch {
+                        self.showAlert(title: "Error", message: error.localizedDescription)
+                    }
+                case .failure(let error):
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                }
+            }
     }
-            
+    
+    
     @IBAction func loginButtonTaped(_ sender: Any) {
         if let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginVc {navigationController?.pushViewController(loginVc, animated: true)}
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Dismiss the keyboard when return key is tapped
         textField.resignFirstResponder()

@@ -20,6 +20,7 @@ class DocumentsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         documentsListTableView.register(UINib(nibName: "DocumentsTableCell", bundle: nil), forCellReuseIdentifier: "DocumentsTableCell")
         documentsListTableView.delegate = self
         documentsListTableView.dataSource = self
+        adjustableTableCellSize(for: documentsListTableView, iPadSize: 100, iPhoneSize: 60)
     }
     
     @IBAction func tappedOnUploadDocument(_ sender: Any) {

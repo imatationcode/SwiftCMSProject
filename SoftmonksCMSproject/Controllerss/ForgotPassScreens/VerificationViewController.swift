@@ -7,12 +7,12 @@
 
 import UIKit
 
-class verificationViewController: UIViewController, LogoDisplayable {
+class VerificationViewController: UIViewController, LogoDisplayable {
     private var timer: Timer?
     private var remainingTime = 60
     
     var eMailId: String?
-    var empID: Int?
+//    var empID: Int?
     
     var isbuttonEnabeld = false
     
@@ -71,7 +71,7 @@ class verificationViewController: UIViewController, LogoDisplayable {
                   present(alertController, animated: true, completion: nil)
         } else {
             let otp = otpStackVIew.getEnteredOTP()
-            let perameters: [String : Any] = ["mode":"verifyotpCode", "id": empID!, "otp":otp]
+            let perameters: [String : Any] = ["mode":"verifyOTP", "username": eMailId!, "otp":otp]
             passAPICall(perameters) { (success, errorMessage, uniqId) in
                 if success {
                     self.loaderActivityIncicatior.stopAnimating()

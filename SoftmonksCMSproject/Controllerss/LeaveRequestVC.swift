@@ -36,7 +36,7 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
         initialLeaveDataFromAPI()
         self.leaveReuestsTableView.delegate = self
         self.leaveReuestsTableView.dataSource = self
-        
+        adjustableTableCellSize(for: leaveReuestsTableView, iPadSize: 180.0, iPhoneSize: 130.0)
     }
     
     func initialLeaveDataFromAPI(){
@@ -98,13 +98,13 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if isIpad() {
-            return 200
-        } else {
-            return 130
-        }
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if isIpad() {
+//            return 200
+//        } else {
+//            return 130
+//        }
+//    }
     
     @IBAction func refreshButton(_ sender: Any) {
         initialLeaveDataFromAPI()
@@ -170,9 +170,9 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
                         print (response)
                         self.saveLeveAPIRespons = response
                         if response.err == 1 {
-                            self.showAlert(title:"Repeating Date", message: response.errMsg)
+                            self.showAlert(title:"Repeating Date", message: response.errMsg!)
                         } else{
-                            self.showAlert(title: "Success", message: response.errMsg)
+                            self.showAlert(title: "Success", message: response.successMsg!)
                         }
                         self.initialLeaveDataFromAPI()
                     case .failure(let error):
@@ -191,9 +191,9 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
                         print (response)
                         self.saveLeveAPIRespons = response
                         if response.err == 1 {
-                            self.showAlert(title:"Repeating Date", message: response.errMsg)
+                            self.showAlert(title:"Repeating Date", message: response.errMsg!)
                         } else{
-                            self.showAlert(title: "Success", message: response.errMsg)
+                            self.showAlert(title: "Success", message: response.successMsg!)
                         }
                         self.initialLeaveDataFromAPI()
                     case .failure(let error):
@@ -206,8 +206,8 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     
 
 }//class END
-extension UIViewController {
-    func isIpad() -> Bool {
-        return UIDevice.current.userInterfaceIdiom == .pad
-    }
-}
+//extension UIViewController {
+//    func isIpad() -> Bool {
+//        return UIDevice.current.userInterfaceIdiom == .pad
+//    }
+//}

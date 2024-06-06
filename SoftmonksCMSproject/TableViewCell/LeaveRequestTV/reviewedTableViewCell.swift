@@ -16,13 +16,17 @@ class reviewedTableViewCell: UITableViewCell {
     @IBOutlet weak var fromDateLabel: UILabel!
     @IBOutlet weak var leaveTypeLabel: UILabel!
     @IBOutlet weak var rejectedButton: UIButton!
-//    @IBOutlet weak var approvedButton: UIButton!
+    @IBOutlet weak var textNoOfDaysLabel: UILabel!
+    @IBOutlet weak var appliedOnTextLabel: UILabel!
+    @IBOutlet weak var dashLabel: UILabel!
+    //    @IBOutlet weak var approvedButton: UIButton!
     
     override func awakeFromNib() {
         // Initialization code
         super.awakeFromNib()
         outterView.onlyCornerRadius(conRadius: 8.0)
         addElevatedShadow(to: outterView)
+        adjustFontSizeForDevice(textFields: [], labels: [appliedOnTextLabel, appliedOnDateLabel, NoOfDaysLabel, toDateLabel, fromDateLabel, leaveTypeLabel, textNoOfDaysLabel, dashLabel])
         
     }
     

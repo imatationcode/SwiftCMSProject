@@ -13,15 +13,15 @@ import Alamofire
 func passAPICall(_ parameters: [String: Any], completion: @escaping (Bool, String?, Int?) -> Void) {
     print(parameters)
         AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-            .responseDecodable(of: passResponse.self) { response in
+            .responseDecodable(of: PassResponse.self) { response in
                 switch response.result {
                 case .success(let rData):
                     print(rData)
                     guard rData.err == 0 else {
-                        completion(false, rData.errMsg, rData.id) // Pass error info in completion
+                        completion(false, rData.successMsg, rData.id) // Pass error info in completion
                                             return
                                         }
-                    completion(true, rData.errMsg, rData.id)
+                    completion(true, rData.successMsg, rData.id)
                 case .failure(let error):
                     print(error)
                     completion(false, error.localizedDescription, 0)

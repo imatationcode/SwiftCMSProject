@@ -93,7 +93,7 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
             
             let popupVC = PasswordVarificationPopUpVC()
             popupVC.delegate = self
-            popupVC.modalPresentationStyle = .fullScreen
+            popupVC.modalPresentationStyle = .overCurrentContext
             present(popupVC, animated: true, completion: nil)
             self.popUpPasswordVarification = PasswordVarificationPopUpVC()
             

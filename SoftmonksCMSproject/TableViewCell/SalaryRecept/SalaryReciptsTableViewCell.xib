@@ -49,10 +49,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgI-Iw-lgc">
-                                        <rect key="frame" x="221" y="17.666666666666668" width="95" height="25.000000000000004"/>
+                                        <rect key="frame" x="228.66666666666666" y="17.666666666666668" width="87.333333333333343" height="25.000000000000004"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="95" id="5nm-rd-IIk"/>
                                             <constraint firstAttribute="height" constant="25" id="gUR-HR-wNq"/>
+                                            <constraint firstAttribute="width" secondItem="GgI-Iw-lgc" secondAttribute="height" multiplier="3.5:1" id="yyN-DA-Nov"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Download">
@@ -90,7 +90,9 @@
                     <constraint firstAttribute="trailing" secondItem="bgH-PZ-1uI" secondAttribute="trailing" id="Em6-5H-Qvm"/>
                     <constraint firstAttribute="bottom" secondItem="bgH-PZ-1uI" secondAttribute="bottom" id="In6-UP-hD3"/>
                     <constraint firstItem="bgH-PZ-1uI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="RjP-QS-B3P"/>
+                    <constraint firstItem="jsE-c6-EY3" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.833333" id="Ugs-BQ-cQa"/>
                     <constraint firstItem="bgH-PZ-1uI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WB4-8w-AbC"/>
+                    <constraint firstItem="GgI-Iw-lgc" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.416667" id="mgV-db-iW4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

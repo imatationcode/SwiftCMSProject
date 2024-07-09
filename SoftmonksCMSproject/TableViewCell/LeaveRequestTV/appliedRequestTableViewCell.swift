@@ -68,22 +68,22 @@ class appliedRequestTableViewCell: UITableViewCell {
     }
     
     @IBAction func tappedOnDelete(_ sender: Any) {
-        let id: Int = leaveCell?.recordId ?? 0
+        let id: Int = (leaveCell?.recordId)!
         print(id)
         let parameters: [String: Any] = ["mode" : "deleteLeaveRequest", "recordId" : id ]
         //editAPICall(parameters)
         deleteAlert(title: "Warning!", message: "Are you sure", viewController: self.viewController) { delete in
-                AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-                    .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
-                        guard let self = self else {return}
-                        switch response.result {
-                        case .success(let response):
-                             print (response)
-                            self.delegate?.deleteBtnPressed(forCell: self)
-                        case .failure(let error):
-                            print(error)
-                        }
+            AF.request(apiURL, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+                .responseDecodable(of: DeleteAPIResponse.self) {[weak self] response in
+                    guard let self = self else {return}
+                    switch response.result {
+                    case .success(let response):
+                        print (response)
+                        self.delegate?.deleteBtnPressed(forCell: self)
+                    case .failure(let error):
+                        print(error)
                     }
+                }
         }
     }
     
@@ -127,7 +127,6 @@ class appliedRequestTableViewCell: UITableViewCell {
     
     func deleteAlert(title: String, message: String, viewController: UIViewController?, deleteHandler: ((UIAlertAction) -> Void)?) {
         guard let viewController = viewController else {
-            print("View controller is nil. Cannot present alert.")
             return
         }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

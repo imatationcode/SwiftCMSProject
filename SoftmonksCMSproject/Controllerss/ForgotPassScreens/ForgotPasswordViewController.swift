@@ -11,6 +11,8 @@ import Alamofire
 
 
 class ForgotPasswordViewController: UIViewController, LogoDisplayable {
+
+    
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
     var mailID: String?
     

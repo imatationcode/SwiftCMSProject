@@ -38,19 +38,27 @@
                             </variation>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gG-sl-eeK">
-                            <rect key="frame" x="32" y="322" width="329" height="292"/>
+                            <rect key="frame" x="32" y="322" width="329" height="293.33333333333326"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIY-NS-SK9">
-                            <rect key="frame" x="32" y="634" width="329" height="38"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="filled" title="Upload Documents">
-                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="baseBackgroundColor" red="0.0" green="0.21176470589999999" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </buttonConfiguration>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjS-dC-LTK">
+                            <rect key="frame" x="32" y="635.33333333333337" width="329" height="36.666666666666629"/>
+                            <color key="backgroundColor" red="0.0" green="0.2099601924" blue="0.60263997319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Upload Documents">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            </variation>
                             <connections>
-                                <action selector="tappedOnUploadDocument:" destination="-1" eventType="touchUpInside" id="bIi-xy-ekL"/>
+                                <action selector="tappedOnUploadDocument:" destination="-1" eventType="touchUpInside" id="xfP-qI-yOo"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBG-x4-P1Y">
@@ -63,9 +71,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="cIY-NS-SK9" firstAttribute="leading" secondItem="S3c-xw-Ot8" secondAttribute="leading" id="1Vx-Py-Uik"/>
                         <constraint firstItem="0gG-sl-eeK" firstAttribute="leading" secondItem="S3c-xw-Ot8" secondAttribute="leading" id="3oc-4I-M13"/>
-                        <constraint firstItem="cIY-NS-SK9" firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" id="5bz-Yp-Air"/>
                         <constraint firstItem="S3c-xw-Ot8" firstAttribute="top" secondItem="k2C-5M-ocD" secondAttribute="bottom" constant="40" id="5fS-Ug-Rqm"/>
                         <constraint firstItem="PBG-x4-P1Y" firstAttribute="leading" secondItem="S3c-xw-Ot8" secondAttribute="leading" id="5id-yP-4fS"/>
                         <constraint firstItem="S3c-xw-Ot8" firstAttribute="leading" secondItem="dUE-Uy-1cB" secondAttribute="leading" constant="32" id="BfX-X0-ZLc"/>
@@ -73,16 +79,17 @@
                         <constraint firstItem="k2C-5M-ocD" firstAttribute="top" secondItem="dUE-Uy-1cB" secondAttribute="top" constant="120" id="FAE-tP-eg0"/>
                         <constraint firstItem="k2C-5M-ocD" firstAttribute="height" secondItem="dUE-Uy-1cB" secondAttribute="height" multiplier="0.152582" id="I5w-pU-1dO"/>
                         <constraint firstItem="k2C-5M-ocD" firstAttribute="leading" secondItem="dUE-Uy-1cB" secondAttribute="leading" id="L5d-IE-xB6"/>
+                        <constraint firstAttribute="bottom" secondItem="BjS-dC-LTK" secondAttribute="bottom" constant="180" id="Lj4-oN-0s2"/>
                         <constraint firstItem="PBG-x4-P1Y" firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" id="PLg-nH-TYX"/>
-                        <constraint firstItem="cIY-NS-SK9" firstAttribute="top" secondItem="0gG-sl-eeK" secondAttribute="bottom" constant="20" id="adW-jD-iBV"/>
+                        <constraint firstItem="BjS-dC-LTK" firstAttribute="top" secondItem="0gG-sl-eeK" secondAttribute="bottom" constant="20" id="Rtk-Zq-sEs"/>
                         <constraint firstAttribute="trailing" secondItem="k2C-5M-ocD" secondAttribute="trailing" id="b1e-hd-vDG"/>
+                        <constraint firstItem="BjS-dC-LTK" firstAttribute="leading" secondItem="S3c-xw-Ot8" secondAttribute="leading" id="bsx-gD-ORB"/>
                         <constraint firstItem="S3c-xw-Ot8" firstAttribute="centerX" secondItem="dUE-Uy-1cB" secondAttribute="centerX" id="cAf-2J-UbA"/>
-                        <constraint firstItem="cIY-NS-SK9" firstAttribute="height" secondItem="dUE-Uy-1cB" secondAttribute="height" multiplier="0.0446009" id="gjb-cv-7UV"/>
-                        <constraint firstAttribute="bottom" secondItem="cIY-NS-SK9" secondAttribute="bottom" constant="180" id="nJo-oa-irU"/>
                         <constraint firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" constant="32" id="ncm-mi-Tg0"/>
-                        <constraint firstItem="cIY-NS-SK9" firstAttribute="centerX" secondItem="dUE-Uy-1cB" secondAttribute="centerX" id="rBy-OD-5Y5"/>
+                        <constraint firstItem="BjS-dC-LTK" firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" id="qIB-u5-sk0"/>
                         <constraint firstItem="PBG-x4-P1Y" firstAttribute="top" secondItem="S3c-xw-Ot8" secondAttribute="bottom" constant="2" id="rad-s4-rml"/>
                         <constraint firstItem="0gG-sl-eeK" firstAttribute="trailing" secondItem="S3c-xw-Ot8" secondAttribute="trailing" id="ru3-j3-l6U"/>
+                        <constraint firstItem="BjS-dC-LTK" firstAttribute="height" secondItem="dUE-Uy-1cB" secondAttribute="height" multiplier="0.0429185" id="x0X-bD-n7X"/>
                     </constraints>
                 </view>
             </subviews>

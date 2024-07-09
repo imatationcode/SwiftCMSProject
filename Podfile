@@ -6,8 +6,10 @@ target 'SoftmonksCMSproject' do
   use_frameworks!
 
   # Pods for SoftmonksCMSproject
-   pod 'TPKeyboardAvoiding'
-   pod 'Alamofire'
+	pod 'TPKeyboardAvoiding'
+	pod 'Alamofire'
+	pod 'SDWebImage', '~> 5.0'
+
  
 
 end

@@ -18,7 +18,7 @@ func passAPICall(_ parameters: [String: Any], completion: @escaping (Bool, Strin
                 case .success(let rData):
                     print(rData)
                     guard rData.err == 0 else {
-                        completion(false, rData.successMsg, rData.id) // Pass error info in completion
+                        completion(false, rData.errMsg, rData.id)
                                             return
                                         }
                     completion(true, rData.successMsg, rData.id)

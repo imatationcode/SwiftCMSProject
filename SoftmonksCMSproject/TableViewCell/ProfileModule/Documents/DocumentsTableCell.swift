@@ -23,4 +23,15 @@ class DocumentsTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func configValues(with detailRecord: UsuserDocuments) {
+        documentTitleLabel.text = detailRecord.fileLabel
+        documentUploadDateLabel.text = detailRecord.uploadDate
+        if (detailRecord.fileType == "Documents") {
+            documentImageView.image = UIImage(named: "Tabdescription")
+        } else {
+            documentImageView.image = UIImage(named: "ImgFileIcon")
+        }
+        
+    }
+    
 }

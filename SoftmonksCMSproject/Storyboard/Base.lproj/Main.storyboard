@@ -293,8 +293,9 @@
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                                         </variation>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="potraitSample" translatesAutoresizingMaskIntoConstraints="NO" id="15b-Kt-qr5">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personIcon" translatesAutoresizingMaskIntoConstraints="NO" id="15b-Kt-qr5">
                                                         <rect key="frame" x="162.66666666666666" y="40.000000000000007" width="104.66666666666666" height="104.66666666666669"/>
+                                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="15b-Kt-qr5" secondAttribute="height" multiplier="1:1" id="F74-uX-gTI"/>
                                                         </constraints>
@@ -354,14 +355,22 @@
                                                             <outlet property="delegate" destination="kTO-h4-63p" id="r3T-cd-P5r"/>
                                                         </connections>
                                                     </collectionView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGx-2q-ki2">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGx-2q-ki2">
                                                         <rect key="frame" x="32" y="680.33333333333337" width="366" height="39.666666666666629"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Logout">
-                                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <color key="baseBackgroundColor" red="0.0" green="0.21176470588235294" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </buttonConfiguration>
+                                                        <color key="backgroundColor" red="0.0" green="0.2099601924" blue="0.60263997319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Logout">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <integer key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                        </variation>
                                                         <connections>
                                                             <action selector="TappedLoginButtom:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T5o-lC-Tsb"/>
                                                             <action selector="tappedOnLogout:" destination="kTO-h4-63p" eventType="touchUpInside" id="A16-pg-Idw"/>
@@ -856,12 +865,15 @@
                                             <action selector="applyLeaveTapped:" destination="GCH-Vy-1if" eventType="touchUpInside" id="gd6-Ok-vuF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4n-oS-Xb5">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4n-oS-Xb5">
                                         <rect key="frame" x="355" y="747" width="43" height="42"/>
                                         <color key="backgroundColor" red="0.0" green="0.2099601924" blue="0.60263997319999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="refreshIcon"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="refreshIcon" imageContentMode="scaleAspectFit"/>
+                                        </buttonConfiguration>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="8"/>
@@ -1336,13 +1348,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdf-L6-yjt">
-                                <rect key="frame" x="0.0" y="0.0" width="430" height="809.33333333333337"/>
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZC-Co-t0O" customClass="TPKeyboardAvoidingCollectionView">
-                                        <rect key="frame" x="0.0" y="59" width="430" height="716.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="59" width="430" height="839"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ya9-Ea-r2m">
-                                                <rect key="frame" x="0.0" y="0.0" width="430" height="716.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="430" height="839"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afD-aZ-rEl" customClass="ProfileImageCustomeView" customModule="SoftmonksCMSproject" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="30" width="430" height="140"/>
@@ -1489,7 +1501,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tge-si-qiY">
-                                                        <rect key="frame" x="32" y="478.66666666666663" width="366" height="38"/>
+                                                        <rect key="frame" x="32" y="478.66666666666663" width="366" height="43.666666666666629"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="bgj-Tj-k1T"/>
                                                         </constraints>
@@ -1923,7 +1935,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1v-gg-mgL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="226.71755725190837" y="1088.7323943661972"/>
+            <point key="canvasLocation" x="148" y="932"/>
         </scene>
         <!--Main Menu Navigation View Controller-->
         <scene sceneID="XYW-j4-VvN">
@@ -1960,7 +1972,6 @@
         <image name="email" width="25" height="24.666666030883789"/>
         <image name="key" width="20" height="20"/>
         <image name="personIcon" width="50" height="50"/>
-        <image name="potraitSample" width="173.33332824707031" height="216.66667175292969"/>
         <image name="refreshIcon" width="11.666666984558105" height="11.666666984558105"/>
         <image name="visibility" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">

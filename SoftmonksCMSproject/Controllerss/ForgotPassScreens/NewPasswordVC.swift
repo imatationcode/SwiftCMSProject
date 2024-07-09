@@ -75,7 +75,7 @@ private func updatePasswordVisibility() {
                 if let passwordResetCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PasswordResetCompletionVC") as? PasswordResetCompletionVC {self.navigationController?.pushViewController(passwordResetCompletionVC, animated: true)}
             } else {
 //                self.loaderActivityIncicatior.stopAnimating()
-                self.showAlert(title: "Invalid Mail", message: errorMessage ?? "")
+                self.showAlert(title: "Invalid", message: errorMessage ?? "")
                 return
             }
         }
@@ -97,6 +97,26 @@ private func updatePasswordVisibility() {
                 return false
             }
             
+            guard password.count > 6 else {
+                showAlert(title: "Invalid Password", message: "Password must be more than 6 characters long.")
+                return false
+            }
+            // Check if password contains at least one number
+            let numberPattern = ".*[0-9]+.*"
+            let numberTest = NSPredicate(format: "SELF MATCHES %@", numberPattern)
+            guard numberTest.evaluate(with: password) else {
+                showAlert(title: "Invalid Password", message: "Password must contain at least one number.")
+                return false
+            }
+            
+            // Check if password contains at least one special character
+            let specialCharacterPattern = ".*[!&^%$#@()/]+.*"
+            
+            let specialCharacterTest = NSPredicate(format: "SELF MATCHES %@", specialCharacterPattern)
+            guard specialCharacterTest.evaluate(with: password) else {
+                showAlert(title: "Invalid Password", message: "Password must contain at least one special character.")
+                return false
+            }
             print("Password reset successful!")
             return true
         }

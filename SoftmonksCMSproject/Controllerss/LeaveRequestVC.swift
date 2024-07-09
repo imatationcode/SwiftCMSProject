@@ -111,7 +111,6 @@ class LeaveRequestVC: UIViewController, LogoDisplayable, UITableViewDelegate, UI
     }
     
     @IBAction func applyLeaveTapped(_ sender: Any) {
-
         leaveApplicationPop = leaveApplicationPopUPViewController()
         leaveApplicationPop?.delegateVariable = self
         leaveApplicationPop?.popUp(sender: self)

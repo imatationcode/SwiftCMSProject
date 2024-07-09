@@ -14,6 +14,7 @@
                 <outlet property="loaderActivityIncicatior" destination="inh-w0-G1y" id="Mz6-SR-hed"/>
                 <outlet property="mainImageView" destination="DX6-6Q-Fju" id="sVF-Vl-Mso"/>
                 <outlet property="profileImage" destination="gmv-dg-QqC" id="Zrv-lv-lRi"/>
+                <outlet property="profileImageButton" destination="ZpY-YH-g6x" id="81I-Sv-1Q8"/>
                 <outlet property="staffCodeLabel" destination="Z5L-ly-E7m" id="WJf-ir-MfA"/>
                 <outlet property="staffTextLabel" destination="haG-Fp-B2j" id="YOh-yk-4mQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,6 +30,8 @@
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBlurCircle" translatesAutoresizingMaskIntoConstraints="NO" id="2Hk-2b-86X">
                             <rect key="frame" x="106.66666666666669" y="105" width="180" height="180"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="2Hk-2b-86X" secondAttribute="height" multiplier="1:1" id="Dk3-xe-nPB"/>
                                 <constraint firstAttribute="height" constant="180" id="i2l-Jc-jZr"/>
@@ -37,22 +40,48 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DX6-6Q-Fju">
                             <rect key="frame" x="121.66666666666669" y="120" width="150" height="150"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passportImg" translatesAutoresizingMaskIntoConstraints="NO" id="gmv-dg-QqC">
-                                    <rect key="frame" x="2" y="2" width="146" height="146"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gmv-dg-QqC">
+                                    <rect key="frame" x="2" y="3.6666666666666714" width="146" height="143.33333333333334"/>
                                 </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpY-YH-g6x">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="tappedOnProfileImage:" destination="-1" eventType="touchUpInside" id="xCn-P0-V10"/>
+                                    </connections>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="DX6-6Q-Fju" secondAttribute="height" multiplier="1:1" id="5hH-jE-mD9"/>
+                                <constraint firstItem="ZpY-YH-g6x" firstAttribute="leading" secondItem="DX6-6Q-Fju" secondAttribute="leading" id="JMw-cA-R55"/>
                                 <constraint firstItem="gmv-dg-QqC" firstAttribute="top" secondItem="DX6-6Q-Fju" secondAttribute="top" constant="2" id="UvK-qf-tR4"/>
                                 <constraint firstAttribute="height" constant="150" id="fTi-aV-ydR">
                                     <variation key="heightClass=regular-widthClass=compact" constant="150"/>
                                 </constraint>
+                                <constraint firstItem="ZpY-YH-g6x" firstAttribute="top" secondItem="DX6-6Q-Fju" secondAttribute="top" id="gyO-5E-3s2"/>
                                 <constraint firstAttribute="trailing" secondItem="gmv-dg-QqC" secondAttribute="trailing" constant="2" id="nTn-UM-Nc6"/>
                                 <constraint firstItem="gmv-dg-QqC" firstAttribute="leading" secondItem="DX6-6Q-Fju" secondAttribute="leading" constant="2" id="nb5-b9-Y7y"/>
+                                <constraint firstAttribute="trailing" secondItem="ZpY-YH-g6x" secondAttribute="trailing" id="oCz-M4-ZMF"/>
+                                <constraint firstAttribute="bottom" secondItem="ZpY-YH-g6x" secondAttribute="bottom" id="slG-Vm-dCD"/>
                                 <constraint firstAttribute="bottom" secondItem="gmv-dg-QqC" secondAttribute="bottom" constant="2" id="znS-gZ-kFu"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFh-li-mVp">
+                            <rect key="frame" x="176.66666666666666" y="245" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="HBK-xj-lb7"/>
+                                <constraint firstAttribute="width" secondItem="OFh-li-mVp" secondAttribute="height" multiplier="1:1" id="KJP-1k-6M0"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="camera.circle.fill" catalog="system"/>
+                            <connections>
+                                <action selector="tappedOnProfileImage:" destination="-1" eventType="touchUpInside" id="obo-sR-vsw"/>
+                            </connections>
+                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Staff Code:  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haG-Fp-B2j">
                             <rect key="frame" x="155.33333333333334" y="286" width="72.333333333333343" height="14.333333333333314"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
@@ -77,6 +106,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="OFh-li-mVp" firstAttribute="centerX" secondItem="FxH-15-NiV" secondAttribute="centerX" id="0Op-u5-hhn"/>
                         <constraint firstItem="2Hk-2b-86X" firstAttribute="top" secondItem="FxH-15-NiV" secondAttribute="top" constant="105" id="BJE-Pv-0fs"/>
                         <constraint firstItem="2Hk-2b-86X" firstAttribute="centerX" secondItem="FxH-15-NiV" secondAttribute="centerX" id="Mtk-i7-LyS"/>
                         <constraint firstItem="haG-Fp-B2j" firstAttribute="top" secondItem="DX6-6Q-Fju" secondAttribute="bottom" constant="16" id="Pz9-Ti-htU"/>
@@ -90,6 +120,7 @@
                         <constraint firstItem="inh-w0-G1y" firstAttribute="top" secondItem="FxH-15-NiV" secondAttribute="top" id="fEI-KS-Pah"/>
                         <constraint firstItem="DX6-6Q-Fju" firstAttribute="centerX" secondItem="FxH-15-NiV" secondAttribute="centerX" id="fSb-nf-IjJ"/>
                         <constraint firstItem="DX6-6Q-Fju" firstAttribute="top" secondItem="FxH-15-NiV" secondAttribute="top" constant="120" id="gdx-7h-KLO"/>
+                        <constraint firstItem="OFh-li-mVp" firstAttribute="top" secondItem="DX6-6Q-Fju" secondAttribute="bottom" constant="-25" id="oHz-ox-a8O"/>
                         <constraint firstItem="Sox-pW-aub" firstAttribute="leading" secondItem="FxH-15-NiV" secondAttribute="leading" constant="32" id="tAl-ey-wj2"/>
                         <constraint firstAttribute="bottom" secondItem="Sox-pW-aub" secondAttribute="bottom" constant="200" id="ugY-lo-SPg"/>
                         <constraint firstItem="Z5L-ly-E7m" firstAttribute="centerY" secondItem="haG-Fp-B2j" secondAttribute="centerY" id="zOi-56-K4c"/>
@@ -109,15 +140,13 @@
     </objects>
     <resources>
         <image name="BlueBlurCircle" width="64.666664123535156" height="64.666664123535156"/>
-        <image name="passportImg" width="150" height="190"/>
+        <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -35,11 +35,9 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
         designTabBar()
         DispatchQueue.main.async {
             self.loadProfile()
+            self.updateTabBarImages(selectedIndex: 0)
         }
         
-        
-
-        // Do any additional setup after loading the view.
     }
     
     func loadProfile() {
@@ -49,11 +47,10 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
         contentView.addSubview(profileVC.view)
         profileVC.view.frame = contentView.bounds
         profileVC.didMove(toParent: self)
-        updateTabBarImages(selectedIndex: 0)
     }
     
     func designTabBar() {
-        tabBarView.layer.cornerRadius = tabBarView.frame.size.height / 2
+        tabBarView.layer.cornerRadius = tabBarView.frame.size.height / 2.2
         tabBarView.layer.borderWidth = 0.6
         tabBarView.layer.borderColor = UIColor.lightGray.cgColor
         tabBarView.layer.shadowColor = UIColor.darkGray.cgColor
@@ -95,7 +92,7 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
             popupVC.delegate = self
             popupVC.modalPresentationStyle = .overCurrentContext
             present(popupVC, animated: true, completion: nil)
-            self.popUpPasswordVarification = PasswordVarificationPopUpVC()
+            self.popUpPasswordVarification = popupVC
             
         default:
             print("TabBarError")
@@ -110,6 +107,7 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
         for (index, imageView) in tabImageViews.enumerated() {
             if index == selectedIndex {
                 imageView?.tintColor = imgSelectedColor
+                print("poping Image")
                 popAnimate(view: imageView)
             } else {
                 imageView?.tintColor = unselectedColor
@@ -119,6 +117,7 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
         for (index, selectLabel) in tabTextLabels.enumerated() {
             if index == selectedIndex {
                 selectLabel?.textColor = textSelectedColor
+                print("popint Label")
                 popAnimate(view: selectLabel)
             } else {
                 selectLabel?.textColor = unselectedColor
@@ -152,15 +151,14 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
         
     }
     
-    
 }// END of VC class
 
 extension PersonalDetailsVC: PasswordVarificationPopUpVCDelegate, changePassDelegate {
     func loggingOut() {
         logOut()
     }
-    
     func dismissPopUp() {
+        updateTabBarImages(selectedIndex: 0)
         loadProfile()
     }
     

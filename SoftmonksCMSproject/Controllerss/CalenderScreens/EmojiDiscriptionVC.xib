@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmojiDiscriptionPopUpVC" customModule="SoftmonksCMSproject" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="df8-nX-TpM" id="gwy-lW-obp"/>
+                <outlet property="emojiCollectionVIew" destination="g9J-cI-yC2" id="MJD-ym-xya"/>
+                <outlet property="outterView" destination="XsC-7X-shp" id="dEf-z2-Rwj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsC-7X-shp" userLabel="SafeAreaView">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="df8-nX-TpM" userLabel="ContentView">
+                            <rect key="frame" x="20" y="189.66666666666666" width="353" height="379.66666666666674"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="g9J-cI-yC2">
+                                    <rect key="frame" x="0.0" y="0.0" width="353" height="379.66666666666669"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hyg-Sw-zn8">
+                                        <size key="itemSize" width="140" height="40"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.92502170800000005" green="0.92502170800000005" blue="0.92502170800000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="g9J-cI-yC2" firstAttribute="top" secondItem="df8-nX-TpM" secondAttribute="top" id="Th7-cF-ZLp"/>
+                                <constraint firstItem="g9J-cI-yC2" firstAttribute="leading" secondItem="df8-nX-TpM" secondAttribute="leading" id="UR7-93-F4S"/>
+                                <constraint firstAttribute="bottom" secondItem="g9J-cI-yC2" secondAttribute="bottom" id="VaJ-PZ-aVy"/>
+                                <constraint firstAttribute="trailing" secondItem="g9J-cI-yC2" secondAttribute="trailing" id="kfh-Ql-N3l"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="df8-nX-TpM" firstAttribute="centerX" secondItem="XsC-7X-shp" secondAttribute="centerX" id="e35-64-xWV"/>
+                        <constraint firstItem="df8-nX-TpM" firstAttribute="leading" secondItem="XsC-7X-shp" secondAttribute="leading" constant="20" id="eKG-Xo-Tdy"/>
+                        <constraint firstItem="df8-nX-TpM" firstAttribute="height" secondItem="XsC-7X-shp" secondAttribute="height" multiplier="0.5" id="ijV-v6-yrV"/>
+                        <constraint firstItem="df8-nX-TpM" firstAttribute="centerY" secondItem="XsC-7X-shp" secondAttribute="centerY" id="trf-Bl-7wz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="XsC-7X-shp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IL6-Xu-jJq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XsC-7X-shp" secondAttribute="bottom" id="IkH-cZ-eDU"/>
+                <constraint firstItem="XsC-7X-shp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bjv-Qg-RTz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XsC-7X-shp" secondAttribute="trailing" id="u9C-C8-efW"/>
+            </constraints>
+            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
+        </view>
+    </objects>
+</document>

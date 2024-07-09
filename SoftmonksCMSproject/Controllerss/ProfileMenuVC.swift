@@ -7,12 +7,16 @@
 
 import UIKit
 import Alamofire
+import SDWebImage
 
-class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
     //    let myId: String = UserDefaults.standard.object(forKey: "isLoggedIN") as! String
     var userDict = UserDefaults.standard.dictionary(forKey: "UserDetails")
     var optionImg: [String] = ["personIcon", "calendarSVGIcon", "OnTimeIcon", "LeaveOfficeIcon", "SalaryIcon", "ClipboardIcon"]
     var optionNames: [String] = ["Profile", "Calendar", "Check Counter", "Leave Requests", "Salary Details", "Company Policies"]
+    var profileImgLink: String?
+    var profilevcImg: UIViewController?
     
     @IBOutlet weak var empDesignationLabel: UILabel!
     @IBOutlet weak var employeNameLabel: UILabel!
@@ -29,7 +33,30 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
         menuListCollectionView.delegate = self
         employeNameLabel.text = userDict?["name"] as? String
         empDesignationLabel.text = userDict?["designation"] as? String
-        
+//        potraitImg.image = UIImage(named: "passportImg")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadProfileImage()
+    }
+
+    
+    func loadProfileImage() {
+        let perameters: [String : Any] = ["mode":"displayProfilePhoto", "id": userDict?["id"]]
+        AF.request(apiURL, method: .post, parameters: perameters).responseDecodable(of: UploadResponse.self) { response in
+            switch response.result {
+            case .success(let dataa):
+                print(dataa)
+                let imageLinkString: String = dataa.profilePhoto ?? ""
+                let imageURL = URL(string: imageLinkString)
+                print(imageURL)
+                self.potraitImg.sd_setImage(with: imageURL, placeholderImage: UIImage(systemName: "person"), options: .continueInBackground)
+            case .failure(let error):
+                print(error)
+                return
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -72,7 +99,8 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     }
     
     func calendarTapped() {
-        print("Calendar tapped")
+        let calenderVC =  CalenderVC(nibName: "CalenderVC", bundle: nil)
+        self.navigationController?.pushViewController(calenderVC, animated: true)
     }
     
     func checkCounterTapped() {
@@ -82,8 +110,6 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     }
     
     func leaveRequestTapped() {
-        print("Leave Request tapped")
-        
         if let leaveReqsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LeaveRequestVC") as? LeaveRequestVC{
             navigationController?.pushViewController(leaveReqsVC, animated: true)
         }
@@ -91,15 +117,12 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     func salaryTapped() {
         let salaryDetailsVC = SalaryDetailsViewController(nibName: "SalaryDetailsViewController", bundle: nil)
         self.navigationController?.pushViewController(salaryDetailsVC, animated: true)
-        print("Salary Details tapped")
     }
     
     func companyPoliciesTapped() {
-        
-        print("Company Policies tapped")
+        let companyPoliciesVC = CompanyPoliciesViewController(nibName: "CompanyPoliciesViewController", bundle: nil)
+        self.navigationController?.pushViewController(companyPoliciesVC, animated: true)
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
@@ -118,10 +141,8 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         applyImageStyling()
-        
         designationBackgrdView.layer.sublayers?.filter { $0 is CAGradientLayer }.forEach { $0.removeFromSuperlayer() }
         designationBackgrdView.applyGradient(colors: ["00359A", "95CCFF"], angle: -180.0,conRads: 8.0)
-        
         let nibCell = UINib(nibName: "CollectionViewCell", bundle: nil)
         self.menuListCollectionView.register(nibCell,forCellWithReuseIdentifier: "cell")
         
@@ -173,13 +194,7 @@ class ProfileMenuVC: UIViewController, LogoDisplayable, UICollectionViewDelegate
     
 }
 
-//extension ProfileMenuVC: changePasssworddelegate {
-//    func loggingOut() {
-//        print("IN the Delegate")
-//        logOut()
-//    }
-//
-//}
+
 
 
 

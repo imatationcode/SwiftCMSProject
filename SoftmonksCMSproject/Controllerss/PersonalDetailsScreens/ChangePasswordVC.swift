@@ -83,23 +83,11 @@ class ChangePasswordVC: UIViewController, UITextFieldDelegate {
                 self.changePassdelegateVar?.loggingOut()
             } else {
                 self.loaderActivityIncicatior.stopAnimating()
-                self.showAlert(title: "Invalid Mail", message: errorMessage ?? "")
+                self.showAlert(title: "Invalid", message: errorMessage ?? "")
                 return
             }
         }
     }
-    
-//    func logOut() {
-//        if let vc = storyboard?.instantiateViewController(withIdentifier: "homeNavigationViewController") as? homeNavigationViewController {
-//            vc.modalPresentationStyle = .fullScreen
-//            UserDefaults.standard.removeObject(forKey: "isLoggedIN")
-//            UserDefaults.standard.removeObject(forKey: "UserDetails")
-//            self.present(vc, animated: true)
-//            
-//        }
-//        
-//    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Dismiss the keyboard when return key is tapped
         textField.resignFirstResponder()
@@ -118,6 +106,28 @@ class ChangePasswordVC: UIViewController, UITextFieldDelegate {
             showAlert(title: "Error", message: "New Passwords & Confirm Password do not match. Please try again.")
             return false
         }
+        
+        guard password.count > 6 else {
+            showAlert(title: "Invalid Password", message: "Password must be more than 6 characters long.")
+            return false
+        }
+        // Check if password contains at least one number
+        let numberPattern = ".*[0-9]+.*"
+        let numberTest = NSPredicate(format: "SELF MATCHES %@", numberPattern)
+        guard numberTest.evaluate(with: password) else {
+            showAlert(title: "Invalid Password", message: "Password must contain at least one number.")
+            return false
+        }
+        
+        // Check if password contains at least one special character
+        let specialCharacterPattern = ".*[!&^%$#@()/]+.*"
+        
+        let specialCharacterTest = NSPredicate(format: "SELF MATCHES %@", specialCharacterPattern)
+        guard specialCharacterTest.evaluate(with: password) else {
+            showAlert(title: "Invalid Password", message: "Password must contain at least one special character.")
+            return false
+        }
+        
         newPassWordVar = password
         confirmPasswordVar = confirmPassword
         print("Password reset successful!")

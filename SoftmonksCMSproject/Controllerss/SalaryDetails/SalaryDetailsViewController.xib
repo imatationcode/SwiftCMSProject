@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SalaryDetailsViewController" customModule="SoftmonksCMSproject" customModuleProvider="target">
             <connections>
-                <outlet property="monthTextField" destination="vRk-s1-Zp5" id="O3J-6T-pM6"/>
+                <outlet property="monthTextField" destination="wWP-Uq-SDh" id="96w-Dq-EJm"/>
                 <outlet property="outterView" destination="gTc-9R-fZp" id="cj1-I7-FcD"/>
                 <outlet property="salarySlipsTableView" destination="IuI-Q7-XIX" id="3lV-Cg-LiZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="yearTextField" destination="wWP-Uq-SDh" id="c3P-3z-Yu9"/>
+                <outlet property="yearTextField" destination="vRk-s1-Zp5" id="F7H-a8-odU"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -31,13 +31,13 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="CJ5-qt-hUF">
                                     <rect key="frame" x="0.0" y="0.0" width="366" height="70"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sry-rW-zLU" userLabel="yearView">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sry-rW-zLU" userLabel="monthVieww">
                                             <rect key="frame" x="0.0" y="0.0" width="170.66666666666666" height="70"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wG-6r-HWv" customClass="DesingsForUIView" customModule="SoftmonksCMSproject" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="10" width="160.66666666666666" height="50"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="---Year---" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wWP-Uq-SDh">
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="---Month---" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wWP-Uq-SDh">
                                                             <rect key="frame" x="20.000000000000007" y="17" width="120.66666666666669" height="16"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
@@ -66,13 +66,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="3wG-6r-HWv" secondAttribute="bottom" constant="10" id="pvm-tD-UlF"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3d-G8-nRX" userLabel="monthView">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3d-G8-nRX" userLabel="yearView">
                                             <rect key="frame" x="195.66666666666663" y="0.0" width="170.33333333333337" height="70"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYA-pR-mTK" customClass="DesingsForUIView" customModule="SoftmonksCMSproject" customModuleProvider="target">
                                                     <rect key="frame" x="5" y="10" width="160.33333333333334" height="50"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="---Month---" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vRk-s1-Zp5">
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="---Year---" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vRk-s1-Zp5">
                                                             <rect key="frame" x="19.999999999999993" y="17" width="120.33333333333331" height="16"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
@@ -124,6 +124,8 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IuI-Q7-XIX">
                             <rect key="frame" x="32" y="213" width="366" height="619"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

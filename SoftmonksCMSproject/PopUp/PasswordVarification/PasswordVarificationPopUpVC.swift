@@ -31,16 +31,18 @@ class PasswordVarificationPopUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentView.layer.cornerRadius = 8.0
-        crossButtonView.layer.cornerRadius = 3.0
-        crossButtonView.addElevatedShadow(to: crossButtonView)
-        backTransperantView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        parentBackView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        initialDesign()
         updatePasswordVisibility()
         oldPasswordTextFields.isSecureTextEntry = !isPasswordVisible
         adjustFontSizeForDevice(textFields: [oldPasswordTextFields], labels: [verificationTextLabel, curentPassTextLabel])
     }
     
+    func initialDesign() {
+        contentView.layer.cornerRadius = 8.0
+        crossButtonView.layer.cornerRadius = 3.0
+        crossButtonView.addElevatedShadow(to: crossButtonView)
+        backTransperantView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    }
     
     
     @IBAction func tappedOnCrossButton(_ sender: Any) {

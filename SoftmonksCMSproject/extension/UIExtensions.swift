@@ -27,42 +27,54 @@ extension UIColor {
     }
 }
 
+extension UIViewController {
+    
+    func customAlert(alertTitle: String, alertDiscription: String) -> UIAlertController {
+        let alertVC = UIAlertController(title: alertTitle, message: alertDiscription, preferredStyle: .alert)
+        let indicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 15, width: 40, height: 40))
+        indicatorView.hidesWhenStopped = true
+        indicatorView.style = .large
+        indicatorView.startAnimating()
+        alertVC.view.addSubview(indicatorView)
+        present(alertVC, animated: true)
+        return alertVC
+    }
+    
+    func dismissCutomAlert(loader: UIAlertController) {
+        DispatchQueue.main.async {
+            loader.dismiss(animated: true)
+        }
+    }
+    
+    public func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+
 //toolbar function
 
 
 //for gradiant view behind Designation
 extension UIView {
-     
+    func setShadow(color: UIColor, opacity: Float, offset: CGSize, radius: CGFloat) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = radius
+//        self.layer.cornerRadius = cornerRadius
+        self.layer.masksToBounds = false
+    }
+    
     func loadViewFromNib(nibName: String) -> UIView? {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: nibName, bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
-    
-//    func applyGradientDesignation(hexColors: [String],angle: Double,corner_Radius: CGFloat) {
-//
-//        if let existingGradientLayer = layer.sublayers?.first(where: { $0 is CAGradientLayer }) as? CAGradientLayer {
-//                    existingGradientLayer.removeFromSuperlayer()
-//                }
-//            let colors = hexColors.map { UIColor(hex: $0) }
-//        applyGradientDesignation(colors: colors.compactMap{ $0 },angle: angle,conRads:corner_Radius)
-//        }
-//
-//    private func applyGradientDesignation(colors: [UIColor],angle: Double,conRads: CGFloat) {
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = colors.map { $0.cgColor }
-//        gradientLayer.frame = bounds
-//
-//        let radians = CGFloat(angle * Double.pi / 180.0)
-//        let endPoint = CGPoint(x: 0.5 + cos(radians) * 0.5, y: 0.5 + sin(radians) * 0.5)
-//
-//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
-//        gradientLayer.endPoint = endPoint
-//        layer.insertSublayer(gradientLayer, at: 0)
-//        let cornerRadius = min(bounds.width, bounds.height) * conRads
-//        layer.cornerRadius = cornerRadius
-//        layer.masksToBounds = true
-//    }
+
     
     //checkInVC Bottom View
     func applyCornerRadiusAndBorder(radius: CGFloat, borderWidth: CGFloat, borderColor: String, shadowRadius: CGFloat, shadowOpacity: Float, shadowColor: String, shadowOffset: CGSize) {
@@ -89,12 +101,6 @@ extension UIView {
         
         let radians = CGFloat(angle * Double.pi / 180.0)
         let endPoint = CGPoint(x: 0.5 + cos(radians) * 0.5, y: 0.5 + sin(radians) * 0.5)
-//        gradientLayer.masksToBounds = false
-//        gradientLayer.shadowColor = UIColor.black.cgColor
-//        gradientLayer.shadowOpacity = 0.5
-//        gradientLayer.shadowOffset = CGSize(width: 0, height: 2)
-//        gradientLayer.shadowRadius = 4
-        
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.endPoint = endPoint
         print(gradientLayer.frame)
@@ -133,23 +139,12 @@ extension UIView {
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.endPoint = endPoint
         layer.insertSublayer(gradientLayer, at: 0)
-        
-        
-        
-       // let cornerRadius = min(bounds.width, bounds.height) * 0.06
         layer.cornerRadius = conRads
         layer.masksToBounds = true
     }
 }
 
-extension UIViewController {
-    public func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
-    }
-}
+
 
 //to make text size as per screen
 extension UILabel {

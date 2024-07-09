@@ -20,7 +20,7 @@ class PersonalDetailsTableViewCell: UITableViewCell {
         
     }
     
-    func configValues(with userDetail: UserDetail){
+    func configValues(with userDetail: UserBasicInformation){
         propertiLabel.text = userDetail.key
         valueLabel.text = userDetail.value
     }

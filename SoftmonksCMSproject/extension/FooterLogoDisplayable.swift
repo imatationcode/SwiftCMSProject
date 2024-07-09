@@ -8,7 +8,6 @@ protocol LogoDisplayable {
 
 extension LogoDisplayable where Self: UIViewController {
     func addLogoToFooter() {
-        
         let logoImageView = UIImageView(image: UIImage(named: "titleSoftmonks"))
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.contentMode = .scaleAspectFit
@@ -23,7 +22,7 @@ extension LogoDisplayable where Self: UIViewController {
             logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             logoImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            logoImageView.heightAnchor.constraint(equalToConstant: logoHeight) // Adjust height as needed
+            logoImageView.heightAnchor.constraint(equalToConstant: logoHeight)
         ])
     }
 }

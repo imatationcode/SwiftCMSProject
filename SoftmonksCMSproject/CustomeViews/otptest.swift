@@ -77,13 +77,9 @@ class OTPView: UIStackView, UITextFieldDelegate {
                     // All fields filled, handle completed OTP
                     DispatchQueue.main.async {
                         textField.resignFirstResponder()
-//                        let otp = self.textFieldArray.compactMap { $0.text }.joined()
-//                        print("OTP entered: \(otp)") // Example usage
-                        
                     }
                 }
             }
-
             return true
         }
     

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "NextButton.svg",
+      "filename" : "BirthdayIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "BirthdayIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "BirthdayIcon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

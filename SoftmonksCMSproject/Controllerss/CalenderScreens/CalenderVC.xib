@@ -11,10 +11,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalenderVC" customModule="SoftmonksCMSproject" customModuleProvider="target">
             <connections>
                 <outlet property="bottomEventsView" destination="3GD-XG-6lS" id="Jk9-4m-KDn"/>
+                <outlet property="dateForTodayLabel" destination="Q1n-AN-biJ" id="60y-wm-Laf"/>
                 <outlet property="iDiscriptionViewExpandButton" destination="p88-S6-fNA" id="hoh-s9-oN8"/>
                 <outlet property="monthAndYearLabel" destination="7zF-vb-Hg8" id="Bbz-wl-lUm"/>
                 <outlet property="monthCollectionView" destination="R8g-O6-Ja7" id="lEj-g0-zDJ"/>
                 <outlet property="todayDateTextLabel" destination="KzX-vh-hn6" id="kGC-rP-cMg"/>
+                <outlet property="todayTextLabel" destination="KzX-vh-hn6" id="hSe-qF-Z1P"/>
                 <outlet property="todaysEventsCollectionView" destination="zNk-GA-LIl" id="2Pd-89-BhN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weekDayStackView" destination="jWx-GB-oXw" id="cUe-fb-znK"/>
@@ -67,7 +69,7 @@
                                 <action selector="tappedNeextMonthButton:" destination="-1" eventType="touchUpInside" id="Eyh-31-ffp"/>
                             </connections>
                         </button>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jWx-GB-oXw">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jWx-GB-oXw" userLabel="weekdayStack View">
                             <rect key="frame" x="15" y="106" width="363" height="25"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-J4-Cwq">
@@ -207,8 +209,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fl3-tU-6bd">
                             <rect key="frame" x="15" y="566.66666666666663" width="363" height="152.33333333333337"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, 25 January" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzX-vh-hn6">
-                                    <rect key="frame" x="0.0" y="0.0" width="363" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzX-vh-hn6">
+                                    <rect key="frame" x="0.0" y="0.0" width="46.666666666666664" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, 25 January" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1n-AN-biJ">
+                                    <rect key="frame" x="51.666666666666657" y="0.0" width="120.66666666666669" height="17"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -239,7 +247,9 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="3GD-XG-6lS" firstAttribute="top" secondItem="KzX-vh-hn6" secondAttribute="bottom" constant="5" id="Bxm-MB-tUy"/>
-                                <constraint firstAttribute="trailing" secondItem="KzX-vh-hn6" secondAttribute="trailing" id="V0f-3P-Ljr"/>
+                                <constraint firstAttribute="trailing" secondItem="Q1n-AN-biJ" secondAttribute="trailing" constant="10" id="GUq-gP-7KY"/>
+                                <constraint firstItem="Q1n-AN-biJ" firstAttribute="leading" secondItem="KzX-vh-hn6" secondAttribute="trailing" constant="5" id="Kku-oo-roE"/>
+                                <constraint firstItem="Q1n-AN-biJ" firstAttribute="centerY" secondItem="KzX-vh-hn6" secondAttribute="centerY" id="dw1-BH-G6D"/>
                                 <constraint firstItem="3GD-XG-6lS" firstAttribute="leading" secondItem="Fl3-tU-6bd" secondAttribute="leading" constant="5" id="hS9-af-xHE"/>
                                 <constraint firstItem="KzX-vh-hn6" firstAttribute="top" secondItem="Fl3-tU-6bd" secondAttribute="top" id="krP-Ny-Mpm"/>
                                 <constraint firstAttribute="trailing" secondItem="3GD-XG-6lS" secondAttribute="trailing" constant="5" id="pWR-A3-CSM"/>

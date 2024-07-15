@@ -9,7 +9,7 @@ import UIKit
 
 class calendarEmojiCell: UICollectionViewCell {
     static let idetenfier = "calendarEmojiCell"
-    @IBOutlet weak var emojiIconImageView: UIImageView!
+    @IBOutlet weak var eventEmojiIconImageView: UIImageView!
     @IBOutlet weak var emojiTitleLabel: UILabel!
     
     
@@ -17,9 +17,34 @@ class calendarEmojiCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    public func configureCell(with set: EmojiNameAndImage) {
-        emojiIconImageView.image = UIImage(named: set.EmojiImage)
+    public func descriptionConfigureCell(with set: EmojiNameAndImage) {
+        eventEmojiIconImageView.image = UIImage(named: set.EmojiImage)
         emojiTitleLabel.text = set.title
+    }
+    
+    func findImageNameWithkey(imageKey : String) -> String {
+        let imageForKey: [String : String] = [
+            "ut" : "UrgentIcon",
+            "wm" : "GroupMeetIcon",
+            "fd" : "ApprovedFullIcon",
+            "bir" : "BirthdayCakeIcon",
+            "hol" : "HolidayIcon",
+            "afd" : "AppliedFullIcon",
+            "mhd" : "ApprovedMHIcon",
+            "ehd" : "ApprovedEHIcon",
+            "hpt" : "PriorityIcon",
+            "aehd" : "AppliedEHIcon",
+            "amhd" : "AppliedMHIcon"
+        ]
+        return imageForKey[imageKey] ?? ""
+    }
+    
+    func todayEventCellonfigure(with set: Event) {
+        
+        print(set)
+        var eventImage = findImageNameWithkey(imageKey: set.key ?? "")
+        eventEmojiIconImageView.image = UIImage(named: eventImage)
+        emojiTitleLabel.text = set.value
     }
     
     static func nib() -> UINib {

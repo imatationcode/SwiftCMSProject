@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "PreviousButton.svg",
+      "filename" : "ImportantTask.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ImportantTask@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ImportantTask@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

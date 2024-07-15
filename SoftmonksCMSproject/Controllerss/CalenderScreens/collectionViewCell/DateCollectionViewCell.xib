@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,16 +21,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fp-3q-pd0">
-                                <rect key="frame" x="4.9999999999999991" y="5.0000000000000009" width="8.6666666666666643" height="14.333333333333336"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <rect key="frame" x="5" y="5" width="95" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="mJa-BQ-77C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="sFA-ik-rUw">
+                                <rect key="frame" x="2" y="28" width="96" height="70"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LjV-Af-1yV">
+                                        <rect key="frame" x="0.0" y="0.0" width="30.666666666666668" height="70"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BirthdayIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3JL-rD-0LP">
+                                                <rect key="frame" x="0.0" y="0.0" width="30.666666666666668" height="34.666666666666664"/>
+                                                <color key="tintColor" red="1" green="0.41982996459999999" blue="0.00042291168940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meetTogather" translatesAutoresizingMaskIntoConstraints="NO" id="RuX-ST-CS6">
+                                                <rect key="frame" x="0.0" y="35.666666666666657" width="30.666666666666668" height="34.333333333333343"/>
+                                                <color key="tintColor" red="1" green="0.0" blue="0.00036865743460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZLr-FL-crH">
+                                        <rect key="frame" x="32.666666666666664" y="0.0" width="30.666666666666664" height="70"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HollidayEmoji" translatesAutoresizingMaskIntoConstraints="NO" id="FHa-V2-hHk">
+                                                <rect key="frame" x="0.0" y="0.0" width="30.666666666666668" height="34.666666666666664"/>
+                                                <color key="tintColor" red="1" green="0.9592484832" blue="0.00070391083140000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImportantTask" translatesAutoresizingMaskIntoConstraints="NO" id="Vbo-93-HUs">
+                                                <rect key="frame" x="0.0" y="35.666666666666657" width="30.666666666666668" height="34.333333333333343"/>
+                                                <color key="tintColor" systemColor="systemRedColor"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-ND-65A">
+                                        <rect key="frame" x="65.333333333333329" y="0.0" width="30.666666666666671" height="70"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="approvedFullDay" translatesAutoresizingMaskIntoConstraints="NO" id="lrJ-vL-7Vg">
+                                                <rect key="frame" x="0.0" y="0.0" width="30.666666666666668" height="34.666666666666664"/>
+                                                <color key="tintColor" red="0.0" green="0.10318548230000001" blue="0.30327114459999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Be6-bo-tfZ">
+                                                <rect key="frame" x="0.0" y="35.666666666666657" width="30.666666666666668" height="34.333333333333343"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6fp-3q-pd0" secondAttribute="trailing" id="JcS-I1-Z4n"/>
+                            <constraint firstAttribute="bottom" secondItem="sFA-ik-rUw" secondAttribute="bottom" constant="2" id="K5E-UU-WYe"/>
+                            <constraint firstAttribute="trailing" secondItem="sFA-ik-rUw" secondAttribute="trailing" constant="2" id="KhJ-pP-QLA"/>
+                            <constraint firstItem="sFA-ik-rUw" firstAttribute="top" secondItem="6fp-3q-pd0" secondAttribute="bottom" constant="8" id="mM8-ta-ptu"/>
                             <constraint firstItem="6fp-3q-pd0" firstAttribute="top" secondItem="Uge-3s-f0S" secondAttribute="top" constant="5" id="t7b-FX-qHM"/>
                             <constraint firstItem="6fp-3q-pd0" firstAttribute="leading" secondItem="Uge-3s-f0S" secondAttribute="leading" constant="5" id="vFq-jl-eq4"/>
+                            <constraint firstItem="sFA-ik-rUw" firstAttribute="leading" secondItem="Uge-3s-f0S" secondAttribute="leading" constant="2" id="yoE-hZ-Xdw"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -43,10 +95,25 @@
             </constraints>
             <size key="customSize" width="100" height="100"/>
             <connections>
+                <outlet property="birthdayIcon" destination="3JL-rD-0LP" id="sSt-Fi-Smj"/>
                 <outlet property="dateCellBackgroundView" destination="Uge-3s-f0S" id="AvA-Ov-eXV"/>
                 <outlet property="dateDigitLabel" destination="6fp-3q-pd0" id="GmL-bE-GB0"/>
+                <outlet property="groupMeetingIcon" destination="RuX-ST-CS6" id="h3U-8N-7Nf"/>
+                <outlet property="holidayIcon" destination="FHa-V2-hHk" id="W0S-FH-V37"/>
+                <outlet property="leaveIcon" destination="lrJ-vL-7Vg" id="f7Y-YA-WUl"/>
+                <outlet property="urgentTaskIcon" destination="Vbo-93-HUs" id="GRJ-nS-9NW"/>
             </connections>
             <point key="canvasLocation" x="167.93893129770993" y="6.3380281690140849"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="BirthdayIcon" width="20" height="20"/>
+        <image name="HollidayEmoji" width="20" height="20"/>
+        <image name="ImportantTask" width="20" height="20"/>
+        <image name="approvedFullDay" width="20" height="20"/>
+        <image name="meetTogather" width="20" height="20"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

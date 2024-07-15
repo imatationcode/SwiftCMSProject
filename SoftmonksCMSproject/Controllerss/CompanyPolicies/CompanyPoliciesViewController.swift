@@ -29,7 +29,8 @@ class CompanyPoliciesViewController: UIViewController, LogoDisplayable, UITableV
     }
     
     func policyListAPICall() {
-        let perameters: [String: Any] = ["mode":"getCompanyPolicy"]
+        
+        let perameters: [String: Any] = ["mode":"getSearchCompanyPolicy", "searchKey": ""]
         policiesListAPIRequest(perameterList: perameters)
 
     }

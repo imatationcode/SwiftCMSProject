@@ -57,4 +57,79 @@ class CalenderHelper {
         return (components.weekday! + 5) % 7 + 1
     }
     
+    func getCurrentMonthAndYear() -> (String , String){
+        let date = Date()
+        
+        let monthFormatter = DateFormatter()
+        monthFormatter.dateFormat = "MMMM"
+        var currentMonth = monthFormatter.string(from: date)
+        
+        let yearFormatter = DateFormatter()
+        yearFormatter.dateFormat = "YYYY"
+        var currentYear = yearFormatter.string(from: date)
+        
+        return(currentMonth,currentYear)
+    }
+    
+    func getNewMonthAndYear(currentMonth: String, currentYear: String, actionFlag: Int) -> (String, String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM yyyy"
+        guard let currentDate = dateFormatter.date(from: "\(currentMonth) \(currentYear)") else {
+            print("Invalid Date Formate")
+            return (currentMonth, currentYear)
+        }
+        
+        let calendar = Calendar.current
+        var adjustedDate: Date
+        
+        switch actionFlag {
+        case 1:
+            adjustedDate = calendar.date(byAdding: .month, value: 1, to: currentDate) ?? currentDate
+        case 0:
+            adjustedDate = calendar.date(byAdding: .month, value: -1, to: currentDate) ?? currentDate
+        default:
+            adjustedDate = currentDate
+        }
+        
+        let newMonth = dateFormatter.string(from: adjustedDate).components(separatedBy: " ")[0]
+        let newYear = dateFormatter.string(from: adjustedDate).components(separatedBy: " ")[1]
+        return(newMonth, newYear)
+    }
+    
+}
+
+struct DayInfo: Codable {
+    let date: String?
+    let isMonth: Int?
+    let isToday: Int?
+    let calDOW: String?
+    let day: String?
+    let birthday: Int?
+    let holiday: Int?
+    let leave: Int?
+    let meeting: Int?
+    let agenda: Int?
+}
+
+struct Event: Codable {
+    let key: String?
+    let value: String?
+}
+struct TodaysEvent: Codable {
+    let todayDate: String?
+    let searchDate: String?
+    let events: [Event]
+}
+
+// Define the struct for the overall structure
+struct CalendarDataResponse: Codable {
+    
+    let err: Int?
+    let successMsg: String?
+    let dayOfWeek: [String]?
+    let currentMonth: String?
+    let prevMonth: String?
+    let nextMonth: String?
+    let monthArr: [DayInfo]?
+    let eventData: TodaysEvent?
 }

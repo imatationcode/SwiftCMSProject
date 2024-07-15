@@ -321,6 +321,15 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		0B4419452C40F21700FF094F /* CalendarDetailsPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				0BE784442C37BA870002E2C5 /* EmojiDiscriptionPopUpVC.swift */,
+				0BE784452C37BA870002E2C5 /* EmojiDiscriptionVC.xib */,
+			);
+			path = CalendarDetailsPopUp;
+			sourceTree = "<group>";
+		};
 		0B4FC3CA2B95A51C00F69EF1 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,11 +344,10 @@
 		0B5EADE32C3515F400E99FE8 /* CalenderScreens */ = {
 			isa = PBXGroup;
 			children = (
+				0B4419452C40F21700FF094F /* CalendarDetailsPopUp */,
 				0B7CF7592C36AA6700356C71 /* collectionViewCell */,
 				0B5EADE42C35161B00E99FE8 /* CalenderVC.swift */,
 				0B5EADE52C35161B00E99FE8 /* CalenderVC.xib */,
-				0BE784442C37BA870002E2C5 /* EmojiDiscriptionPopUpVC.swift */,
-				0BE784452C37BA870002E2C5 /* EmojiDiscriptionVC.xib */,
 				0B034A882C380F8000EED5A4 /* CalenderHelper.swift */,
 			);
 			path = CalenderScreens;

@@ -128,7 +128,6 @@ class PersonalDetailsVC: UIViewController, LogoDisplayable {
     }
     
     func popAnimate(view: UIView?) {
-        
         guard let view = view else { return }
         
         UIView.animate(withDuration: 0.1, animations: {

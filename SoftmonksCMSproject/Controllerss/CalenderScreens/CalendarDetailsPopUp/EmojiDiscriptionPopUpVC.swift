@@ -8,6 +8,13 @@
 import UIKit
 
 class EmojiDiscriptionPopUpVC: UIViewController {
+    enum PresentationContext {
+        case forEmojiDiscription
+        case forInformationAboutDay
+    }
+    var eventDataVar: TodaysEvent?
+    var presentationContext: PresentationContext = .forInformationAboutDay
+    
     static let controllerIdentifier = "EmojiDiscriptionVC"
     let emojiTitleAndIconArray: [EmojiNameAndImage] = [
         EmojiNameAndImage(title: "Birthday", EmojiImage: "BirthdayCakeIcon"),
@@ -26,10 +33,10 @@ class EmojiDiscriptionPopUpVC: UIViewController {
     @IBOutlet weak var outterView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var emojiCollectionVIew: UICollectionView!
+    @IBOutlet weak var dateValueLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initalViewDesign()
         emojiCollectionVIew.dataSource = self
         emojiCollectionVIew.delegate = self
         emojiCollectionVIew.register(calendarEmojiCell.nib(), forCellWithReuseIdentifier: "calendarEmojiCell")
@@ -39,6 +46,7 @@ class EmojiDiscriptionPopUpVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        initalViewDesign()
     }
     
     init() {
@@ -58,20 +66,40 @@ class EmojiDiscriptionPopUpVC: UIViewController {
     func initalViewDesign() {
         contentView.layer.cornerRadius = 4.0
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        
+        switch presentationContext {
+        case .forInformationAboutDay:
+            dateValueLabel.text = eventDataVar?.searchDate
+            dateValueLabel.isHidden = false
+        case .forEmojiDiscription:
+            dateValueLabel.isHidden = true
+        }
     }
 }
 
 extension EmojiDiscriptionPopUpVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        emojiTitleAndIconArray.count
+        switch presentationContext.self {
+        case .forEmojiDiscription:
+           return emojiTitleAndIconArray.count
+        case .forInformationAboutDay:
+            return (eventDataVar?.events.count)!
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let collectionViewCell = emojiCollectionVIew.dequeueReusableCell(withReuseIdentifier: "calendarEmojiCell", for: indexPath) as! calendarEmojiCell
-        let cellData = emojiTitleAndIconArray[indexPath.item]
-        collectionViewCell.configureCell(with: cellData)
-        return collectionViewCell
+        switch presentationContext.self {
+        case .forEmojiDiscription:
+            let collectionViewCell = emojiCollectionVIew.dequeueReusableCell(withReuseIdentifier: "calendarEmojiCell", for: indexPath) as! calendarEmojiCell
+            let cellData = emojiTitleAndIconArray[indexPath.item]
+            collectionViewCell.descriptionConfigureCell(with: cellData)
+            return collectionViewCell
+        case .forInformationAboutDay:
+            let dayCell = emojiCollectionVIew.dequeueReusableCell(withReuseIdentifier: "calendarEmojiCell", for: indexPath) as! calendarEmojiCell
+            let cellData = eventDataVar?.events[indexPath.item]
+            dayCell.todayEventCellonfigure(with: cellData!)
+            return dayCell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

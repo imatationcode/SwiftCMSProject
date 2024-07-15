@@ -23,7 +23,7 @@
                             <constraint firstAttribute="height" constant="20" id="a8r-tt-Ot9"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqg-rP-Ljx">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BirthdayDDDDDD" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqg-rP-Ljx">
                         <rect key="frame" x="40" y="13.666666666666664" width="139" height="12"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
                         <nil key="textColor"/>
@@ -42,8 +42,8 @@
             </constraints>
             <size key="customSize" width="131" height="1"/>
             <connections>
-                <outlet property="emojiIconImageView" destination="OAs-G4-Yd6" id="L4z-Oe-wRi"/>
                 <outlet property="emojiTitleLabel" destination="bqg-rP-Ljx" id="lmo-t6-eEs"/>
+                <outlet property="eventEmojiIconImageView" destination="OAs-G4-Yd6" id="L4z-Oe-wRi"/>
             </connections>
             <point key="canvasLocation" x="190.07633587786259" y="-30.633802816901412"/>
         </collectionViewCell>

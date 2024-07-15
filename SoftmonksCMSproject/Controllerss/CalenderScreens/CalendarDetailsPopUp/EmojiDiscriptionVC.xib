@@ -4,12 +4,14 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmojiDiscriptionPopUpVC" customModule="SoftmonksCMSproject" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="df8-nX-TpM" id="gwy-lW-obp"/>
+                <outlet property="dateValueLabel" destination="bJN-Mz-Z7F" id="9Iv-rz-LaP"/>
                 <outlet property="emojiCollectionVIew" destination="g9J-cI-yC2" id="MJD-ym-xya"/>
                 <outlet property="outterView" destination="XsC-7X-shp" id="dEf-z2-Rwj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,6 +25,25 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsC-7X-shp" userLabel="SafeAreaView">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mF4-tm-zLj">
+                            <rect key="frame" x="20" y="139.66666666666666" width="353" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01/01/2000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJN-Mz-Z7F">
+                                    <rect key="frame" x="0.0" y="14.666666666666686" width="353" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="bJN-Mz-Z7F" secondAttribute="trailing" id="T7G-q7-eaR"/>
+                                <constraint firstItem="bJN-Mz-Z7F" firstAttribute="centerY" secondItem="mF4-tm-zLj" secondAttribute="centerY" id="aoj-CB-STP"/>
+                                <constraint firstAttribute="height" constant="50" id="e9G-2k-ugC"/>
+                                <constraint firstItem="bJN-Mz-Z7F" firstAttribute="leading" secondItem="mF4-tm-zLj" secondAttribute="leading" id="rq3-Q0-Wf6"/>
+                                <constraint firstItem="bJN-Mz-Z7F" firstAttribute="centerX" secondItem="mF4-tm-zLj" secondAttribute="centerX" id="umV-9G-PVU"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="df8-nX-TpM" userLabel="ContentView">
                             <rect key="frame" x="20" y="189.66666666666666" width="353" height="379.66666666666674"/>
                             <subviews>
@@ -48,9 +69,12 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="df8-nX-TpM" firstAttribute="top" secondItem="mF4-tm-zLj" secondAttribute="bottom" id="ENh-rn-RM5"/>
                         <constraint firstItem="df8-nX-TpM" firstAttribute="centerX" secondItem="XsC-7X-shp" secondAttribute="centerX" id="e35-64-xWV"/>
                         <constraint firstItem="df8-nX-TpM" firstAttribute="leading" secondItem="XsC-7X-shp" secondAttribute="leading" constant="20" id="eKG-Xo-Tdy"/>
                         <constraint firstItem="df8-nX-TpM" firstAttribute="height" secondItem="XsC-7X-shp" secondAttribute="height" multiplier="0.5" id="ijV-v6-yrV"/>
+                        <constraint firstItem="mF4-tm-zLj" firstAttribute="leading" secondItem="df8-nX-TpM" secondAttribute="leading" id="jQl-F3-vkI"/>
+                        <constraint firstItem="mF4-tm-zLj" firstAttribute="trailing" secondItem="df8-nX-TpM" secondAttribute="trailing" id="qMk-Kw-4o2"/>
                         <constraint firstItem="df8-nX-TpM" firstAttribute="centerY" secondItem="XsC-7X-shp" secondAttribute="centerY" id="trf-Bl-7wz"/>
                     </constraints>
                 </view>
@@ -66,4 +90,9 @@
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

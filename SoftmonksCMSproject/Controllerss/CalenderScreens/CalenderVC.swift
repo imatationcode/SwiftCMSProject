@@ -6,21 +6,19 @@
 //
 
 import UIKit
+import Alamofire
 
 class CalenderVC: UIViewController, LogoDisplayable {
     var selectedDate = Date()
-    var totalSquares = [String]()
-    var todayEventList = [
-        EmojiNameAndImage(title: "Birthday", EmojiImage: "BirthdayCakeIcon"),
-        EmojiNameAndImage(title: "Holiday", EmojiImage: "HolidayIcon"),
-        EmojiNameAndImage(title: "Birthday", EmojiImage: "BirthdayCakeIcon"),
-        EmojiNameAndImage(title: "Holiday", EmojiImage: "HolidayIcon"),
-        EmojiNameAndImage(title: "Birthday", EmojiImage: "BirthdayCakeIcon"),
-        EmojiNameAndImage(title: "Holiday", EmojiImage: "HolidayIcon"),
-        EmojiNameAndImage(title: "Birthday", EmojiImage: "BirthdayCakeIcon"),
-        EmojiNameAndImage(title: "Holiday", EmojiImage: "HolidayIcon")
-        ]
-
+    var totalSquares: [DayInfo] = []
+    var monthInfoVar: CalendarDataResponse?
+    var currentMonthVar: String?
+    var currentYearVar: String?
+    var todaysDetails: TodaysEvent?
+    var eventsForToday: [Event] = []
+    
+//    var dayInfoVar: [DayInfo] = []
+    
     @IBOutlet weak var iDiscriptionViewExpandButton: UIButton!
     @IBOutlet weak var monthAndYearLabel: UILabel!
     @IBOutlet weak var monthCollectionView: UICollectionView!
@@ -28,6 +26,8 @@ class CalenderVC: UIViewController, LogoDisplayable {
     @IBOutlet weak var todayDateTextLabel: UILabel!
     @IBOutlet weak var bottomEventsView: UIView!
     @IBOutlet weak var todaysEventsCollectionView: UICollectionView!
+    @IBOutlet weak var todayTextLabel: UILabel!
+    @IBOutlet weak var dateForTodayLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,18 +38,23 @@ class CalenderVC: UIViewController, LogoDisplayable {
         monthCollectionView.delegate = self
         todaysEventsCollectionView.dataSource = self
         todaysEventsCollectionView.delegate = self
-        
         monthCollectionView.register(DateCollectionViewCell.nib(), forCellWithReuseIdentifier: "DateCollectionViewCell")
         todaysEventsCollectionView.register(calendarEmojiCell.nib(), forCellWithReuseIdentifier: "calendarEmojiCell")
-        setUpMonthViewGrid()
         bottomEventsView.onlyCornerRadius(conRadius: 5.0)
         bottomEventsView.setShadow(color: .black, opacity: 0.5, offset: CGSize(width: 0.0, height: 0.0), radius: 3.0)
+        intialAPICall()
+       
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setCellView()
         setTodayEventsCellView()
+    }
+    
+    func intialAPICall() {
+        (currentMonthVar, currentYearVar) = CalenderHelper().getCurrentMonthAndYear()
+        monthDataAPIcall(monthString: currentMonthVar!, yearString: currentYearVar!)
     }
     
     func setCellView() {
@@ -60,7 +65,7 @@ class CalenderVC: UIViewController, LogoDisplayable {
         flowLayoutForMonthGrid.minimumInteritemSpacing = 2
         flowLayoutForMonthGrid.minimumLineSpacing = 2
         
-        for case let view as UIView in weekDayStackView.arrangedSubviews {
+        for case let view in weekDayStackView.arrangedSubviews {
             view.layer.cornerRadius = 2.5
             view.clipsToBounds = true
         }
@@ -69,27 +74,85 @@ class CalenderVC: UIViewController, LogoDisplayable {
     
     @IBAction func toggleEmojiDescriptionViewButtonTapped(_ sender: UIButton) {
         let emojiInfo = EmojiDiscriptionPopUpVC()
+        emojiInfo.presentationContext = .forEmojiDiscription
         self.present(emojiInfo, animated: true)
-        
-//        UIView.animate(withDuration: 0.4, animations: {
-//            self.emojiDescriptionView.isHidden.toggle()
-//        })
     }
     
     @IBAction func tappedPreviouMonthButton(_ sender: Any) {
-        selectedDate = CalenderHelper().minusMonth(date: selectedDate)
-        setUpMonthViewGrid()
+        var (previousMonth, previousYear) = CalenderHelper().getNewMonthAndYear(currentMonth: currentMonthVar!, currentYear: currentYearVar!, actionFlag: 0)
+        currentMonthVar = previousMonth
+        currentYearVar = previousYear
+        monthDataAPIcall(monthString: previousMonth, yearString: previousYear)
+
     }
     
     @IBAction func tappedNeextMonthButton(_ sender: Any) {
-        selectedDate = CalenderHelper().plusMonth(date: selectedDate)
-        setUpMonthViewGrid()
+        var (nextMonth, nextYear) = CalenderHelper().getNewMonthAndYear(currentMonth: currentMonthVar!, currentYear: currentYearVar!, actionFlag: 1)
+        currentMonthVar = nextMonth
+        currentYearVar = nextYear
+        monthDataAPIcall(monthString: nextMonth, yearString: nextYear)
     }
     
     override open var shouldAutorotate: Bool {
         return false
     }
     
+    func monthDataAPIcall(monthString: String, yearString: String) {
+        let perameterList: [String: Any] = ["mode":"calenderData", "month": monthString, "year": yearString]
+        AF.request(apiURL, method: .post, parameters: perameterList, encoding: URLEncoding.default)
+            .responseDecodable(of: CalendarDataResponse.self) { response in
+                switch response.result {
+                case .success(let ResponseData):
+//                    print(ResponseData)
+                    self.monthInfoVar = ResponseData
+                    self.totalSquares = ResponseData.monthArr!
+                    self.monthAndYearLabel.text = ResponseData.currentMonth
+                    self.dateForTodayLabel.text = ResponseData.eventData?.todayDate
+//                    self.todaysDetails = ResponseData.todaysEvent
+                    if let eventsForToday = ResponseData.eventData?.events {
+                        self.eventsForToday = eventsForToday
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.monthCollectionView.reloadData()
+                        self.todaysEventsCollectionView.reloadData()
+                    }
+                case .failure(let Responseerror):
+                    self.showAlert(title: "Erorr", message: "\(Responseerror)")
+                }
+            }
+    }
+    
+    func showDayDetails(selectedDate: String) {
+        print(selectedDate)
+        let perameters: [String:Any] = [ "mode":"calenderPopUp", "searchDate":selectedDate]
+        AF.request(apiURL, method: .post, parameters: perameters, encoding: URLEncoding.default)
+            .responseDecodable(of: CalendarDataResponse.self) {  response in
+                switch response.result {
+                case .success(let dayInfo):
+                    if dayInfo.err == 0 {
+                        print(dayInfo)
+                        if (dayInfo.eventData?.events.count)! <= 0 {
+                            self.showAlert(title: "No Events", message: "Nothing To Note On This Day")
+                        } else {
+                            let popUpVC = EmojiDiscriptionPopUpVC()
+                            popUpVC.presentationContext = .forInformationAboutDay
+                            popUpVC.eventDataVar = dayInfo.eventData
+                            self.present(popUpVC, animated: true)
+                        }
+
+                    } else {
+                        self.showAlert(title: "Wrong Data", message: "Response Recevied is not expected Response")
+                    }
+                case .failure(let error):
+                    self.showAlert(title: "Erorr", message: "\(error)")
+                }
+        }
+    }
+    
+    func presentDayPopup() {
+        
+    }
     
     func setTodayEventsCellView() {
         guard let todayEventsFlowLayout = todaysEventsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
@@ -98,7 +161,7 @@ class CalenderVC: UIViewController, LogoDisplayable {
         
         let padding: CGFloat = 2.0
         let itemsPerRow: CGFloat = 2
-        let lineSpacing: CGFloat = 10.0 // Adjust this value to set the spacing between rows
+        let lineSpacing: CGFloat = 10.0
         
         let totalPadding = padding * (itemsPerRow - 1)
         let collectionViewWidth = todaysEventsCollectionView.frame.size.width
@@ -112,49 +175,16 @@ class CalenderVC: UIViewController, LogoDisplayable {
         todayEventsFlowLayout.minimumLineSpacing = lineSpacing // Add spacing between rows
         todayEventsFlowLayout.sectionInset = UIEdgeInsets(top: padding, left: 0, bottom: padding, right: 0)
     }
-    
-    func setUpMonthViewGrid() {
-        totalSquares.removeAll()
-        let calc = CalenderHelper()
-        let daysInMonth = calc.daysInMonth(date: selectedDate)
-        let firstDayOfMonth = calc.firstOfMonth(date: selectedDate)
-        let startingSpaces = calc.weekDay(date: firstDayOfMonth) - 1
-        
-        var count: Int = 1
-        
-        while (count <= 42) {
-            if(count <= startingSpaces || count - startingSpaces > daysInMonth) {
-                totalSquares.append("")
-            } else {
-                totalSquares.append(String(count - startingSpaces))
-            }
-            count += 1
-        }
-        monthAndYearLabel.text = CalenderHelper().monthString(date: selectedDate) + " " + CalenderHelper().yearString(date: selectedDate)
-        monthCollectionView.reloadData()
-    }
-    
-    func isCurrentDate(_ dateString: String) -> Bool {
-        guard let day = Int(dateString), day != 0 else {
-            return false
-        }
-        let calendar = Calendar.current
-        let todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
-        let selectedComponents = calendar.dateComponents([.year, .month, .day], from: selectedDate)
-        
-        return todayComponents.year == selectedComponents.year &&
-               todayComponents.month == selectedComponents.month &&
-               todayComponents.day == day
-    }
 }
 
 extension CalenderVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case monthCollectionView :
             return totalSquares.count
         case todaysEventsCollectionView:
-            return todayEventList.count
+            return eventsForToday.count
         default : return 0
         }
     }
@@ -164,18 +194,28 @@ extension CalenderVC: UICollectionViewDelegate, UICollectionViewDataSource {
         case monthCollectionView:
             let dateCell = monthCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionViewCell", for: indexPath) as! DateCollectionViewCell
             let dateString = totalSquares[indexPath.item]
-            dateCell.configureCell(dateString: dateString, isCurrentDateCell: isCurrentDate(dateString))
+            if let monthInfoVar = monthInfoVar {
+                dateCell.configureCell(monthdataInfo: monthInfoVar, dayInfo: totalSquares[indexPath.item])
+            } else {
+                self.showAlert(title: "Error", message: "Month Information ins Empty")
+            }
             return dateCell
             
         case todaysEventsCollectionView:
             let eventCell = todaysEventsCollectionView.dequeueReusableCell(withReuseIdentifier: "calendarEmojiCell", for: indexPath) as! calendarEmojiCell
-            eventCell.configureCell(with: todayEventList[indexPath.item])
+            eventCell.todayEventCellonfigure(with: eventsForToday[indexPath.item])
             return eventCell
         default:
             let defaultDateCell = monthCollectionView.dequeueReusableCell(withReuseIdentifier: "DateCollectionViewCell", for: indexPath) as! DateCollectionViewCell
-            let dateString = totalSquares[indexPath.item]
-            defaultDateCell.configureCell(dateString: dateString, isCurrentDateCell: isCurrentDate(dateString))
             return defaultDateCell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == monthCollectionView {
+            if let dateString = totalSquares[indexPath.item].date {
+                self.showDayDetails(selectedDate: dateString)
+            }
         }
     }
 }

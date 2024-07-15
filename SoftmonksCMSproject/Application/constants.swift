@@ -7,6 +7,6 @@
 
 import Foundation
 
-let apiURL = "https://monks.weblogicz.com/apps/softmonks.json?os=ios&v=1b1&b=SMK"
+let apiURL = "API key"
 
 
